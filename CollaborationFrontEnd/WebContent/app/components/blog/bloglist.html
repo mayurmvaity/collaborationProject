@@ -1,0 +1,12 @@
+<div ng-repeat="blog in blogCtrl.bloglist">
+		
+	<div class="panel panel-default col-md-8 col-md-offset-2" style="border-top-color: #A91717; border-top-width: 3px; border-radius: 0;">
+	  <div class="panel-body">
+		  <p class="blogtitle"><a href="#/blog/{{blog.blogid}}">{{blog.btitle}}</a></p>
+		  <p class="bloguser" >Published by <a href="">{{blog.user.fname}} {{blog.user.lname}}</a> on {{blog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blog.blikes}} Likes | {{blog.bcomments}} comments</p>
+		  <p class="blogtext">{{blog.bdata | limitTo: 340}}...  <a href="#/blog/{{blog.blogid}}"> see complete blog</a></p>
+	  </div>
+	</div>
+	
+	
+</div>

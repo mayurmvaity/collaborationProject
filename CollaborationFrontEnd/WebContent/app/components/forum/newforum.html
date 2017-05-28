@@ -1,0 +1,34 @@
+<h3>New Forum page</h3>
+        
+                    
+					<div class="row">
+				      <form id="newForum" name="newForum" ng-submit="forumCtrl.addForum()" class="col l8 offset-l2" style="padding-bottom: 40px;">
+						<input type="hidden" ng-model="forumCtrl.forum.forumid" />
+				        <div class="row">
+				          <div class="input-field col s6">
+				            <input id="ftitle" type="text" data-length="10" ng-model="forumCtrl.forum.ftitle">
+				            <label for="ftitle">Forum title</label>
+				          </div>
+				        </div>
+				        <div class="row">
+				          <div class="input-field col s12">
+				            <textarea id="fdata" class="materialize-textarea" data-length="1000" ng-model="forumCtrl.forum.fdata"></textarea>
+				            <label for="fdata">Forum text</label>
+				          </div>
+				        </div>
+				         <div class="row">
+                        <!-- Submit button will come here -->
+                        <div class="col m3">
+                            <div class="row" style="margin-top: 10px; left: 10px;" style="position: absolute; top: 290px; right: 520px;">
+                                <button type="submit" class="waves-effect waves-light btn-large" >Publish</button>
+                            </div>
+                        </div>
+
+                    </div>
+				        
+				        
+				      </form>
+				    </div>
+                    
+
+                   

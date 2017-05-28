@@ -1,0 +1,33 @@
+<div>
+	<div class="panel panel-default col-md-8 col-md-offset-2" style="border-top-color: #A91717; border-top-width: 3px; border-radius: 0;">
+	  <div class="panel-body">
+		
+		  	  <table class="table table-condensed">
+			    <thead>
+			      <tr>
+			        <th>First name</th>
+			        <th>Last name</th>
+			        <th>Email</th>
+			      	<th>approv</th>
+			      	<th>Action</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr ng-repeat="singleUser in userCtrl.usernalist">
+			        <td>{{singleUser.fname}}</td>
+			        <td>{{singleUser.lname}}</td>
+			        <td>{{singleUser.email}}</td>
+			         <td>{{singleUser.isApproved}}</td>
+			         <td><a ng-click="userCtrl.userAppr(singleUser.userid);">approve</a></td>
+			      </tr>
+			     
+			    </tbody>
+			  </table>
+		  
+		  
+		  
+	  </div>
+	</div>
+	
+	
+</div>

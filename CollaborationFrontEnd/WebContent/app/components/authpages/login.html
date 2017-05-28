@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form id="login" ng-submit="loginCtrl.login()">
+          <div class="center-align ">
+            <h4 style="color:#4db6ac">Log In</h4>
+          </div>
+
+          Username will be asks to enter here
+          <div class="row">
+            <div class="input-field">
+              <input id="username" name="username" type="text" ng-model="loginCtrl.credentials.email" />
+              <label for "username">Username</label>
+            </div>
+          </div>
+
+          Password will be asks to enter here
+          <div class="row">
+            <div class="input-field">
+              <input id="password" name="password" type="password" ng-model="loginCtrl.credentials.pw">
+              <label for "password">Password</label>
+            </div>
+          </div>
+
+          Login button is here
+          <div class="row">
+            <div class="input-field center-align">
+              <button class="btn teal lighten-2 " type="submit">Log In</button>
+            </div>
+          </div>
+
+          <div style="margin-top: 15px;" class="center-align" ng-show="loginCtrl.error">
+              <span class="help-block">{{message}}</span>
+          </div> 
+
+        </form>
+	</div>
+</div>

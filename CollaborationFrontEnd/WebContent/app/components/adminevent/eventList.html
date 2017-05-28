@@ -1,0 +1,13 @@
+<div ng-repeat="evt in evtCtrl.evtList">
+		
+	<div class="panel panel-default col-md-8 col-md-offset-2">
+	  <div class="panel-body">
+		  <p class="evttitle"><a href="#/adminevent/{{evt.evtid}}">{{evt.etitle}}</a></p>
+		  <p>Posted by <a href="">{{evt.user.fname}} {{evt.user.lname}}</a> on {{evt.edate | date : 'MMM d, y h:mm:ss a'}}</p>
+		  <p class="evttext">{{evt.edata | limitTo: 340}}...  <a href="#/adminevent/{{evt.evtid}}"> read more</a></p>
+		 
+	  </div>
+	</div>
+	
+	
+</div>

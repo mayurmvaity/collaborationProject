@@ -1,0 +1,85 @@
+<div class="panel panel-default col-md-8 col-md-offset-2">
+              <p style="font-weight: 700px; font-size: 30px; padding:15px 0px 0px 30px;">Register Here!</p>
+              <hr />
+              <div class="panel-body">
+<form id="newUser" name="newUser" ng-submit="userCtrl.addUser()" style="padding-bottom: 40px;">
+	<input type="hidden" ng-model="userCtrl.user.userid" />
+
+                    <!-- For fname --> 
+                    <div class="form-group col-md-6">
+                    	<label for="fname">First name</label>
+                    	 <input id="fname" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.fname">
+                    </div>
+                    <!-- For lname -->
+                    <div class="form-group col-md-6">
+                    	<label for="lname">Last name</label>
+                    	 <input id="lname" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.lname">
+                    </div>
+                    <!-- For email -->
+                  	<div class="form-group col-md-6">
+                    	<label for="email">Email</label>
+                    	 <input id="email" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.email">
+                    </div>
+                    <!-- For phone number -->
+                  	<div class="form-group col-md-6">
+                    	<label for="pno">Phone number</label>
+                    	 <input id="pno" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.pno">
+                    </div>
+                    <!-- For password -->
+                   	<div class="form-group col-md-6">
+                    	<label for="pw">Password</label>
+                    	 <input id="pw" type="password" class="form-control" data-length="120" ng-model="userCtrl.user.pw">
+                    </div>
+                   
+                   	<!-- Separator  -->
+                   	<div class="clearfix"></div>
+					<br><br>
+					
+                    <!-- For Add1 -->
+                  	<div class="form-group col-md-6">
+                    	<label for="add1">Address line 1</label>
+                    	 <input id="add1" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.add1">
+                    </div>
+                     <!-- For Add2 -->
+                  	<div class="form-group col-md-6">
+                    	<label for="add2">Address line 2</label>
+                    	 <input id="add2" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.add2">
+                    </div>
+                     <!-- For Add3 -->
+                  	<div class="form-group col-md-6">
+                    	<label for="add3">Address line 3</label>
+                    	 <input id="add3" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.add3">
+                    </div>
+                     <!-- For city -->
+                  	<div class="form-group col-md-6">
+                    	<label for="city">City</label>
+                    	 <input id="city" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.city">
+                    </div>
+                     <!-- For state -->
+                  	<div class="form-group col-md-6">
+                    	<label for="state">State</label>
+                    	 <input id="state" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.state">
+                    </div>
+                     <!-- For pincode -->
+                  	<div class="form-group col-md-6">
+                    	<label for="pincode">Pin code</label>
+                    	 <input id="pincode" type="text" class="form-control" data-length="120" ng-model="userCtrl.user.pincode">
+                    </div>
+                    
+                    <!-- Separator  -->
+                    <div class="clearfix"></div>
+					<br><br>
+                    
+                    <!-- For submit button -->
+                    <div class="col-md-6">
+                         <button type="submit" class="btn btn-danger">Register</button>
+                    </div>
+                    
+                 
+                   
+
+</form>
+ 
+
+ 			</div>	
+            </div>

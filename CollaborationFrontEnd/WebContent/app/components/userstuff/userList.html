@@ -1,0 +1,29 @@
+<div>
+	<div class="panel panel-default col-md-8 col-md-offset-2" style="border-top-color: #A91717; border-top-width: 3px; border-radius: 0;">
+	  <div class="panel-body">
+		
+		  	  <table class="table table-condensed">
+			    <thead>
+			      <tr>
+			        <th>First name</th>
+			        <th>Last name</th>
+			        <th>Email</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      <tr ng-repeat="singleUser in userCtrl.userlist">
+			        <td>{{singleUser.fname}}</td>
+			        <td>{{singleUser.lname}}</td>
+			        <td>{{singleUser.email}}</td>
+			      </tr>
+			     
+			    </tbody>
+			  </table>
+		  
+		  
+		  
+	  </div>
+	</div>
+	
+	
+</div>

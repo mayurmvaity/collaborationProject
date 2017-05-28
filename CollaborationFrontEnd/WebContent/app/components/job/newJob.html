@@ -1,0 +1,43 @@
+
+<div class="panel panel-default col-md-offset-2 col-md-8">
+	 <p style="font-weight: 700px; font-size: 30px; padding:15px 0px 0px 30px;">Add New Job</p>
+              <hr />
+	
+	<div class="panel-body">
+	
+<form id="newJob" name="newJob" ng-submit="jobCtrl.addJob()" class="col s12" style="padding-bottom: 40px;">
+	<input type="hidden" ng-model="jobCtrl.job.jobid" />
+
+                   
+                    
+                    <!-- For Job title --> 
+                    <div class="form-group col-md-8">
+                    	<label for="jtitle">Job title</label>
+                    	<input id="jtitle" type="text" class="form-control" data-length="120" ng-model="jobCtrl.job.jtitle">
+                    </div>
+                    
+                    
+                                
+                    <!-- For job description -->
+					<div class="form-group col-md-12">
+                    	<label for="jdata">Job description</label>
+                    	<textarea id="jdata"  type="text" class="form-control" rows="25" ng-model="jobCtrl.job.jdata" > 
+                            </textarea>
+                    </div>
+                    
+
+                  
+                    
+                     <!-- For submit button -->
+                    <div class="col-md-6">
+                         <button type="submit" class="btn btn-danger">Publish</button>
+                    </div>
+                    
+                    
+</form>
+
+
+	
+	</div>	<!-- End of panel body -->
+
+</div>		<!-- End of panel -->
