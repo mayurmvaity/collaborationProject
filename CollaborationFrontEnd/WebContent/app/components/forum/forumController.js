@@ -1,8 +1,8 @@
 /**
  * 
  */
-forum.controller('forumController',['forumFactory','$routeParams', '$location', '$route', '$rootScope', 
-	function(forumFactory,$routeParams, $location, $route, $rootScope) {
+forum.controller('forumController',['forumFactory','$routeParams', '$location', '$route', '$rootScope', '$scope',
+	function(forumFactory,$routeParams, $location, $route, $rootScope, $scope) {
 	
 	var self = this;
 	
@@ -12,6 +12,13 @@ forum.controller('forumController',['forumFactory','$routeParams', '$location', 
 			ftitle: '',
 			fdata: '',
 			active : 'Y'
+	}
+	
+	self.fmember = {
+			
+			fmemberid : null,
+			active : 'Y',
+			isApproved : 'N'
 	}
 	
 	//function for adding a new blog
@@ -61,11 +68,12 @@ forum.controller('forumController',['forumFactory','$routeParams', '$location', 
     self.viewForum = function() {
         //Assigning blog id to variable blogId
         var blogId = $routeParams.id;
+        
         forumFactory.viewForum(blogId)
             .then (
                 function(forum) {
                     self.singleForum = forum;
-                   
+                    $scope.vforum = forum;
                 },
                 function(errResponse) {
                 }
@@ -73,4 +81,25 @@ forum.controller('forumController',['forumFactory','$routeParams', '$location', 
 
     } 
 	
+    
+  //function for joining a forum
+    self.joinforum = function (frm) {
+
+		self.fmember.user = $rootScope.user;
+		self.fmember.forum = frm;
+		
+        console.log('in join forum method controller');
+         //calling the addBlog method in the factory
+        forumFactory.joinforum(self.fmember)
+            .then (
+                function(resp) {
+                    self.fmember =  resp;
+                    $route.reload();
+                }, function (errResponse) {
+                }
+            );
+         console.log('end of join forum method controller');
+    }
+    
+    /***********************/
 }]);

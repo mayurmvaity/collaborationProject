@@ -154,6 +154,16 @@ window.routes = {
 	       
 	    },
 	    
+	    //For viewing list of user's blogs
+	     "/blog/userbloglist": {
+	        templateUrl : 'app/components/blog/userblog.html',
+	        controller : 'blogController',
+	        controllerAs : 'blogCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	       
+	    },
+	    
 	    //For viewing single blog
 	    "/blog/:id": {
 	        templateUrl : 'app/components/blog/singleBlog.html',

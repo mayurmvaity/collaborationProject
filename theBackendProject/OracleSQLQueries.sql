@@ -109,14 +109,14 @@ create table blogcomment (
 );
 
 /************* forum member ************/
-create sequence forforummemberid
+create sequence forfmemberid
 start with 1
 increment by 1
 nocache
 nocycle;
 
-create table forummember (
-	forummemberid number(6) primary key,
+create table fmember (
+	fmemberid number(6) primary key,
 	userid number(10),
 	forumid number(10),
 	is_active char(1) not null,

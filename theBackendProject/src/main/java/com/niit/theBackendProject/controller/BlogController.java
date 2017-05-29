@@ -45,7 +45,7 @@ public class BlogController {
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 	}
 	
-	 // to retrieve list of blogs
+	 // to retrieve list of all blogs
 	 @RequestMapping(value = {"/blog/list"}, method = RequestMethod.GET)
 		public ResponseEntity<List<Blog>> fetchBlogs() {
 			System.out.println("fetching list of blogs");
@@ -114,4 +114,13 @@ public class BlogController {
 			return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 		}
 	 
+	 	 // to retrieve list of user's blogs
+		 @RequestMapping(value = {"/blog/userlist/{userid}"}, method = RequestMethod.GET)
+			public ResponseEntity<List<Blog>> fetchUserBlogs(@PathVariable("userid") int userid) {
+				System.out.println("fetching list of user s blogs");
+				List<Blog> blogs = blogDAO.userbloglist(userid);
+				return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
+			}
+	 	
+	 	/************************/
 }

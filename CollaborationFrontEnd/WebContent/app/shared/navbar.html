@@ -1,62 +1,56 @@
 <div ng-if="authenticated">
-<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
-<div class="container">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			
-		</button>
+		<div class="navbar-fixed">
 
-		<a href="#!/" class="navbar-brand">LifeInvader</a>
- 	</div>
- 	<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul id="dropdown1" class="dropdown-content">
+				  <li><a href="">Forum list</a></li>
+				  <li><a href="">Add new Forum</a></li>
+				  <li class="divider"></li>
+				  <li><a href="">three</a></li>
+				</ul>
+				<nav>
+				<div class="nav-wrapper">
+					<a href="#!" class="brand-logo">Logo</a>
+				 	
 
- 	
- 		<ul class="nav navbar-nav" ng-if="user.role == 'User'">
- 			<li><a href="#/profile/{{user.userid}}">profile</a></li>
-			<li><a href="#/blog/new">Add new blog</a></li>
-			<li><a href="#/user/new">Register</a></li>
-			<li><a href="#/blog/list">bloglist</a></li>
-			<li><a href="#/adminevent/list">listevent</a></li>
-			<li><a href="#/job/list">joblist</a></li>
-			<li><a href="#/forum/list">Forum list</a></li> 
-			
- 		</ul>
- 		<ul class="nav navbar-nav" ng-if="user.role == 'Admin'">
- 			
-			<li><a href="#/blog/new">Add new blog</a></li>
-			
-			<li><a href="#/job/new">Add new job</a></li>
-			<li><a href="#/blog/list">bloglist</a></li>
-			<li><a href="#/adminevent/new">new event</a></li>
-			<li><a href="#/adminevent/list">listevent</a></li>
-			<li><a href="#/job/list">joblist</a></li>
-			<li><a href="#/user/list">user list</a></li>
-			<li><a href="#/user/nalist">user nt ap list</a></li>
-			<li><a href="#/blog/nalist">nablog</a></li>
-			  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Forum<span class="caret"></span></a>
-		        <ul class="dropdown-menu">
-		          <li><a href="#/forum/list" style="color: black;">Forumlist</a></li>
-		          <li><a href="#/forum/new" style="color: black;">Add new forum</a></li>
-		        </ul>
-		      </li>
-			
- 		</ul>
- 		
- 		<ul class="nav navbar-nav navbar-right">
- 		  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">User<span class="caret"></span></a>
-	        <ul class="dropdown-menu">
-	          <li><a href="#" style="color: black;">Settings</a></li>
-	          <li><a href="#/logout" style="color: black;">Logout</a></li>
-	        </ul>
-	      </li>
- 				
- 		</ul>
- 		
- 	</div>
-</div>
-</nav>
-
+				 	
+				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'User'">
+				 			<li><a href="#/profile/{{user.userid}}">profile</a></li>
+				 			<li><a href="#/blog/userbloglist">My blogs</a></li>
+							<li><a href="#/blog/new">Add new blog</a></li>
+							<li><a href="#/user/new">Register</a></li>
+							<li><a href="#/blog/list">bloglist</a></li>
+							<li><a href="#/adminevent/list">listevent</a></li>
+							<li><a href="#/job/list">joblist</a></li>
+							<li><a href="#/forum/list">Forum list</a></li> 
+							
+				 		</ul>
+				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'Admin'">
+				 			
+							<li><a href="#/blog/new">Add new blog</a></li>
+							<li><a href="#/blog/userbloglist">My blogs</a></li>
+							<li><a href="#/job/new">Add new job</a></li>
+							<li><a href="#/blog/list">bloglist</a></li>
+							<li><a href="#/adminevent/new">new event</a></li>
+							<li><a href="#/adminevent/list">listevent</a></li>
+							<li><a href="#/job/list">joblist</a></li>
+							<li><a href="#/user/list">user list</a></li>
+							<li><a href="#/user/nalist">user nt ap list</a></li>
+							<li><a href="#/blog/nalist">nablog</a></li>
+							<!-- Dropdown trigger -->
+							<li><a class="dropdown-button" href="" data-activates="dropdown1">Forum<i class="material-icons right">arrow_drop_down</i></a></li>
+							  <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Forum<span class="caret"></span></a>
+						        <ul class="dropdown-menu">
+						          <li><a href="#/forum/list" style="color: black;">Forumlist</a></li>
+						          <li><a href="#/forum/new" style="color: black;">Add new forum</a></li>
+						        </ul>
+						      </li> -->
+							
+				 		</ul>
+				 		
+				 		
+				 		
+				 	
+				</div>		<!-- End of nav wrapper -->
+				</nav>
+		</div>		<!-- End of navbar fixed -->
 </div>

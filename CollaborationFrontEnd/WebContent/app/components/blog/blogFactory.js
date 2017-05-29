@@ -16,7 +16,8 @@ blog.factory('blogFactory',['$http','$q',
         viewBlog : viewBlog,
         likeblog : likeblog,
         blognalist : blognalist,
-        blogAppr : blogAppr
+        blogAppr : blogAppr,
+        userbloglist : userbloglist
         
 	};
 	
@@ -121,5 +122,23 @@ blog.factory('blogFactory',['$http','$q',
         return deferred.promise;
     }
     
+    // user blog list
+    function userbloglist(id) {
+        console.log('Inside user blog list factory now');
+       var deferred = $q.defer();
+       $http.get(blogUrl + '/blog/userlist/' + id)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of user blog list mehod in factory');
+           return deferred.promise;
+   }
     
+    
+    /**********************/
 	}]);

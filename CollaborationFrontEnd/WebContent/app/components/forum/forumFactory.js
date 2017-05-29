@@ -13,8 +13,8 @@ forum.factory('forumFactory',['$http','$q',
 	return {
 		addForum : addForum,
 		viewForum : viewForum,
-		forumlist : forumlist
-        
+		forumlist : forumlist,
+		joinforum : joinforum
         
 	};
 	
@@ -70,5 +70,22 @@ forum.factory('forumFactory',['$http','$q',
             return deferred.promise;
     }
 	
-	
+    // join a forum
+	function joinforum(fmember) {
+        console.log('Inside forum join method in factory now');
+       var deferred = $q.defer();
+       $http.post(forumUrl + '/fmember/new', fmember)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of forum join mehod in factory');
+           return deferred.promise;
+   }
+    
+    /*********************/
 	}]);

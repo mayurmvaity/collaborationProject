@@ -13,4 +13,5 @@ public interface BlogDAO {
 	boolean delete(Blog blog);
 
 	public List<Blog> nabloglist();
+	public List<Blog> userbloglist(int userid);
 }

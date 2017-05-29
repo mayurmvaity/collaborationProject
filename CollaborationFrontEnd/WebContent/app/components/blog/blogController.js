@@ -176,5 +176,26 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
         console.log('End of blog comm list method');
    }
     
+    userbloglist();
     
+    function userbloglist() {
+    	
+    	var usrid = $rootScope.user.userid;
+    	
+    	console.log('inside user blog list method');
+        blogFactory.userbloglist(usrid)
+           .then (
+               function(blogs) {   
+                   self.userbloglist = blogs;
+                   
+                   console.log(self.userbloglist);
+               },
+               function(errResponse) {
+                   console.log('Failure!');
+               }
+           );
+        console.log('End of user blog list method');
+   }
+    
+    /*************************/
 }]);
