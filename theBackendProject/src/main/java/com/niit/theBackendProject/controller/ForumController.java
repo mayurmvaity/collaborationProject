@@ -2,8 +2,6 @@ package com.niit.theBackendProject.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.theBackendProject.dao.ForumDAO;
-import com.niit.theBackendProject.dto.Blog;
 import com.niit.theBackendProject.dto.Forum;
-import com.niit.theBackendProject.dto.Job;
 
 @RestController
 public class ForumController {
 	
-/*	@Autowired
-	HttpSession session;
-*/
+
 	@Autowired
 	ForumDAO forumDAO;
 	
@@ -69,4 +63,14 @@ public class ForumController {
 			return new ResponseEntity<Forum>(forum, HttpStatus.OK);
 			
 		}
+	 
+	// to retrieve list of forums by userid creater id
+		@RequestMapping(value = {"/forum/mylist/{userid}"}, method = RequestMethod.GET)
+		public ResponseEntity<List<Forum>> fetchJoinedForums(@PathVariable("userid") int userid) {
+			System.out.println("fetching list of created forums");
+			List<Forum> forum = forumDAO.listByUserid(userid);
+			return new ResponseEntity<List<Forum>>(forum, HttpStatus.OK);
+		}
+	 
+	 /*******************/
 }

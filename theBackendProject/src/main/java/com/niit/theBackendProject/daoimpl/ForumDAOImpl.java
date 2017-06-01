@@ -78,4 +78,15 @@ public class ForumDAOImpl implements ForumDAO {
 		}
 	}
 
+	@Override
+	public List<Forum> listByUserid(int userid) {
+		String selectActiveForum = "FROM Forum WHERE active = :active and user.userid =:userid ";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveForum);
+		
+		query.setParameter("active", 'Y');
+		query.setParameter("userid", userid);
+		return query.getResultList();
+	}
+	
 }

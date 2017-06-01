@@ -14,6 +14,9 @@
 
 				 	
 				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'User'">
+				 			
+				 			<li><a href="#/user/aplist">AllUsers</a></li>
+				 			<li><a href="#/fmember/myForumlist">MyForums</a></li>
 				 			<li><a href="#/profile/{{user.userid}}">profile</a></li>
 				 			<li><a href="#/blog/userbloglist">My blogs</a></li>
 							<li><a href="#/blog/new">Add new blog</a></li>
@@ -26,6 +29,10 @@
 				 		</ul>
 				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'Admin'">
 				 			
+				 			<li><a href="#/user/aplist">AllUsers</a></li>
+				 			<li><a href="#/forum/mylist">CForums</a></li>
+				 			<li><a href="#/fmember/myForumlist">MyForums</a></li>
+				 			<li><a href="#/fmember/nalist">nafmemberlist</a></li>
 							<li><a href="#/blog/new">Add new blog</a></li>
 							<li><a href="#/blog/userbloglist">My blogs</a></li>
 							<li><a href="#/job/new">Add new job</a></li>

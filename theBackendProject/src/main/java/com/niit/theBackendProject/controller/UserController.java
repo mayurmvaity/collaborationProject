@@ -141,4 +141,14 @@ public class UserController {
 					
 				return new ResponseEntity<Usertable>(user, HttpStatus.OK);
 			}
+		 
+		// to retrieve list of approved users
+		@RequestMapping(value = {"/user/aplist"}, method = RequestMethod.GET)
+		public ResponseEntity<List<Usertable>> fetchApprvUsers() {
+			System.out.println("fetching list of approved users");
+			List<Usertable> user = userDAO.approvlist();
+			return new ResponseEntity<List<Usertable>>(user, HttpStatus.OK);
+		}
+		 
+		 /*************/
 }

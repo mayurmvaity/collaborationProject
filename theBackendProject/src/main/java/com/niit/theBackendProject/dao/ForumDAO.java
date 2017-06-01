@@ -12,5 +12,5 @@ public interface ForumDAO {
 	boolean update(Forum forum);
 	boolean delete(Forum forum);
 
-	
+	List<Forum> listByUserid(int userid);
 }

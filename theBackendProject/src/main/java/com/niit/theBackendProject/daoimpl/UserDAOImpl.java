@@ -145,5 +145,17 @@ public class UserDAOImpl implements UserDAO {
 		return query.getResultList();
 	}
 	
-	
+	// list of approved users for users
+		@Override
+		public List<Usertable> approvlist() {
+			String selectActiveUser = "FROM Usertable WHERE active = :active and isApproved = :approv";
+			
+			Query query = sessionFactory.getCurrentSession().createQuery(selectActiveUser);
+			
+			query.setParameter("active", 'Y');
+			query.setParameter("approv", 'Y');
+			
+			
+			return query.getResultList();
+		}
 }

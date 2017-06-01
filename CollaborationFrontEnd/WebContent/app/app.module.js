@@ -11,7 +11,8 @@ var lifeinvader = angular.module('lifeinvader', [
 	'evtModule',
 	'loginModule',
 	'ngCookies',
-	'blogCommentModule'
+	'blogCommentModule',
+	'fpostModule'
 	
 	
 	]);

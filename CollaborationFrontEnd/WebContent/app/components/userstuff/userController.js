@@ -107,5 +107,23 @@ user.controller('userController',['userFactory', 'loginFactory','$routeParams', 
             );
     }
     
+    // calling userapprvlist function
+    userapprvlist();
     
+    //Function to view list of all approved users
+    function userapprvlist() {
+    	userFactory.userapprvlist()
+            .then (
+                function(users) {   
+                    self.userapprvlist = users;
+                   
+                    console.log(self.userapprvlist);
+                },
+                function(errResponse) {
+                    console.log('Failure!');
+                }
+            );
+    }
+    
+    /**************************/
 }]);

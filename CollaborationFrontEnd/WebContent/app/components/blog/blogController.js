@@ -91,7 +91,7 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
                 function(blog) {
                     self.singleBlog = blog;
                     $scope.bid = blog.blogid;
-                   
+                    blogCommentlist();
                 },
                 function(errResponse) {
                 }
@@ -156,7 +156,7 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
          console.log('end of controller');
     }
     
-    blogCommentlist();
+    
     
     function blogCommentlist() {
     	

@@ -2,10 +2,54 @@
 	<div class="panel panel-default col-md-8 col-md-offset-2">
 		<div class="panel-body">
 			<p class="singletitle">{{forumCtrl.singleForum.ftitle}}</p>
-			<p><a ng-click="forumCtrl.joinforum(forumCtrl.singleForum)">Join</a></p>
+			<p>1st : {{user.userid}} </p>
+			<p>1-2: {{forumCtrl.singleForum.user.userid}}</p>
+			<p>2nd : {{forumCtrl.isParticipant}}</p>
+			<div ng-if=" ((user.userid != forumCtrl.singleForum.user.userid) && !forumCtrl.isParticipant)">
+			
+				<p><a ng-click="forumCtrl.joinforum(forumCtrl.singleForum)">Join</a></p>
+			</div>
 			<p style="font-size: 13px; color: grey;">Created by <a href="">{{forumCtrl.singleForum.user.fname}} {{forumCtrl.singleForum.user.lname}}</a> on {{forumCtrl.singleForum.fdate | date : 'MMM d, y h:mm:ss a'}}</p>
 			<p class="singletext">{{forumCtrl.singleForum.fdata}}</p>
 			
+		</div>
+	</div>
+				
+				<div class="row" ng-if="(forumCtrl.isApproved)">
+				      <form id="newbcomm" name="newbcomm" ng-submit="forumCtrl.addFpost()" class="col l8 offset-l2" style="padding-bottom: 40px;">
+						<input type="hidden" ng-model="forumCtrl.fpost.fpostid" />
+						
+				        <div class="row">
+				          <div class="input-field col s12">
+				            <textarea id="fdata" class="materialize-textarea" data-length="1000" ng-model="forumCtrl.fpost.fpdata"></textarea>
+				            <label for="fdata">Leave a post</label>
+				          </div>
+				        </div>
+				        <div class="row">
+	                        <!-- Submit button will come here -->
+	                        <div class="col m3">
+	                            <div class="row" style="margin-top: 10px; left: 10px;" style="position: absolute; top: 290px; right: 520px;">
+	                                <button type="submit" class="waves-effect waves-light btn-large" >Post</button>
+	                            </div>
+	                        </div>
+	
+	                    </div>
+				        
+				      </form>
+				    </div>
+<hr>
+ 
+ 	<div ng-if="(forumCtrl.isApproved)">
+ 	<h4>Posts</h4>
+		<div ng-repeat="fpost in forumCtrl.fpostsByForumid">
+			
+		<div class="panel panel-default col-md-8 col-md-offset-2" style="border-top-color: #A91717; border-top-width: 3px; border-radius: 0;">
+		 
+		  <div class="panel-body">
+			  <p style="color: black; font-size: 13px;">Posted by {{fpost.user.fname}} {{fpost.user.lname}} on {{fpost.fpdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
+			  <hr>
+			  <p class="blogtext">{{fpost.fpdata}}</p>
+		  </div>
 		</div>
 	</div>
 </div>

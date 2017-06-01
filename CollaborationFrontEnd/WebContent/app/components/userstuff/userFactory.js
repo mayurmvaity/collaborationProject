@@ -14,7 +14,8 @@ user.factory('userFactory',['$http','$q',
 		fetchUser : fetchUser,
 		userlist : userlist,
 		usernalist : usernalist,
-		userAppr : userAppr
+		userAppr : userAppr,
+		userapprvlist : userapprvlist
         
 	};
 	
@@ -106,4 +107,23 @@ user.factory('userFactory',['$http','$q',
         console.log('Approve method end');
         return deferred.promise;
     }
+    
+    //Function to fetch users approved list
+    function userapprvlist() {
+         console.log('Inside factory now');
+        var deferred = $q.defer();
+
+        $http.get(userUrl + '/user/aplist')
+            .then (
+                function(response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse) {
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
+    }
+    
+    /*******************/
 }]);

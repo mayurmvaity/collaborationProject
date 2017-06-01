@@ -15,4 +15,5 @@ public interface UserDAO {
 	public Usertable validateUser(Usertable user);
 	public Usertable getUserByEmail(String email);
 	public List<Usertable> nalist();
+	List<Usertable> approvlist();
 }

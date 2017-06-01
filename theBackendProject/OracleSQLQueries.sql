@@ -122,3 +122,19 @@ create table fmember (
 	is_active char(1) not null,
 	is_approved char(1) not null
 );
+
+/******** forum posts ********/
+create sequence forfpostid
+start with 1
+increment by 1
+nocache
+nocycle;
+
+create table fpost (
+	fpostid number(6) primary key,
+	forumid number(10),
+	userid number(10),
+	fpdata clob not null,
+	fpdate date,
+	is_active char(1) not null
+);

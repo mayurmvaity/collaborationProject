@@ -14,7 +14,12 @@ forum.factory('forumFactory',['$http','$q',
 		addForum : addForum,
 		viewForum : viewForum,
 		forumlist : forumlist,
-		joinforum : joinforum
+		joinforum : joinforum,
+		getParticipatedUsers : getParticipatedUsers,
+		nafmemberlist : nafmemberlist,
+		fmemberAppr : fmemberAppr,
+		joinedforumlist : joinedforumlist,
+		createdforumlist : createdforumlist
         
 	};
 	
@@ -87,5 +92,105 @@ forum.factory('forumFactory',['$http','$q',
            return deferred.promise;
    }
     
+	function getParticipatedUsers(forumid) {
+		var deferred = $q.defer();
+        $http.get(forumUrl + '/fmember/tlist/' + forumid)
+            .then (
+                function(response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse) {
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
+	}
+	
+	// list of forums
+	function myforumlist(userid) {
+        console.log('Inside forum list in factory now');
+       var deferred = $q.defer();
+       
+       $http.get(forumUrl + '/forum/myflist/' + userid)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of forum list mehod in factory');
+           return deferred.promise;
+   }
+	
+	// list of nafmemberlist
+	function nafmemberlist() {
+        console.log('Inside nafmemberlist in factory now');
+       var deferred = $q.defer();
+       $http.get(forumUrl + '/fmember/nalist')
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of nafmemberlist mehod in factory');
+           return deferred.promise;
+   }
+	
+	// function to approve user
+    function fmemberAppr(fmemberid) {
+        var deferred = $q.defer();
+        console.log('Approve fmember method start');
+        $http.post(forumUrl + '/fmember/approv/' + fmemberid).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+        );
+        console.log('Approve fmember method end');
+        return deferred.promise;
+    }
+	
+ // list of joined forums by userid
+	function joinedforumlist(userid) {
+        console.log('Inside joined forum list method in factory now');
+       var deferred = $q.defer();
+       $http.get(forumUrl + '/fmember/mylist/' + userid)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of joined forum list method in factory');
+           return deferred.promise;
+   }
+    
+	// list of created forums
+	function createdforumlist(userid) {
+        console.log('Inside list of created forums in factory now');
+       var deferred = $q.defer();
+       $http.get(forumUrl + '/forum/mylist/' + userid)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of list of created forums mehod in factory');
+           return deferred.promise;
+   }
+	
     /*********************/
 	}]);

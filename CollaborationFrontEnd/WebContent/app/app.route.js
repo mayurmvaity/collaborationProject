@@ -63,6 +63,46 @@ window.routes = {
 		        roles: ['Admin']
 	       
 	    },
+	    
+	    //For viewing list of users
+	     "/user/aplist": {
+	    	 	templateUrl : 'app/components/userstuff/allUsers.html',
+		        controller : 'userController',
+		        controllerAs : 'userCtrl',
+		        requireLogin: true,
+		        roles: ['Admin', 'User']
+	       
+	    },
+	    
+	  //For viewing list of na fmembers
+	     "/fmember/nalist": {
+	    	 	templateUrl : 'app/components/forum/naFmemberlist.html',
+	    	 	controller : 'forumController',
+		        controllerAs : 'forumCtrl',
+		        requireLogin: true,
+		        roles: ['Admin']
+	       
+	    },
+	    
+	    //For viewing list of forums created by userid
+	     "/forum/mylist": {
+	    	 	templateUrl : 'app/components/forum/createdForums.html',
+	    	 	controller : 'forumController',
+		        controllerAs : 'forumCtrl',
+		        requireLogin: true,
+		        roles: ['Admin']
+	       
+	    },
+	    
+	    //For viewing list of joined forums
+	     "/fmember/myForumlist": {
+	    	 	templateUrl : 'app/components/forum/myForums.html',
+	    	 	controller : 'forumController',
+		        controllerAs : 'forumCtrl',
+		        requireLogin: true,
+		        roles: ['Admin', 'User']
+	       
+	    },
 
 		//Form for creating new blog
 	    "/blog/new": {

@@ -77,4 +77,52 @@ public class FmemberDAOImpl implements FmemberDAO {
 		}
 	}
 
+	@Override
+	public List<Fmember> nafmemberlist() {
+		String selectActiveNAFmember = "FROM Fmember WHERE active = :active and isApproved = :isApproved";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveNAFmember);
+		
+		query.setParameter("active", 'Y');
+		query.setParameter("isApproved", 'N');
+		
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Fmember> appfmemberlist() {
+		String selectActiveNAFmember = "FROM Fmember WHERE active = :active and isApproved = :isApproved";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveNAFmember);
+		
+		query.setParameter("active", 'Y');
+		query.setParameter("isApproved", 'Y');
+		
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Fmember> fmemberMlist(int forumid) {
+		String selectActiveNAFmember = "FROM Fmember WHERE active = :active and forum.forumid =:forumid";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveNAFmember);
+		
+		query.setParameter("active", 'Y');
+		query.setParameter("forumid", forumid);
+		
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Fmember> myForumlist(int userid) {
+		String selectActivemyForums = "FROM Fmember WHERE active = :active and user.userid =:userid";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActivemyForums);
+		
+		query.setParameter("active", 'Y');
+		query.setParameter("userid", userid);
+		
+		return query.getResultList();
+	}
+
 }
