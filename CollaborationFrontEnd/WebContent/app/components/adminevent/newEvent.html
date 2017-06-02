@@ -1,40 +1,39 @@
-	<div class="panel panel-default col-md-8 col-md-offset-2">
-		 <p style="font-weight: 700px; font-size: 30px; padding:15px 0px 0px 30px;">New event</p>
-              <hr />
-		
-		<div class="panel-body">
+	<div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
             	
+	          	
                 <form id="newEvent" name="newEvent" ng-submit="evtCtrl.addEvt()" class="col s12" style="padding-bottom: 40px;">
+                	<div class="center-align ">
+		            	<h4>Create new event</h4>
+		          	</div>
+                
                  <input type="hidden" ng-model="evtCtrl.evt.evtid" />
-
-                    <!-- For Blog title --> 
-                    <div class="form-group col-md-8">
-                    	<label for="etitle">Event topic</label>
-                    	<input id="etitle" type="text" class="form-control" data-length="120" ng-model="evtCtrl.evt.etitle">
-                    </div>
-                    
-					<!-- Separator 
-                    <div class="clearfix"></div>
-					<br><br> -->
-                   
-                    <div class="form-group col-md-12">
-                    	<label for="edata">Event text</label>
-                    	<textarea id="edata"  type="text" class="form-control" rows="25" ng-model="evtCtrl.evt.edata" > 
-                            </textarea>
-                    </div>
-
-                   <!-- Separator  -->
-                    <div class="clearfix"></div>
-					<br><br>
-                    
-                    <!-- For submit button -->
-                    <div class="col-md-6">
-                         <button type="submit" class="btn btn-danger">Publish</button>
-                    </div>
+					
+					<div class="row">
+				        <div class="input-field">
+				          <input id="etitle" type="text" class="validate" ng-model="evtCtrl.evt.etitle" />
+				          <label for="etitle">Event topic</label>
+				        </div>
+					</div>
+					
+					 <div class="row">
+				        <div class="input-field">
+				          <textarea id="edata" class="materialize-textarea" ng-model="evtCtrl.evt.edata"></textarea>
+				          <label for="edata">Event information</label>
+				        </div>
+				      </div>
+					
+                     <div class="row">
+				         <div class="input-field center-align">
+				            <button class="btn teal lighten-2 " type="submit">Create event</button>
+				         </div>
+				     </div>
 
                 </form>
                 
                 
-            </div>	<!-- End of panel body  -->
-            </div>	<!-- End of panel -->
+           </div>
+          </div>
+         </div>
             

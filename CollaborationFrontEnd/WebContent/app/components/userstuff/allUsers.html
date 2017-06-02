@@ -1,33 +1,28 @@
-
-	<div class="panel panel-default col-md-8 col-md-offset-2" style="border : 0;">
-	  <div class="panel-body">
-		
-		  	  <!-- <table class="table table-condensed">
-			    <thead>
-			      <tr>
-			        <th>First name</th>
-			        <th>Last name</th>
-			        <th>Email</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			      <tr ng-repeat="singleUser in userCtrl.userlist">
-			        <td>{{singleUser.fname}}</td>
-			        <td>{{singleUser.lname}}</td>
-			        <td>{{singleUser.email}}</td>
-			      </tr>
-			     
-			    </tbody>
-			  </table> -->
-		  	<div ng-repeat="singleUser in userCtrl.userapprvlist">
-		  		<p>{{singleUser.fname}} {{singleUser.lname}}</p>
-		  		<p>Student</p>
-		  		<a href="">Add friend</a>
-		  		<hr/>
-		  	</div>
+<div class="col m8 offset-m2">
+			  
+			   <div class="row">
+			   <div ng-repeat="singleUser in userCtrl.userapprvlist">
+			      <div class="col s12 m4">
+			        <div class="card-panel">
+			        <div class="row">
+			        		<div class="col s4">
+					  		<img src="" height="150px" width="100px"/>
+					  		</div>
+			  				<div class="col s8">
+					  		<p>{{singleUser.fname}} {{singleUser.lname}}</p>
+					  		<p>Student</p>
+					  		<a href="" class="btn">Add friend</a>
+					  		</div>
+					  		
+					  	</div>
+					  	</div>
+			  		</div>
+			  	</div>
+			  </div>
+		  	
 		  	
 		  
 	  </div>
-	</div>
+	
 	
 	

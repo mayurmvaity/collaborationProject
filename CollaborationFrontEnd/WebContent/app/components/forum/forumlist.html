@@ -1,13 +1,14 @@
 <div ng-repeat="forum in forumCtrl.forumlist">
 		
-	<div class="panel panel-default col-md-8 col-md-offset-2">
-	  <div class="panel-body">
+	<div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
 		  <p class="evttitle"><a href="#/forum/{{forum.forumid}}">{{forum.ftitle}}</a></p>
 		  <p style="font-size: 12px; font-color: #d50000;">Created by <a href="">{{forum.user.fname}} {{forum.user.lname}}</a> on {{forum.fdate | date : 'MMM d, y h:mm:ss a'}}</p>
 		  <p class="evttext">{{forum.fdata | limitTo: 340}}...  <a href="#/forum/{{forum.forumid}}"> see complete forum</a></p>
 		 	
 	  </div>
 	</div>
-	
+	</div>
 	
 </div>

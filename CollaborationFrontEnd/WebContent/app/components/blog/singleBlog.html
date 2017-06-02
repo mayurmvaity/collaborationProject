@@ -1,6 +1,8 @@
 <div class="row" ng-init="blogCtrl.viewBlog()">
-	<div class="panel panel-default col-md-8 col-md-offset-2">
-		<div class="panel-body">
+	
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
+        
 			<p class="blogsingletitle">{{blogCtrl.singleBlog.btitle}}</p>
 			<p class="bloguserdet">Published by <a href="">{{blogCtrl.singleBlog.user.fname}} {{blogCtrl.singleBlog.user.lname}}</a> on {{blogCtrl.singleBlog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blogCtrl.singleBlog.blikes}} Likes | {{blogCtrl.singleBlog.bcomments}} comments </p>
 			<p><a ng-click="blogCtrl.likeblog(blogCtrl.singleBlog.blogid);">Like <span class="glyphicon glyphicon-thumbs-up"></span></a> | <a href="">Comment</a></p>
@@ -33,17 +35,19 @@
 	
 </div>
 <hr>
- <h4>Comments</h4>
+  					  <div class="center-align ">
+			            <h4>Comments</h4>
+			          </div>
 	<div ng-repeat="blogcomm in blogCtrl.blogCommentlist">
 		
-	<div class="panel panel-default col-md-8 col-md-offset-2" style="border-top-color: #A91717; border-top-width: 3px; border-radius: 0;">
-	 
-	  <div class="panel-body">
+	<div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
 		  <p style="color: black; font-size: 13px;">Posted by {{blogcomm.user.fname}} {{blogcomm.user.lname}} on {{blogcomm.commdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
 		  <hr>
 		  <p class="blogtext">{{blogcomm.commdata}}</p>
+	  	</div>
 	  </div>
 	</div>
-	
 	
 </div>

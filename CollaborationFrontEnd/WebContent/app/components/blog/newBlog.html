@@ -1,41 +1,39 @@
-	<div class="panel panel-default col-md-8 col-md-offset-2">
-		 <p style="font-weight: 700px; font-size: 30px; padding:15px 0px 0px 30px;">Publish a blog</p>
-              <hr />
-		
-		<div class="panel-body">
+	<div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card-panel">
             	
                 <form id="newBlog" name="newBlog" ng-submit="blogCtrl.addBlog()" style="padding-bottom: 40px;">
+                 	  <div class="center-align ">
+			            <h4>Create new blog</h4>
+			          </div>
+                 
                  <input type="hidden" ng-model="blogCtrl.blog.blogid" />
                  
-
-                    <!-- For Blog title --> 
-                    <div class="form-group col-md-8">
-                    	<label for="btitle">Blog topic</label>
-                    	<input id="btitle" type="text" class="form-control" data-length="120" ng-model="blogCtrl.blog.btitle">
-                    </div>
+					
+					<div class="row">
+						<div class="input-field">
+				          <input id="btitle" type="text" class="validate" ng-model="blogCtrl.blog.btitle">
+				          <label for="btitle">Blog topic</label>
+				        </div>
+					</div>
+					
+					<div class="row">
+				        <div class="input-field">
+				          <textarea id="textarea1" class="materialize-textarea" ng-model="blogCtrl.blog.bdata"></textarea>
+				          <label for="textarea1">Blog information</label>
+				        </div>
+				      </div>
+				      
+                 	  <div class="row">
+			            <div class="input-field center-align">
+			              <button class="btn teal lighten-2 " type="submit">Publish</button>
+			            </div>
+			          </div>
                     
-					<!-- Separator 
-                    <div class="clearfix"></div>
-					<br><br> -->
-                   
-                    <div class="form-group col-md-12">
-                    	<label for="bdata">Blog text</label>
-                    	<textarea id="bdata"  type="text" class="form-control" rows="25" ng-model="blogCtrl.blog.bdata" > 
-                            </textarea>
-                    </div>
-
-                   <!-- Separator  -->
-                    <div class="clearfix"></div>
-					<br><br>
                     
-                    <!-- For submit button -->
-                    <div class="col-md-6">
-                         <button type="submit" class="btn btn-danger">Publish</button>
-                    </div>
 
                 </form>
                 
-                
-            </div>	<!-- End of panel body  -->
-            </div>	<!-- End of panel -->
-            
+            </div>
+           </div>
+          </div>
