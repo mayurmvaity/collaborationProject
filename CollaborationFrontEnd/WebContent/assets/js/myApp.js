@@ -2,9 +2,10 @@
  * 
  */
 
-$(document).ready(function() {
-    $('input#ftitle, textarea#fdata').characterCounter();
+var mcss = function(){
+	$(document).ready(function() {
+		$(".dropdown-button").dropdown();
+	});
+};
 
-    $(".dropdown-button").dropdown();
-            
-  });
+mcss();

@@ -1,12 +1,23 @@
+<script>
+var mcss = function(){
+	$(document).ready(function() {
+		$(".dropdown-button").dropdown();
+	});
+};
+
+mcss();
+</script>
 <div ng-if="authenticated">
 		<div class="navbar-fixed">
-
-				<ul id="dropdown1" class="dropdown-content">
-				  <li><a href="">Forum list</a></li>
-				  <li><a href="">Add new Forum</a></li>
-				  <li class="divider"></li>
-				  <li><a href="">three</a></li>
-				</ul>
+				
+				<!-- Dropdown Structure -->
+					<ul id="dropdown1" class="dropdown-content">
+					  <li><a href="#!">one</a></li>
+					  <li><a href="#!">two</a></li>
+					  <li class="divider"></li>
+					  <li><a href="#!">three</a></li>
+					</ul>
+				
 				<nav>
 				<div class="nav-wrapper">
 					<a href="#!" class="brand-logo">Logo</a>
@@ -28,8 +39,10 @@
 							
 				 		</ul>
 				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'Admin'">
-				 			
-				 			<li><a href="#/user/aplist">AllUsers</a></li>
+				 			<!-- Dropdown Trigger -->
+      <li><a class="dropdown-button" href="" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+				 			<!-- <li><a href="#/user/aplist">AllUsers</a></li>
 				 			<li><a href="#/forum/mylist">CForums</a></li>
 				 			<li><a href="#/fmember/myForumlist">MyForums</a></li>
 				 			<li><a href="#/fmember/nalist">nafmemberlist</a></li>
@@ -37,15 +50,13 @@
 							<li><a href="#/blog/userbloglist">My blogs</a></li>
 							<li><a href="#/job/new">Add new job</a></li>
 							<li><a href="#/blog/list">bloglist</a></li>
-							<li><a href="#/adminevent/new">new event</a></li>
+							<li><a href="#/adminevent/new">new event</a></li> -->
 							<li><a href="#/adminevent/list">listevent</a></li>
 							<li><a href="#/job/list">joblist</a></li>
 							<li><a href="#/user/list">user list</a></li>
 							<li><a href="#/user/nalist">user nt ap list</a></li>
 							<li><a href="#/blog/nalist">nablog</a></li>
-							<!-- Dropdown trigger -->
-							<li><a class="dropdown-button" data-activates="dropdown1">Forum<i class="material-icons right">arrow_drop_down</i></a></li>
-							  
+							
 							
 				 		</ul>
 				 		

@@ -138,3 +138,19 @@ create table fpost (
 	fpdate date,
 	is_active char(1) not null
 );
+
+/*********** friend ***************/
+create sequence forfriendid
+start with 1
+increment by 1
+nocache
+nocycle;
+
+create table friend (
+	friendid number(6) primary key,
+	userid1 number(10) not null,
+	userid2 number(10) not null,
+	is_friend char(1) not null,
+	is_active char(1) not null
+
+);
