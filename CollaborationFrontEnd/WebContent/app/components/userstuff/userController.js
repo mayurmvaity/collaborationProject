@@ -1,8 +1,8 @@
 /**
  * 
  */
-user.controller('userController',['userFactory', 'loginFactory','$routeParams', '$location', '$route', '$rootScope',
-	function(userFactory, loginFactory, $routeParams, $location, $route, $rootScope) {
+user.controller('userController',['userFactory', 'loginFactory','$routeParams', '$location', '$route', '$rootScope', '$scope',
+	function(userFactory, loginFactory, $routeParams, $location, $route, $rootScope, $scope) {
 	
 	var self = this;
 	
@@ -25,6 +25,8 @@ user.controller('userController',['userFactory', 'loginFactory','$routeParams', 
 			role: 'User',
 			active : 'Y'
 	}
+	
+	
 	
 	//function for adding a new blog
     self.addUser = function () {
@@ -50,7 +52,7 @@ user.controller('userController',['userFactory', 'loginFactory','$routeParams', 
          userFactory.fetchUser(id)
                .then (
                    function(user1) {
-                       debugger;
+                      // debugger;
                        self.user1 = user1;
                                               
                    },
@@ -124,6 +126,26 @@ user.controller('userController',['userFactory', 'loginFactory','$routeParams', 
                 }
             );
     }
+    
+  //function for viewing single user
+    self.viewUser = function() {
+        //Assigning blog id to variable blogId
+        var bId = $routeParams.userId;
+        console.log('mmmmmmmmmmm'+bId);
+        userFactory.viewUser(bId)
+            .then (
+                function(user) {
+                    self.singleUser = user;
+                    
+                    
+                },
+                function(errResponse) {
+                }
+            );
+
+    }
+  
+    
     
     /**************************/
 }]);

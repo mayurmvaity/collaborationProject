@@ -15,8 +15,8 @@ user.factory('userFactory',['$http','$q',
 		userlist : userlist,
 		usernalist : usernalist,
 		userAppr : userAppr,
-		userapprvlist : userapprvlist
-        
+		userapprvlist : userapprvlist,
+		viewUser : viewUser
 	};
 	
 	function addUser(user) {
@@ -114,6 +114,23 @@ user.factory('userFactory',['$http','$q',
         var deferred = $q.defer();
 
         $http.get(userUrl + '/user/aplist')
+            .then (
+                function(response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse) {
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
+    }
+    
+    //Function for viewing single user using userid as a parameter
+    function viewUser(id) {
+        console.log('Inside user factory now');
+        var deferred = $q.defer();
+
+        $http.get(userUrl + '/user/' + id)
             .then (
                 function(response) {
                     deferred.resolve(response.data);

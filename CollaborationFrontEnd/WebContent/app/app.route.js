@@ -32,6 +32,16 @@ window.routes = {
 	        roles: ['User', 'Admin']
 	       
 	    },
+	    
+	    //Form for creating new user
+	    "/frprofile/:userId": {
+	        templateUrl : 'app/components/userstuff/frprofile.html',
+	        controller : 'userController',
+	        controllerAs : 'userCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	       
+	    },
 		
 		
 		//Form for creating new user
