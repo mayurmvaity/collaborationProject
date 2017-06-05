@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
+	<title>TITLE</title>
 
-<!-- <script src="assets/js/angular.min.js"></script>
-<script src="assets/js/angular-route.min.js"></script>  -->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<link rel="stylesheet" href="assets/css/myStyle1.css" >
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+	
+	
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
@@ -40,27 +49,150 @@
 <script type="text/javascript" src="app/components/authpages/loginFactory.js"></script>
 <script type="text/javascript" src="app/components/authpages/loginController.js"></script>
 
+	<script type="text/javascript" src="assets/js/myApp.js"></script>
 
 
-<!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
       
-<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-
-
-
-<title>title</title>
- <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body ng-app="lifeinvader">
 
 
 <div id="container">
-   <div id="header">
-   		<div ng-include="'app/shared/navbar.html'"></div>
-   	</div>
+   <header>
+   		
+   		<div ng-if="authenticated">
+		<div class="navbar-fixed">
+				
+				<!-- Dropdown Structure Forum -->
+				<ul id="dropdown1" class="dropdown-content">
+				  <li><a href="#/forum/new">Add new forum</a></li>
+				  <li><a href="#/forum/list">All forums</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#/forum/mylist">Created forums</a></li>
+				  <li><a href="#/fmember/myForumlist">Joined forums</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#/fmember/nalist">Approve members</a></li>
+				</ul>
+				
+				<!-- Dropdown Structure Job -->
+				<ul id="dropdownJob" class="dropdown-content">
+				  <li><a href="#/job/new">Add new job</a></li>
+				  <li><a href="#/job/list">joblist</a></li>
+				  <li class="divider"></li>
+				  <li><a href="">three</a></li>
+				</ul>
+				
+				<!-- Dropdown Structure Blog -->
+				<ul id="dropdownBlog" class="dropdown-content">
+				  <li><a href="#/blog/new">Add new blog</a></li>
+				  <li><a href="#/blog/userbloglist">My blogs</a></li>
+				  <li><a href="#/blog/list">All blogs</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#/blog/nalist">Approve blog</a></li>
+				</ul>
+				
+				<!-- Dropdown Structure Event -->
+				<ul id="dropdownEvent" class="dropdown-content">
+				 <li><a href="#/adminevent/new">Create new event</a></li>
+				 <li><a href="#/adminevent/list">All events</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#!">three</a></li>
+				</ul>
+				
+				<!-- Dropdown Structure User -->
+				<ul id="dropdownUser" class="dropdown-content">
+				 <li><a href="#/user/aplist">All approved users</a></li>
+				 <li><a href="#/user/list">User list</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#/user/nalist">Approve users</a></li>
+				</ul>
+				
+				<!-- User stuff -->
+				<!-- Dropdown Structure User forum -->
+				<ul id="dropdownUserForum" class="dropdown-content">
+				  <li><a href="#/forum/list">All forums</a></li> 
+				  <li class="divider"></li>
+				  <li><a href="#/fmember/myForumlist">Joined forums</a></li>
+				</ul>
+				
+				<!-- Dropdown Structure User x user -->
+				<ul id="dropdownUseruser" class="dropdown-content">
+				  <li><a href="#/user/aplist">All users</a></li>
+				  <li class="divider"></li>
+				  <li><a href="">three</a></li>
+				</ul>
+				
+				<!-- Dropdown Structure User blog -->
+				<ul id="dropdownUserBlog" class="dropdown-content">
+				  <li><a href="#/blog/new">Create new blog</a></li>
+				  <li><a href="#/blog/list">All blogs</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#/blog/userbloglist">My blogs</a></li>
+				</ul>
+				
+				
+				<nav>
+				<div class="nav-wrapper">
+					<a href="#/profile/{{user.userid}}" class="brand-logo">Logo</a>
+				 	
+
+				 	
+				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'User'">
+				 			
+				 			<!-- Dropdown Trigger user forum -->
+      <li><a class="dropdown-UserForum" href="" data-activates="dropdownUserForum">Forum<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+				 			<!-- Dropdown Trigger user x User -->
+      <li><a class="dropdown-Useruser" href="" data-activates="dropdownUseruser">User<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+				 			<!-- Dropdown Trigger user Blog -->
+      <li><a class="dropdown-UserBlog" href="" data-activates="dropdownUserBlog">Blog<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+				 			
+				 			
+				 			<li><a href="#/profile/{{user.userid}}">profile</a></li>
+				 			
+							
+							<li><a href="#/user/new">Register</a></li>
+							
+							<li><a href="#/adminevent/list">listevent</a></li>
+							<li><a href="#/job/list">joblist</a></li>
+							
+							
+				 		</ul>
+				 		
+				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'Admin'">
+				 			
+				 			
+				 			<!-- Dropdown Trigger forum -->
+      <li><a class="dropdown-button" href="" data-activates="dropdown1">Forum<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+    						<!-- Dropdown Trigger JOB -->
+      <li><a class="dropdown-job" href="" data-activates="dropdownJob">Job<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+    						<!-- Dropdown Trigger Blog -->
+      <li><a class="dropdown-blog" href="" data-activates="dropdownBlog">Blog<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+    						<!-- Dropdown Trigger Event -->
+      <li><a class="dropdown-event" href="" data-activates="dropdownEvent">Event<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+    						<!-- Dropdown Trigger User -->
+      <li><a class="dropdown-user" href="" data-activates="dropdownUser">User<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+				 			
+							
+							
+							
+							
+				 		</ul>
+				 		
+				</div>		<!-- End of nav wrapper -->
+				</nav>
+		</div>		<!-- End of navbar fixed -->
+		</div>		<!-- End of if auth -->
+   	</header>
    <div id="body" ng-cloak>
    
    
@@ -74,22 +206,15 @@
         </div>
    
    </div>
-   <!-- <div id="footer">
-   		<div ng-include="'app/shared/footer.html'"></div>
-   </div> -->
+   
 </div>
 
 
 
 
 
-<!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      
- <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-   
-<!-- <script type="text/javascript" src="assets/js/myApp.js"></script> -->
+ 
+
 
 </body>
 </html>
