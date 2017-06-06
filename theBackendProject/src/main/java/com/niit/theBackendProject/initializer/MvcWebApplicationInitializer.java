@@ -5,6 +5,7 @@ import javax.servlet.Filter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.niit.theBackendProject.config.CORSFilter;
+import com.niit.theBackendProject.config.EmailConfig;
 import com.niit.theBackendProject.config.HibernateConfig;
 import com.niit.theBackendProject.config.MvcConfig;
 import com.niit.theBackendProject.config.RootConfig;
@@ -12,7 +13,7 @@ public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispat
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {HibernateConfig.class, RootConfig.class};
+		return new Class[] {HibernateConfig.class, RootConfig.class, EmailConfig.class};
 	}
 
 	@Override

@@ -10,6 +10,8 @@
 
 	<properties>
 		<spring.version>4.3.6.RELEASE</spring.version>
+		<!-- To skip test cases -->
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 
 	<dependencies>
@@ -30,14 +32,41 @@
 			<scope>test</scope>
 		</dependency>
 
-
+		
+		
 		<!-- for httpservlet not found -->
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<version>7.0</version>
 			<scope>provided</scope>
+				<exclusions>
+					<exclusion>
+						<artifactId>javax.mail</artifactId>
+						<groupId>com.sun.mail</groupId>
+					</exclusion>
+				</exclusions>
 		</dependency>
+		
+		<!-- For email -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>javax.mail-api</artifactId>
+		    <version>1.5.6</version>
+		</dependency>
+		
 
 		<!-- hibernate core for SessionFactory and other hibernate stuff -->
 		<dependency>
@@ -132,7 +161,7 @@
 			<version>2.8.8.1</version>
 		</dependency>
 
-
+		
 	</dependencies>
 	<build>
 		<finalName>theBackendProject</finalName>

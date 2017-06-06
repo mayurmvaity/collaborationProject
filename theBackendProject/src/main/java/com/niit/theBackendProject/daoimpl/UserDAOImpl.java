@@ -100,7 +100,7 @@ public class UserDAOImpl implements UserDAO {
 			}
 		}
 		catch(Exception e){
-			System.out.println("some Exception 2.3");
+			System.out.println("some Exception 2.3" +e);
 			//e.printStackTrace();
 			return null;
 		}

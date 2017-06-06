@@ -2,8 +2,6 @@ package com.niit.theBackendProject.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.theBackendProject.dao.UserDAO;
-import com.niit.theBackendProject.dto.Blog;
 import com.niit.theBackendProject.dto.Usertable;
+import com.niit.theBackendProject.service.EmailService;
 
 @RestController
 public class UserController {
@@ -28,6 +26,9 @@ public class UserController {
 	
 	@Autowired
 	Usertable user;
+	
+	@Autowired
+	EmailService emailService;
 	
 	@RequestMapping(value="/user/new",method = RequestMethod.POST)
 	public ResponseEntity<Usertable> addNewBlog(@RequestBody Usertable user) {
@@ -136,6 +137,7 @@ public class UserController {
 					
 					user.setIsApproved('Y');
 					boolean b = userDAO.update(user);
+					emailService.approvedUserMessage(user);
 					if(b) System.out.println("User updated Successfully");
 					else System.out.println("User NOT updated");
 					

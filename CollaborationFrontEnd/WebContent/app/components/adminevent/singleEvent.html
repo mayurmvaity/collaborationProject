@@ -1,10 +1,10 @@
 <div class="row" ng-init="evtCtrl.viewEvent()">
 	
-      <div class="col s12 m5">
+      <div class="col s12 m8 offset-m2">
         <div class="card-panel">
-			<p class="singletitle">{{evtCtrl.singleEvent.etitle}}</p>
-			<p style="color: grey; font-size: 13px;">Posted by <a href="">{{evtCtrl.singleEvent.user.fname}} {{evtCtrl.singleEvent.user.lname}}</a> on {{evtCtrl.singleEvent.edate | date : 'MMM d, y h:mm:ss a'}}</p>
-			 <p class="singletext">{{evtCtrl.singleEvent.edata}}</p>
+			<p>{{evtCtrl.singleEvent.etitle}}</p>
+			<p>Posted by <a href="">{{evtCtrl.singleEvent.user.fname}} {{evtCtrl.singleEvent.user.lname}}</a> on {{evtCtrl.singleEvent.edate | date : 'MMM d, y h:mm:ss a'}}</p>
+			 <p>{{evtCtrl.singleEvent.edata}}</p>
 			
 		</div>
 	   </div>
