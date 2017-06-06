@@ -3,3 +3,10 @@
 body {
 	background-color: grey;
 }
+
+#body {
+	
+	width: 80%;
+	margin: 0 auto;
+	display: block;
+}

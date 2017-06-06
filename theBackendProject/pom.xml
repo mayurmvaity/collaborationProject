@@ -95,7 +95,9 @@
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0</version>
 		</dependency>
-
+		
+		
+		<!-- For image upload 2 deps -->
 		<!-- commons-fileupload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>

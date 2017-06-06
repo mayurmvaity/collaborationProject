@@ -158,4 +158,21 @@ public class UserDAOImpl implements UserDAO {
 			
 			return query.getResultList();
 		}
+
+		@Override
+		@Transactional
+		public boolean updateUserProfile(String fileName, int id) {
+			String updateQuery = "UPDATE Usertable SET profile = :fileName WHERE userid = :id";
+			Query query = sessionFactory.getCurrentSession().createQuery(updateQuery);
+			query.setParameter("id", id);
+			query.setParameter("fileName", fileName);
+			try {
+				query.executeUpdate();
+				return true;
+			}
+			catch(Exception ex) {
+				System.out.println(ex.getMessage());
+			}	
+			return false;
+		}
 }

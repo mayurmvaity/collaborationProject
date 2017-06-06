@@ -16,4 +16,6 @@ public interface UserDAO {
 	public Usertable getUserByEmail(String email);
 	public List<Usertable> nalist();
 	List<Usertable> approvlist();
+	
+	boolean updateUserProfile(String fileName, int id);
 }

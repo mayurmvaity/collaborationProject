@@ -30,7 +30,19 @@ public class Usertable extends BaseDomain {
 	@Column
 	private String email;
 	
+	@Column
+	private String profile;
 	
+	
+	
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
 	public String getEmail() {
 		return email;
 	}

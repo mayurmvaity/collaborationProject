@@ -3,9 +3,27 @@
  */
 var user = angular.module('userModule',[]);
 
-user.factory('userFactory',['$http','$q',
+//change MyModule with your module name used within the application
+user.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            console.log(model);
+            var modelSetter = model.assign;
+            element.bind('change', function () {
+                scope.$apply(function () {
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
+
+
+user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
 	
-	function($http, $q) {
+	function($http, $q, $rootScope, $routeParams) {
 	
 	var userUrl = 'http://localhost:2222/theBackendProject';
 	
@@ -16,7 +34,8 @@ user.factory('userFactory',['$http','$q',
 		usernalist : usernalist,
 		userAppr : userAppr,
 		userapprvlist : userapprvlist,
-		viewUser : viewUser
+		viewUser : viewUser,
+		uploadFile : uploadFile
 	};
 	
 	function addUser(user) {
@@ -37,7 +56,28 @@ user.factory('userFactory',['$http','$q',
         return deferred.promise;
     };
 	
-	
+    // uploadFile function to upload the image on the server
+    function uploadFile(file) {
+            var deferred = $q.defer();
+           
+            var fd = new FormData();
+            fd.append('file', file);
+           fd.append('id', $rootScope.user.userid);
+           $http.post(userUrl + '/upload/profile-picture', fd, {
+           transformRequest: angular.identity,
+           headers: { 'Content-Type': undefined }
+          })
+           .then(
+               function (response) {
+               deferred.resolve(response.data);
+           },
+               function (error) {
+               console.log(error);
+               deferred.reject(error);
+           }
+       );
+     return deferred.promise;
+    }
 	
 	//function to fetch user and user detail
 	function fetchUser(id) {

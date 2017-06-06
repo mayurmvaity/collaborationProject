@@ -11,6 +11,7 @@ create table usertable (
 	city varchar2(50) not null,
 	state varchar2(50) not null,
 	pincode varchar2(50) not null,
+	profile varchar2(500),
 	role varchar2(15) not null,
 	is_active char(1) not null,
 	is_online char(1) not null,

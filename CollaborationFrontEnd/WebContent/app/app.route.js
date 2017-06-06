@@ -50,7 +50,7 @@ window.routes = {
 	        controller : 'userController',
 	        controllerAs : 'userCtrl',
 	        requireLogin: true,
-	        roles: ['User']
+	        roles: [' User']
 	       
 	    },
 	    

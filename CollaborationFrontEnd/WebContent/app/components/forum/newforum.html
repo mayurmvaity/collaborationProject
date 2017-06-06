@@ -1,12 +1,16 @@
 <div class="row">
       <div class="col s12 m8 offset-m2">
         <div class="card-panel">
-        
+        			<div class="row">
 				      <form id="newForum" name="newForum" ng-submit="forumCtrl.addForum()" class="col l8 offset-l2" style="padding-bottom: 40px;">
+						  <div class="center-align ">
+				            <h4>Create new forum</h4>
+				          </div>
+						
 						<input type="hidden" ng-model="forumCtrl.forum.forumid" />
 				        <div class="row">
 				          <div class="input-field col s6">
-				            <input id="ftitle" type="text" data-length="10" ng-model="forumCtrl.forum.ftitle">
+				            <input id="ftitle" type="text" data-length="100" ng-model="forumCtrl.forum.ftitle">
 				            <label for="ftitle">Forum title</label>
 				          </div>
 				        </div>
@@ -28,7 +32,7 @@
 				        
 				        
 				      </form>
-				  
+				  </div>
              </div>
             </div>
            </div>       
