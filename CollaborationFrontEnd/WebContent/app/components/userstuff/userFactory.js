@@ -33,9 +33,12 @@ user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
 		userlist : userlist,
 		usernalist : usernalist,
 		userAppr : userAppr,
+		userDisappr : userDisappr,
 		userapprvlist : userapprvlist,
 		viewUser : viewUser,
-		uploadFile : uploadFile
+		uploadFile : uploadFile,
+		changeRoleUser : changeRoleUser,
+		changeRoleAdmin : changeRoleAdmin
 	};
 	
 	function addUser(user) {
@@ -147,6 +150,58 @@ user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
         console.log('Approve method end');
         return deferred.promise;
     }
+    
+    // function to disapprove user
+    function userDisappr(id) {
+        var deferred = $q.defer();
+        console.log('Disapprove method start');
+        $http.post(userUrl + '/user/disapprov/' + id).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+        );
+        console.log('Disapprove method end');
+        return deferred.promise;
+    }
+    
+    // function to change role to user
+    function changeRoleUser(id) {
+        var deferred = $q.defer();
+        console.log('changeRoleUser method start');
+        $http.post(userUrl + '/user/roleUser/' + id).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+        );
+        console.log('changeRoleUser method end');
+        return deferred.promise;
+    }
+    
+    // function to change role to ADMIN
+    function changeRoleAdmin(id) {
+        var deferred = $q.defer();
+        console.log('changeRoleAdmin method start');
+        $http.post(userUrl + '/user/roleAdmin/' + id).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+        );
+        console.log('changeRoleAdmin method end');
+        return deferred.promise;
+    }
+    
     
     //Function to fetch users approved list
     function userapprvlist() {

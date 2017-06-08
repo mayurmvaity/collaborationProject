@@ -109,6 +109,42 @@ user.controller('userController',['userFactory', 'loginFactory','$routeParams', 
             );
     }
     
+  //Function to disapprove a user
+    self.userDisappr = function(id) {      
+    	userFactory.userDisappr(id)
+            .then (
+                function(user) {
+                    $route.reload();
+                },
+                function(errResponse) {
+                }
+            );
+    }
+    
+    //Function to change role to USER
+    self.changeRoleUser = function(id) {      
+    	userFactory.changeRoleUser(id)
+            .then (
+                function(user) {
+                    $route.reload();
+                },
+                function(errResponse) {
+                }
+            );
+    }
+    
+  //Function to change role to ADMIN
+    self.changeRoleAdmin = function(id) {      
+    	userFactory.changeRoleAdmin(id)
+            .then (
+                function(user) {
+                    $route.reload();
+                },
+                function(errResponse) {
+                }
+            );
+    }
+    
     // calling userapprvlist function
     userapprvlist();
     

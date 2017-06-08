@@ -31,12 +31,6 @@
 
           
 			
-			 <div class="row">
-	            <div class="input-field center-align">
-	              <li><a href="#/user/new">Register</a></li>
-	            </div>
-	          </div>
-			
 			<div style="margin-top: 15px;" class="center-align" ng-show="loginCtrl.error">
               <span class="help-block">{{message}}</span>
           </div> 
@@ -44,4 +38,95 @@
         </form>
         </div>
 	</div>
+	
+	<div class="col s12 m6">
+        <div class="card-panel">
+<form id="newUser" name="newUser" ng-submit="loginCtrl.addUser()" style="padding-bottom: 40px;">
+				<div class="center-align ">
+	            	<h4>Register here</h4>
+	          	</div>
+
+	<input type="hidden" ng-model="loginCtrl.user.userid" />
+					
+					  <div class="row">
+			            <div class="input-field col s6 m6">
+			              <input id="fname" name="fname" type="text" ng-model="loginCtrl.user.fname" class="validate" />
+			              <label for="fname">First name</label>
+			            </div>
+			             <div class="input-field col s6 m6">
+			              <input id="lname" name="lname" type="text" ng-model="loginCtrl.user.lname" class="validate" />
+			              <label for="lname">Last name</label>
+			            </div>
+			          </div>
+			          <!-- for Email -->
+			          <div class="row">
+			          	<div class="input-field col s12">
+				          <input id="email" type="email" class="validate" ng-model="loginCtrl.user.email">
+				          <label for="email">Email</label>
+				        </div>
+			          </div>
+					
+						<!-- For pno -->
+					  	<div class="row">
+					  		<div class="input-field col s12">
+				              <input id="pno" name="pno" type="text" ng-model="loginCtrl.user.pno" class="validate" />
+				              <label for="pno">Phone number</label>
+				            </div>
+					  	</div>
+					  	
+					  	<!-- For password -->
+					  	<div class="row">
+					  		<div class="input-field col s6">
+					          <input id="password" type="password" class="validate" ng-model="loginCtrl.user.pw">
+					          <label for="password">Password</label>
+					        </div>	
+					  	</div>
+					  	
+					  	<!-- For address line 1 and 2 -->
+					  	<div class="row">
+					  		 	<div class="input-field col s6 m6">
+					              <input id="add1" name="add1" type="text" ng-model="loginCtrl.user.add1" class="validate" />
+					              <label for="add1">Address line 1</label>
+					            </div>
+					             <div class="input-field col s6 m6">
+					              <input id="add2" name="add2" type="text" ng-model="loginCtrl.user.add2" class="validate" />
+					              <label for="add2">Address line 2</label>
+					            </div>
+					  	</div>
+					  	
+					  	<!-- For address line 3 and city -->
+					  	<div class="row">
+					  		 	<div class="input-field col s6 m6">
+					              <input id="add3" name="add3" type="text" ng-model="loginCtrl.user.add3" class="validate" />
+					              <label for="add3">Address line 3</label>
+					            </div>
+					             <div class="input-field col s6 m6">
+					              <input id="city" name="city" type="text" ng-model="loginCtrl.user.city" class="validate" />
+					              <label for="city">City</label>
+					            </div>
+					  	</div>
+					  	
+					  	<!-- For address state and pincode -->
+					  	<div class="row">
+					  		 	<div class="input-field col s6 m6">
+					              <input id="state" name="state" type="text" ng-model="loginCtrl.user.state" class="validate" />
+					              <label for="state">State</label>
+					            </div>
+					             <div class="input-field col s6 m6">
+					              <input id="pincode" name="pincode" type="text" ng-model="loginCtrl.user.pincode" class="validate" />
+					              <label for="pincode">Pin code</label>
+					            </div>
+					  	</div>
+					  	
+					   <div class="row">
+				            <div class="input-field center-align">
+				              <button class="btn teal lighten-2 " type="submit">Register</button>
+				            </div>
+				          </div>
+					  	
+					  	
+					  	</form>
+					  	</div>
+					  	</div>
+	
 </div>

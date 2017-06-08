@@ -144,6 +144,61 @@ public class UserController {
 				return new ResponseEntity<Usertable>(user, HttpStatus.OK);
 			}
 		 
+		 
+			// Function to disapprove user
+			@RequestMapping(value = "/user/disapprov/{id}", method = RequestMethod.POST)
+			public ResponseEntity<Usertable> disapproveUser(@PathVariable("id") int id) {
+				System.out.println("disapproving user");
+		
+				Usertable user = userDAO.get(id);
+		
+				user.setIsApproved('R');
+				boolean b = userDAO.update(user);
+				
+				if (b)
+					System.out.println("User disapproved Successfully");
+				else
+					System.out.println("User NOT disapproved");
+		
+				return new ResponseEntity<Usertable>(user, HttpStatus.OK);
+			}
+			
+			// Function to make role User
+			@RequestMapping(value = "/user/roleUser/{id}", method = RequestMethod.POST)
+			public ResponseEntity<Usertable> makeRoleUser(@PathVariable("id") int id) {
+				System.out.println("Making role user");
+		
+				Usertable user = userDAO.get(id);
+		
+				user.setRole("User");
+				boolean b = userDAO.update(user);
+				
+				if (b)
+					System.out.println("Made role user Successfully");
+				else
+					System.out.println("Made role NOT user");
+		
+				return new ResponseEntity<Usertable>(user, HttpStatus.OK);
+			}
+		
+				// Function to make role Admin
+				@RequestMapping(value = "/user/roleAdmin/{id}", method = RequestMethod.POST)
+				public ResponseEntity<Usertable> makeRoleAdmin(@PathVariable("id") int id) {
+					System.out.println("Making role admin");
+					
+					Usertable user = userDAO.get(id);
+					
+					user.setRole("Admin");
+					boolean b = userDAO.update(user);
+					
+					if (b)
+						System.out.println("Made role admin Successfully");
+					else
+						System.out.println("Made role NOT admin");
+					
+					return new ResponseEntity<Usertable>(user, HttpStatus.OK);
+				}
+		 
 		// to retrieve list of approved users
 		@RequestMapping(value = {"/user/aplist"}, method = RequestMethod.GET)
 		public ResponseEntity<List<Usertable>> fetchApprvUsers() {

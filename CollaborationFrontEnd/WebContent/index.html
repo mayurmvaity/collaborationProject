@@ -107,6 +107,8 @@
 				 <li><a href="#/user/list">User list</a></li>
 				  <li class="divider"></li>
 				  <li><a href="#/user/nalist">Approve users</a></li>
+				  <li><a href="#/user/changeRole">Change role</a></li>
+				  
 				</ul>
 				
 				<!-- User stuff -->
@@ -140,6 +142,8 @@
 
 				 	
 				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'User'">
+				 		
+				 		<li><a href="#/profile/{{user.userid}}">Profile</a></li>
 				 			
 				 			<!-- Dropdown Trigger user forum -->
       <li><a class="dropdown-UserForum" href="" data-activates="dropdownUserForum">Forum<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -152,13 +156,13 @@
     
 				 			
 				 			
-				 			<li><a href="#/profile/{{user.userid}}">profile</a></li>
+				 			
 				 			
 							
-							<li><a href="#/user/new">Register</a></li>
+							<!-- <li><a href="#/user/new">Register</a></li> -->
 							
-							<li><a href="#/adminevent/list">listevent</a></li>
-							<li><a href="#/job/list">joblist</a></li>
+							<li><a href="#/adminevent/list">Events list</a></li>
+							<li><a href="#/job/list">Jobs list</a></li>
 							<li><a href="#!"ng-click="logout()">Log Out</a></li>
 							
 				 		</ul>

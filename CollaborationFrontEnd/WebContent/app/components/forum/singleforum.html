@@ -12,8 +12,8 @@
 			
 		</div>
 	</div>
-				
-				<div class="row" ng-if="(forumCtrl.isApproved)">
+				<!-- Changes made here -->
+				<div class="row" ng-if="(forumCtrl.isApproved || (user.userid == forumCtrl.singleForum.user.userid))">
 				      <form id="newbcomm" name="newbcomm" ng-submit="forumCtrl.addFpost()" class="col l8 offset-l2" style="padding-bottom: 40px;">
 						<input type="hidden" ng-model="forumCtrl.fpost.fpostid" />
 						
@@ -37,7 +37,7 @@
 				    </div>
 <hr>
  
- 	<div ng-if="(forumCtrl.isApproved)">
+ 	<div ng-if="(forumCtrl.isApproved || (user.userid == forumCtrl.singleForum.user.userid))">
  		  <div class="center-align ">
             <h4>Posts</h4>
           </div>

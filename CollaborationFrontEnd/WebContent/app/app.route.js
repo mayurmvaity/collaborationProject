@@ -50,7 +50,7 @@ window.routes = {
 	        controller : 'userController',
 	        controllerAs : 'userCtrl',
 	        requireLogin: true,
-	        roles: [' User']
+	        roles: ['User']
 	       
 	    },
 	    
@@ -67,6 +67,16 @@ window.routes = {
 	  //For viewing list of users
 	     "/user/nalist": {
 	    	 	templateUrl : 'app/components/userstuff/usernaList.html',
+		        controller : 'userController',
+		        controllerAs : 'userCtrl',
+		        requireLogin: true,
+		        roles: ['Admin']
+	       
+	    },
+	    
+	  //For page where role can be changed
+	     "/user/changeRole": {
+	    	 	templateUrl : 'app/components/userstuff/changeRole.html',
 		        controller : 'userController',
 		        controllerAs : 'userCtrl',
 		        requireLogin: true,

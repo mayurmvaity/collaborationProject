@@ -2,14 +2,32 @@
  * 
  */
 
-login.controller('loginController', ['loginFactory','$routeParams', '$location', '$route', '$rootScope',
-	function(loginFactory, $routeParams, $location, $route, $rootScope) {
+login.controller('loginController', ['loginFactory', 'userFactory', '$routeParams', '$location', '$route', '$rootScope',
+	function(loginFactory, userFactory, $routeParams, $location, $route, $rootScope) {
 	
 	var self = this;
     self.credentials = {};
     self.error = false;
     self.authError = false;
 	
+    self.user = {
+			
+			userid : null,
+			fname : '',
+			lname : '',
+			email : '',
+			pw : '',
+			pno : '',
+			add1 : '',
+			add2 : '',
+			add3 : '',
+			city : '',
+			state : '',
+			pincode : '',
+			role: 'User',
+			active : 'Y'
+	}
+    
 	 //Method for user login 
     self.login = function() {
         debugger;
@@ -25,13 +43,20 @@ login.controller('loginController', ['loginFactory','$routeParams', '$location',
                 else if(user.email == null || user.pw == null) {
                     self.error = true;
                     $rootScope.message = "Incorrect username or password";
+                } else if(user.isApproved == 'N') {
+                    self.error = true;
+                    $rootScope.message = "Apparently your registeration request is not approved yet!";
+                } else if(user.isApproved == 'R') {
+                    self.error = true;
+                    $rootScope.message = "Your registeration request has been rejected!";
                 } else {
-                    debugger;
+                   // debugger;
                     loginFactory.setUserIsAuthenticated(true);
                      console.log(user);
                      loginFactory.setRole(user.role);
                      $rootScope.authenticated = true;
                      $rootScope.message = "Welcome" + user.fname;
+                     Materialize.toast('Welcome ' + user.fname + ' ' + user.lname, 4000)
                      $rootScope.userId = user.userid;
                      loginFactory.saveUser(user);
                       switch(user.role) {
@@ -57,4 +82,24 @@ login.controller('loginController', ['loginFactory','$routeParams', '$location',
     }
 // end of login method
 	
+  //function for adding a new blog
+    self.addUser = function () {
+
+        console.log('in user controller');
+         //calling the addBlog method in the factory
+        userFactory.addUser(self.user)
+            .then (
+                function(user) {
+                    // self.user =  user;
+                   // var bId = self.user.userid;
+                	Materialize.toast('Registered successfully!', 4000)
+                	$route.reload();
+                    // $location.path('/home');
+                }, function (errResponse) {
+                }
+            );
+         console.log('end of user controller');
+    }
+    
+    // end of everything
 }]);
