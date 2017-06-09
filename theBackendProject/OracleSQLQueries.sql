@@ -155,3 +155,17 @@ create table friend (
 	is_active char(1) not null
 
 );
+/************* job application (jobapp) ************/
+create sequence forjobappid
+start with 1
+increment by 1
+nocache
+nocycle;
+
+create table jobapp (
+	jobappid number(6) primary key,
+	jobid number(6) not null,
+	userid number(6) not null,
+	appdate date,
+	is_active char(1) not null
+);

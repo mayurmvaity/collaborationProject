@@ -14,6 +14,14 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
 			active : 'Y'
 	}
 	
+	self.jobapp = {
+			
+			jobappid : null,
+			job : '',
+			user : '',
+			active : 'Y'
+	}
+	
 	// variable to hold the list 
 	self.joblist = [];
 	
@@ -73,4 +81,25 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
 
     } 
     
+  //function for adding a new job application
+    self.addJobapp = function (selectedJob) {
+    	
+    	self.jobapp.user = $rootScope.user;
+    	self.jobapp.job = selectedJob;
+    	self.jobapp.appdate = new Date();
+    	
+        console.log('in job app controller');
+         //calling the addBlog method in the factory
+        jobFactory.addJobapp(self.jobapp)
+            .then (
+                function(resp) {
+                    $route.reload();
+                }, function (errResponse) {
+                	
+                }
+            );
+         console.log('end of job app controller');
+    }
+    
+    /**************************/
 }]);

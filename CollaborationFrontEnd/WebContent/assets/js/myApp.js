@@ -52,6 +52,17 @@ $( document ).ready(function(){
 		
 	});
 	
+	
+	$(".dropdown-friend").dropdown({
+		
+		 inDuration: 300,
+	      outDuration: 225,
+	      constrainWidth: false, // Does not change width of dropdown to that of the activator
+	      hover: true,
+	      belowOrigin: true
+		
+	});
+	
 	// user stuff
 	
 	$(".dropdown-UserForum").dropdown({
@@ -75,6 +86,16 @@ $( document ).ready(function(){
 	});
 	
 	$(".dropdown-UserBlog").dropdown({
+		
+		 inDuration: 300,
+	      outDuration: 225,
+	      constrainWidth: false, // Does not change width of dropdown to that of the activator
+	      hover: true,
+	      belowOrigin: true
+		
+	});
+	
+	$(".dropdown-UserFriend").dropdown({
 		
 		 inDuration: 300,
 	      outDuration: 225,

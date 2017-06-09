@@ -12,7 +12,8 @@ job.factory('jobFactory',['$http','$q',
 	return {
 		addJob : addJob,
 		joblist : joblist,
-		viewJob : viewJob
+		viewJob : viewJob,
+		addJobapp : addJobapp
         
 	};
 	
@@ -67,4 +68,24 @@ job.factory('jobFactory',['$http','$q',
             return deferred.promise;
     }
 	
+    // function to apply for a job
+    function addJobapp(jobapp) {
+        var deferred = $q.defer();
+        console.log('add job application method in factory');
+        $http.post(jobUrl + '/jobapp/new', jobapp).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+           
+        );
+        
+        console.log('End of add job application mehod in factory');
+        return deferred.promise;
+    }
+    
+    /******************************/
 	}]);

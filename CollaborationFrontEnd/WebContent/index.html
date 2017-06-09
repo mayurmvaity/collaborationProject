@@ -108,13 +108,20 @@
 				<ul id="dropdownUser" class="dropdown-content">
 				 <li><a href="#/user/aplist">All approved users</a></li>
 				 <li><a href="#/user/list">User list</a></li>
-				 <li><a href="#/friend/mylist">Requests sent</a></li>
-				 <li><a href="#/friend/notFrndlist">Not friends</a></li>
-				 <li><a href="#/friend/req/rcvd">Reqests recieved</a></li>
-				 <li><a href="#/friend/myfrlist">My friends</a></li>
 				  <li class="divider"></li>
 				  <li><a href="#/user/nalist">Approve users</a></li>
 				  <li><a href="#/user/changeRole">Change role</a></li>
+				  
+				</ul>
+				
+				<!-- Dropdown Structure Friend -->
+				<ul id="dropdownFriend" class="dropdown-content">
+			     <li><a href="#/friend/myfrlist">My friends</a></li>
+				  <li class="divider"></li>
+				 <li><a href="#/friend/mylist">Requests sent</a></li>
+				 <li><a href="#/friend/req/rcvd">Reqests recieved</a></li>
+				  <li class="divider"></li>
+				 <li><a href="#/friend/notFrndlist">Not friends</a></li>
 				  
 				</ul>
 				
@@ -141,6 +148,16 @@
 				  <li><a href="#/blog/userbloglist">My blogs</a></li>
 				</ul>
 				
+				<!-- Dropdown Structure user Friend -->
+				<ul id="dropdownUserFriend" class="dropdown-content">
+			     <li><a href="#/friend/myfrlist">My friends</a></li>
+				  <li class="divider"></li>
+				 <li><a href="#/friend/mylist">Requests sent</a></li>
+				 <li><a href="#/friend/req/rcvd">Reqests recieved</a></li>
+				  <li class="divider"></li>
+				 <li><a href="#/friend/notFrndlist">Not friends</a></li>
+				  
+				</ul>
 				
 				<nav>
 				<div class="nav-wrapper">
@@ -152,6 +169,9 @@
 				 		
 				 		<li><a href="#/profile/{{user.userid}}">Profile</a></li>
 				 			
+				 			<!-- Dropdown Trigger user friend -->
+      <li><a class="dropdown-UserFriend" href="" data-activates="dropdownUserFriend">Friend<i class="material-icons right">arrow_drop_down</i></a></li>
+    
 				 			<!-- Dropdown Trigger user forum -->
       <li><a class="dropdown-UserForum" href="" data-activates="dropdownUserForum">Forum<i class="material-icons right">arrow_drop_down</i></a></li>
     
@@ -176,7 +196,9 @@
 				 		
 				 		<ul class="right hide-on-med-and-down" ng-if="user.role == 'Admin'">
 				 			
-				 			
+				 			<!-- Dropdown Trigger friend -->
+      <li><a class="dropdown-friend" href="" data-activates="dropdownFriend">Friend<i class="material-icons right">arrow_drop_down</i></a></li>
+    
 				 			<!-- Dropdown Trigger forum -->
       <li><a class="dropdown-button" href="" data-activates="dropdown1">Forum<i class="material-icons right">arrow_drop_down</i></a></li>
     
