@@ -1,7 +1,7 @@
 <div class="col m12">
-			  
+				<h3>Requests Recieved</h3>			  
 			   <div class="row">
-			   <div ng-repeat="singleUser in userCtrl.userapprvlist">
+			   <div ng-repeat="singleUser in friendCtrl.frreqRcvdlist">
 			      <div class="col s12 m4">
 			        <div class="card-panel">
 			        <div class="row">
@@ -11,9 +11,8 @@
 			  				<div class="col s8">
 					  		<a href="#/frprofile/{{singleUser.userid}}">{{singleUser.fname}} {{singleUser.lname}}</a><br>
 					  		<p>Student</p>
-					  		<a ng-click="userCtrl.addFriend(singleUser.userid);" class="btn">Add friend</a>
-					  		</div>
-					  		
+					  		<a ng-click="friendCtrl.acceptReq(singleUser.userid);" class="btn">Accept req</a>
+					  		<a ng-click="friendCtrl.rejectReq(singleUser.userid);" class="btn">Reject</a>
 					  	</div>
 					  	</div>
 			  		</div>
@@ -23,6 +22,3 @@
 		  	
 		  
 	  </div>
-	
-	
-	

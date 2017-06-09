@@ -1,8 +1,8 @@
 /**
  * 
  */
-user.controller('userController',['userFactory', 'loginFactory','$routeParams', '$location', '$route', '$rootScope', '$scope', '$timeout',
-	function(userFactory, loginFactory, $routeParams, $location, $route, $rootScope, $scope, $timeout) {
+user.controller('userController',['userFactory', 'loginFactory', 'friendFactory','$routeParams', '$location', '$route', '$rootScope', '$scope', '$timeout',
+	function(userFactory, loginFactory, friendFactory, $routeParams, $location, $route, $rootScope, $scope, $timeout) {
 	
 	var self = this;
 	
@@ -25,6 +25,54 @@ user.controller('userController',['userFactory', 'loginFactory','$routeParams', 
 			role: 'User',
 			active : 'Y'
 	}
+	
+	self.friend = {
+			friendid : null,
+			userid1 : '',
+			userid2 : '',
+			active : 'Y'
+	}
+	
+	//function to add a new friend
+    self.addFriend = function(userid2) {
+    	
+    	self.friend.userid1 = $rootScope.user.userid;
+    	
+    	
+    	self.friend.userid2 = userid2;
+        console.log('in friend controller');
+         //calling the addBlog method in the factory
+        friendFactory.addFriend(self.friend)
+            .then (
+                function(resp) {
+                	Materialize.toast('Friend request sent!', 4000);
+                    $route.reload();
+                }, function (errResponse) {
+                }
+            );
+         console.log('end of friend controller');
+    }
+	
+	// calling not friends list function
+    notMyFriendlist();
+    
+    // Not friends list function
+    function notMyFriendlist() {
+    	var userid = $rootScope.user.userid;
+    	console.log('inside not friend list method');
+    	friendFactory.notMyFriendlist(userid)
+           .then (
+               function(notfriends) {   
+                   self.notMyFriendlist = notfriends;
+                   console.log(self.notMyFriendlist);
+               },
+               function(errResponse) {
+                   console.log('not friends list Failure!');
+               }
+           );
+        console.log('End of not friend list method');
+   }
+	
 	
 	
 	

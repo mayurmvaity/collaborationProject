@@ -63,6 +63,47 @@ window.routes = {
 		        roles: ['Admin']
 	       
 	    },
+	    
+	    //For viewing list of frnd req sent
+	     "/friend/mylist": {
+	        templateUrl : 'app/components/friend/myFriends.html',
+	        controller : 'friendController',
+	        controllerAs : 'friendCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	       
+	    },
+	    
+	  //For viewing list of frnd req recieved
+	     "/friend/req/rcvd": {
+	        templateUrl : 'app/components/friend/frndReqRcvd.html',
+	        controller : 'friendController',
+	        controllerAs : 'friendCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	       
+	    },
+	    
+	  //For viewing list of friends
+	     "/friend/myfrlist": {
+	        templateUrl : 'app/components/friend/myAccFrnds.html',
+	        controller : 'friendController',
+	        controllerAs : 'friendCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	       
+	    },
+	    
+	  //For viewing list of not friends
+	     "/friend/notFrndlist": {
+	        templateUrl : 'app/components/friend/notFrndsList.html',
+	        controller : 'userController',
+	        controllerAs : 'userCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	       
+	    },
+	    
 
 	  //For viewing list of users
 	     "/user/nalist": {
@@ -174,7 +215,7 @@ window.routes = {
 	       
 	    },
 
-	  //For viewing list of blogs
+	    //For viewing list of blogs
 	     "/job/list": {
 	        templateUrl : 'app/components/job/jobList.html',
 	        controller : 'jobController',
@@ -263,6 +304,9 @@ window.routes = {
 	        roles: ['User', 'Admin']
 	        
 	    },
+	    
+	    
+	    
 	    
 	  //For navigating to error page
 	    "/error": {
