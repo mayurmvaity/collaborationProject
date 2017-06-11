@@ -13,7 +13,8 @@ job.factory('jobFactory',['$http','$q',
 		addJob : addJob,
 		joblist : joblist,
 		viewJob : viewJob,
-		addJobapp : addJobapp
+		addJobapp : addJobapp,
+		jobapplist : jobapplist
         
 	};
 	
@@ -86,6 +87,22 @@ job.factory('jobFactory',['$http','$q',
         console.log('End of add job application mehod in factory');
         return deferred.promise;
     }
+    
+    function jobapplist(jobid1) {
+        console.log('Inside job app list factory now');
+       var deferred = $q.defer();
+       $http.get(jobUrl + '/jobapp/list/' + jobid1)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of job app list mehod in factory');
+           return deferred.promise;
+   }
     
     /******************************/
 	}]);

@@ -13,8 +13,9 @@ evt.factory('admineventFactory',['$http','$q',
 	return {
         addEvt : addEvt,
         evtList : evtList,
-        viewEvent : viewEvent
-       
+        viewEvent : viewEvent,
+        addEvtPart : addEvtPart,
+        evtpartList : evtpartList
         
 	};
 	
@@ -72,14 +73,44 @@ evt.factory('admineventFactory',['$http','$q',
             
     }
 	
+	// adding new event participant
+	function addEvtPart(eventpart) {
+        var deferred = $q.defer();
+        console.log('add eventpart method in factory'+evt);
+        $http.post(evtUrl + '/eventpart/new', eventpart).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+           
+        );
+        
+        console.log('End of add eventpart mehod in factory');
+        return deferred.promise;
+    }
+	
+	//event participant list method
+	function evtpartList(eventid1) {
+        console.log('Inside evt part List factory now');
+       var deferred = $q.defer();
+       $http.get(evtUrl + '/eventpart/list/' + eventid1)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of evt part list mehod in factory');
+           return deferred.promise;
+   }
 	
 	
 	
 	
-	
-	
-	
-    
-	}
-	
-	]);
+    /*******************************/
+	}]);

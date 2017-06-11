@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+
+/********** for friend's profile ***********/
+
+.row .col .frname {
+	font-family: 'PT Sans', sans-serif;
+	font-weight: bold;
+	font-size: 40px;
+	color: black;
+	padding: 0;
+	margin: 0;
+}
+
+.row .col .frtext {
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+	color: #3f3f3f;
+}
+
+.row .col .frtext .frhead {
+	
+	font-weight: bold;
+	font-size: 15px;
+	color: black;
+	
+}

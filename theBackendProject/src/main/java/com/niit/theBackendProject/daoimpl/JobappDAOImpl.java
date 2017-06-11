@@ -77,4 +77,16 @@ public class JobappDAOImpl implements JobappDAO {
 		}
 	}
 
+	@Override
+	public List<Jobapp> listByJobid(int jobid) {
+		String selectActiveJobappByJobid = "FROM Jobapp WHERE job.jobid = :jobid and active = :active";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveJobappByJobid);
+		
+		query.setParameter("active", 'Y');
+		query.setParameter("jobid", jobid);
+		
+		return query.getResultList();
+	}
+
 }

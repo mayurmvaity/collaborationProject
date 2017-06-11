@@ -1,21 +1,27 @@
 <div class="row" ng-init="userCtrl.viewUser()">
 
 	<div class="row">
-      <div class="col s12 m5">
+      <div class="col s12 m12">
         <div class="card-panel">
-        	<img class="profile-picture" ng-src="assets/images/{{userCtrl.singleUser.profile}}" alt="no pic here!" height="200px">
         
-			<h3>{{userCtrl.singleUser.fname}} {{userCtrl.singleUser.lname}}</h3>
-			<p>{{userCtrl.singleUser.add1}}</p>
-			<p>{{userCtrl.singleUser.add2}}</p>
-			<p>{{userCtrl.singleUser.add3}}</p>
-			<p>{{userCtrl.singleUser.city}}</p>
-			<p>{{userCtrl.singleUser.state}}</p>
-			<p>{{userCtrl.singleUser.pincode}}</p>
-			
-			<p>{{userCtrl.singleUser.pno}}</p>
-			<p>{{userCtrl.singleUser.email}}</p>
-			<p>Role: {{userCtrl.singleUser.role}}</p>
+        	<div class="row">
+        		<div class="col m3">
+        	<img class="profile-picture" ng-src="assets/images/{{userCtrl.singleUser.profile}}" alt="no pic here!" height="200px">
+        		</div>
+        		<div class="col m9">
+					<p class="frname">{{userCtrl.singleUser.fname}} {{userCtrl.singleUser.lname}}</p>
+					<hr>
+					<p class="frtext"><span class="frhead">Email</span> : {{userCtrl.singleUser.email}}</p>
+					<p class="frtext"><span class="frhead">Phone</span> : {{userCtrl.singleUser.pno}}</p>
+					<hr>
+					<p class="frtext"><span class="frhead">Address</span> : {{userCtrl.singleUser.add1}}, {{userCtrl.singleUser.add2}}, {{userCtrl.singleUser.add3}}, {{userCtrl.singleUser.city}}, {{userCtrl.singleUser.state}}, {{userCtrl.singleUser.pincode}}</p>
+					<hr>
+					
+					
+					
+					<p class="frtext"><span class="frhead">Role</span> : {{userCtrl.singleUser.role}}</p>
+				</div>
+			</div>
 		</div>
 	</div>	
 	</div>

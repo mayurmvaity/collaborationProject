@@ -169,3 +169,19 @@ create table jobapp (
 	appdate date,
 	is_active char(1) not null
 );
+
+/*************** Event participants list ***************/
+create sequence foreventpartid
+start with 1
+increment by 1
+nocache
+nocycle;
+
+create table eventpart (
+
+	eventpartid number(6) primary key,
+	evtid number(6) not null,
+	userid number(6) not null,
+	epdate date,
+	is_active char(1) not null
+);

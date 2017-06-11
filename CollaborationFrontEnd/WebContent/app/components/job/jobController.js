@@ -1,8 +1,8 @@
 /**
  * 
  */
-job.controller('jobController',['jobFactory','$routeParams', '$location', '$route', '$rootScope',
-	function(jobFactory,$routeParams, $location, $route, $rootScope) {
+job.controller('jobController',['jobFactory','$routeParams', '$location', '$route', '$rootScope', '$q',
+	function(jobFactory,$routeParams, $location, $route, $rootScope, $q) {
 	
 	var self = this;
 	
@@ -67,17 +67,31 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
     
     //function for viewing single job
     self.viewJob = function() {
+    	
+    	jobapplist().then(function(jobapps1){
+            self.jobApplicants = jobapps1; //store list of participated users in already defined array
+            for(var jobappid in self.jobApplicants) {
+                if(user.userid == self.jobApplicants[jobappid].user.userid) { 
+                    self.hasApplied = true;  /*If active user is present in the list of participant set the flag as true & store its fetch its request status*/
+                                        
+                    break;                     
+                }
+            }
+    	
         //Assigning blog id to variable blogId
         var blogId = $routeParams.id;
         jobFactory.viewJob(blogId)
             .then (
                 function(job) {
                     self.singleJob = job;
-                   
+                    // calling job applicants list method
+                    jobapplist();
                 },
                 function(errResponse) {
                 }
             );
+        
+    	});
 
     } 
     
@@ -100,6 +114,29 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
             );
          console.log('end of job app controller');
     }
+    
+    
+    
+    // fn to get job applicants list by jobid
+    function jobapplist() {
+    	var deferred = $q.defer();
+    	var jobid1 = $routeParams.id;
+    	console.log('inside job app list method');
+    	jobFactory.jobapplist(jobid1)
+           .then (
+               function(jobapps) {   
+                   self.jobapplist = jobapps;
+                   deferred.resolve(jobapps);
+                   console.log(self.jobapplist);
+               },
+               function(errResponse) {
+                   console.log('job list Failure!');
+               }
+           );
+    	return deferred.promise;
+        console.log('End of job app list method');
+   }
+    
     
     /**************************/
 }]);

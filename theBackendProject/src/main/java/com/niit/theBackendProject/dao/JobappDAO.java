@@ -11,4 +11,6 @@ public interface JobappDAO {
 	boolean add(Jobapp jobapp);
 	boolean update(Jobapp jobapp);
 	boolean delete(Jobapp jobapp);
+	
+	List<Jobapp> listByJobid(int jobid);
 }

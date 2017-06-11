@@ -1,11 +1,11 @@
 <div class="row" ng-init="jobCtrl.viewJob()">
 	
-      <div class="col s12 m8 offset-m2">
+      <div class="col s12 m12">
         <div class="card-panel">
 			<p class="singletitle">{{jobCtrl.singleJob.jtitle}}</p>
 			<p style="color: black; font-size: 13px;">Uploaded by <a href="">{{jobCtrl.singleJob.user.fname}} {{jobCtrl.singleJob.user.lname}}</a> on {{jobCtrl.singleJob.jdate | date : 'MMM d, y h:mm:ss a'}}</p>
 		  	
-		  	<div ng-if=" (user.role != 'Admin') ">
+		  	<div ng-if=" (user.role != 'Admin') && !jobCtrl.hasApplied ">
 		  	
 		  		<a ng-click="jobCtrl.addJobapp(jobCtrl.singleJob);" class="btn">Apply here!</a>
 		  		
@@ -14,4 +14,31 @@
 			
 		</div>
 	</div>
+	
+	<div ng-if=" (user.role == 'Admin') " class="col s12 m12">
+        <div class="card-panel">
+			<table class="striped">
+				<thead>
+					<tr>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Email</th>
+						<th>Date and time</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="singleAppl in jobCtrl.jobapplist">
+						<td>{{singleAppl.user.fname}}</td>
+						<td>{{singleAppl.user.lname}}</td>
+						<td>{{singleAppl.user.email}}</td>
+						<td>{{singleAppl.appdate | date : 'MMM d, y h:mm:ss a'}}</td>
+						
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+     </div>
+	
 </div>

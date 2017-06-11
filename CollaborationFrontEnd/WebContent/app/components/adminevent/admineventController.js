@@ -2,8 +2,8 @@
  * 
  */
 
-evt.controller('admineventController',['admineventFactory','$routeParams', '$location', '$route', '$rootScope', 
-	function(admineventFactory,$routeParams, $location, $route, $rootScope) {
+evt.controller('admineventController',['admineventFactory','$routeParams', '$location', '$route', '$rootScope', '$q',
+	function(admineventFactory,$routeParams, $location, $route, $rootScope, $q) {
 	
 	var self = this;
 	
@@ -16,6 +16,16 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
 			edata : '',
 			active : 'Y'
 	}
+	
+	self.eventpart = {
+			
+			eventpartid : null,
+			evt : '',
+			user : '',
+			active : 'Y'
+			
+	}
+	
 	
 	// variable to hold the list 
 	self.evtList = [];
@@ -69,21 +79,77 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
     
   //function for viewing single event
     self.viewEvent = function() {
-        //Assigning blog id to variable blogId
-        var evtId = $routeParams.id;
-        admineventFactory.viewEvent(evtId)
-            .then (
-                function(evt) {
-                    self.singleEvent = evt;
-                   
-                },
-                function(errResponse) {
-                }
-            );
-
+    	
+    	evtpartList().then(function(partUsers){
+                    self.participantUsers = partUsers; //store list of participated users in already defined array
+                    for(var eventpartid in self.participantUsers) {
+                        if(user.userid == self.participantUsers[eventpartid].user.userid) { 
+                            self.hasParticipated = true;  /*If active user is present in the list of participant set the flag as true & store its fetch its request status*/
+                                                
+                            break;                     
+                        }
+                    }
+                    
+                  //Assigning blog id to variable blogId
+                    var evtId = $routeParams.id;
+                    admineventFactory.viewEvent(evtId)
+                        .then (
+                            function(evt) {
+                                self.singleEvent = evt;
+                                // calling event participants list method
+                                evtpartList();
+                            },
+                            function(errResponse) {
+                            }
+                        );
+                    
+                });
+    	
+    	
     }
   
-    
+    //function for adding a new evt
+    self.addEvtPart = function (evtpart1) {
+    	
+    	self.eventpart.user = $rootScope.user;
+    	self.eventpart.evt = evtpart1;
+    	self.eventpart.epdate = new Date();
+    	
+        console.log('in add evtpart controller');
+         //calling the addBlog method in the factory
+        admineventFactory.addEvtPart(self.eventpart)
+            .then (
+                function(resp) {
+                   $route.reload();
+                }, function (errResponse) {
+                	console.log("ERROr in add evtpart controller fn");
+                }
+            );
+         console.log('end of add evtpart controller');
+    }
+   
    
     
+    // evt participants list method
+    function evtpartList() {
+    	var deferred = $q.defer();
+    	var eventid1 = $routeParams.id;
+    	console.log('inside event participants list method');
+    	admineventFactory.evtpartList(eventid1)
+           .then (
+               function(evtparts) {   
+                   self.evtpartList = evtparts;
+                   deferred.resolve(evtparts);
+                   console.log(self.evtpartList);
+               },
+               function(errResponse) {
+                   console.log('Failure!');
+               }
+           );
+    	
+    	return deferred.promise;
+        console.log('End of evt participants list method');
+   }
+    
+    /************************/
 }]);
