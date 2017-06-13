@@ -1,37 +1,37 @@
 <div class="row" ng-init="blogCtrl.viewBlog()">
 	
-      <div class="col s12 m8 offset-m2">
+      <div class="col s12 m12">
         <div class="card-panel">
         
-			<p class="blogsingletitle">{{blogCtrl.singleBlog.btitle}}</p>
-			<p class="bloguserdet">Published by <a href="">{{blogCtrl.singleBlog.user.fname}} {{blogCtrl.singleBlog.user.lname}}</a> on {{blogCtrl.singleBlog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blogCtrl.singleBlog.blikes}} Likes | {{blogCtrl.singleBlog.bcomments}} comments </p>
-			<p><a ng-click="blogCtrl.likeblog(blogCtrl.singleBlog.blogid);">Like <span class="glyphicon glyphicon-thumbs-up"></span></a> | <a href="">Comment</a></p>
-			<p class="blogsingletext">{{blogCtrl.singleBlog.bdata}}</p>
+			<p class="singleTitle center">{{blogCtrl.singleBlog.btitle}}</p>
+			<p class="singleDetails center">Published by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blogCtrl.singleBlog.user.fname}} {{blogCtrl.singleBlog.user.lname}}</a> on {{blogCtrl.singleBlog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blogCtrl.singleBlog.blikes}} Likes | {{blogCtrl.singleBlog.bcomments}} comments </p>
+			<p class="likebtn center"><a ng-click="blogCtrl.likeblog(blogCtrl.singleBlog.blogid);"><i class="fa fa-star" aria-hidden="true"></i> Like<span class="glyphicon glyphicon-thumbs-up"></span></a>
+			<p class="singleText">{{blogCtrl.singleBlog.bdata}}</p>
 			
+			<div class="row">
+			<form id="newbcomm" name="newbcomm" ng-submit="blogCtrl.addBlogComm()" class="col m12">
+				<input type="hidden" ng-model="blogCtrl.bcomm.blogcommid" />
+
+				<div class="row">
+					<div class="input-field col s12">
+						<textarea id="fdata" class="materialize-textarea" data-length="1000" ng-model="blogCtrl.bcomm.commdata"></textarea>
+						<label for="fdata">Leave a comment</label>
+					</div>
+				</div>
+				<div class="row">
+					<!-- Submit button will come here -->
+					<div class="col m3">
+						<div class="row">
+							<button type="submit" class="waves-effect waves-light btn-large">Post</button>
+						</div>
+					</div>
+
+				</div>
+
+			</form></div>
 		</div>
 	</div>
-			<div class="row">
-				      <form id="newbcomm" name="newbcomm" ng-submit="blogCtrl.addBlogComm()" class="col l8 offset-l2" style="padding-bottom: 40px;">
-						<input type="hidden" ng-model="blogCtrl.bcomm.blogcommid" />
-						
-				        <div class="row">
-				          <div class="input-field col s12">
-				            <textarea id="fdata" class="materialize-textarea" data-length="1000" ng-model="blogCtrl.bcomm.commdata"></textarea>
-				            <label for="fdata">Leave a comment</label>
-				          </div>
-				        </div>
-				        <div class="row">
-	                        <!-- Submit button will come here -->
-	                        <div class="col m3">
-	                            <div class="row" style="margin-top: 10px; left: 10px;" style="position: absolute; top: 290px; right: 520px;">
-	                                <button type="submit" class="waves-effect waves-light btn-large" >Post</button>
-	                            </div>
-	                        </div>
-	
-	                    </div>
-				        
-				      </form>
-				    </div>
+			
 	
 </div>
 <hr>
@@ -41,7 +41,7 @@
 	<div ng-repeat="blogcomm in blogCtrl.blogCommentlist">
 		
 	<div class="row">
-      <div class="col s12 m8 offset-m2">
+      <div class="col s12 m12">
         <div class="card-panel">
 		  <p style="color: black; font-size: 13px;">Posted by {{blogcomm.user.fname}} {{blogcomm.user.lname}} on {{blogcomm.commdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
 		  <hr>

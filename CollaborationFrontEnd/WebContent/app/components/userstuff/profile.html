@@ -1,9 +1,11 @@
 <div ng-init="userCtrl.fetchUser()">
 	<div class="row">
+		<p>My profile</p>
 		<div class="col s12 m4">
 			<div class="card darken-3">
 				<div class="card-content">
-				    <span class="card-title logo">Change Profile Picture</span>
+				    <span class="card-title logo chngephoto center">Change Profile Picture</span>
+				    <hr>
 				    <div class="row center-align">
 				        <img class="profile-picture" ng-src="assets/images/{{user.profile}}" alt="no pic here!" height="200px">
 				    </div>
@@ -25,19 +27,17 @@
 		    </div>
 		   </div>
 			<!-- End of pic -->
-			<div class="col s12 m5">
+			<div class="col s12 m8">
 		        <div class="card-panel">
-					<h3>{{user.fname}} {{user.lname}}</h3>
-					<p>{{user.add1}}</p>
-					<p>{{user.add2}}</p>
-					<p>{{user.add3}}</p>
-					<p>{{user.city}}</p>
-					<p>{{user.state}}</p>
-					<p>{{user.pincode}}</p>
+					<p class="nameprofile">{{user.fname}} {{user.lname}}</p>
+					<hr>
+					<p class="profiletext"><span class="profiletag">Email</span> : {{user.email}}</p>
+					<p class="profiletext"><span class="profiletag">Phone</span> : {{user.pno}}</p>
+					<hr>
+					<p class="profiletext"><span class="profiletag">Address</span> : {{user.add1}}, {{user.add2}}, {{user.add3}}, {{user.city}}, {{user.state}}, {{user.pincode}}</p>
+					<hr>
 					
-					<p>{{user.pno}}</p>
-					<p>{{user.email}}</p>
-					<p>Role: {{user.role}}</p>
+					<p class="profiletext"><span class="profiletag">Role</span> : {{user.role}}</p>
 				</div>
 			  </div>
 			  <!-- End of details -->

@@ -1,24 +1,24 @@
 <div class="row">
-      <div class="col s12 m8 offset-m2">
+      <div class="col s12 m12">
         <div class="card-panel">
 		  
 		  <table>
 			    <thead class="striped">
 			      <tr>
-			        <th>First name</th>
+			        <th>Blog</th>
 			        <th>Action</th>
 			      </tr>
 			    </thead>
 			    <tbody>
 			      <tr ng-repeat="blog in blogCtrl.blognalist">
 			        <td>
-						<p class="blogtitle"><a href="#/blog/{{blog.blogid}}">{{blog.btitle}}</a></p>
-						<p class="bloguser" >Published by <a href="">{{blog.user.fname}} {{blog.user.lname}}</a> on {{blog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blog.blikes}} Likes | {{blog.bcomments}} comments</p>
-						<p class="blogtext">{{blog.bdata | limitTo: 200}}...  <a href="#/blog/{{blog.blogid}}"> see complete blog</a></p>
+						<p class="nalistTitle"><a href="#/blog/{{blog.blogid}}">{{blog.btitle}}</a></p>
+						<p class="nalistUser" >Published by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blog.user.fname}} {{blog.user.lname}}</a> on {{blog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blog.blikes}} Likes | {{blog.bcomments}} comments</p>
+						<p class="nalistText">{{blog.bdata | limitTo: 200}}...  <a href="#/blog/{{blog.blogid}}"> read complete blog</a></p>
 
 					</td>
 					
-					<td><a ng-click="blogCtrl.blogAppr(blog.blogid);">approve</a></td>
+					<td><a ng-click="blogCtrl.blogAppr(blog.blogid);" class="btn">approve</a></td>
 			      </tr>
 			     
 			    </tbody>

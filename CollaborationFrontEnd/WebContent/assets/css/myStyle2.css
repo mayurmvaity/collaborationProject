@@ -1,6 +1,8 @@
 @CHARSET "ISO-8859-1";
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
 
 
 /********** for friend's profile ***********/
@@ -26,4 +28,143 @@
 	font-size: 15px;
 	color: black;
 	
+}
+
+
+/************* single blog page **************/
+.col .card-panel .singleTitle {
+	font-family: 'PT Sans', sans-serif;
+	font-size: 40px;
+	color: #0D123E;
+	padding: 0;
+	margin: 0;
+}
+
+.col .card-panel .singleText {
+	font-family: 'PT Serif', serif;
+	font-size: 15px;
+	color: black;
+	padding: 0;
+	margin: 0;
+	text-indent: 50px;
+	text-align: justify;
+}
+
+.col .card-panel .singleDetails {
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 15px;
+	color: #0D123E;
+	text-transform: uppercase;
+	
+}
+
+.col .card-panel .singleDetails a {
+	font-size: 16px;
+	color: rgb(240,160,0);
+}
+
+.col .card-panel .singleDetails a:hover {
+	text-decoration: underline;
+	color: rgb(26,35,126);
+	
+}
+
+.col .card-panel .likebtn a {
+	font-family: 'PT Sans', sans-serif;
+	font-weight: bold;
+	font-size: 16px;
+	color: rgb(26,57,197);
+	cursor:pointer;
+}
+
+.col .card-panel .likebtn a:hover {
+	text-decoration: underline;
+	
+}
+/************* Profile page ***********/
+.col .card-panel .nameprofile {
+	font-family: 'PT Sans', sans-serif;
+	font-weight: bold;
+	font-size: 40px;
+	color: #0D123E;
+	padding: 0;
+	margin: 0;
+}
+
+.col .card-panel .profiletext {
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+	color: #3f3f3f;
+}
+
+.col .card-panel .profiletext .profiletag {
+	font-weight: bold;
+	font-size: 15px;
+	color: black;
+}
+
+/*********** Photo in profile page ************/
+.col .card .card-content .chngephoto {
+	font-family: 'PT Sans', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	color: #0D123E;
+	padding: 0;
+	margin: 0;
+}
+
+/************* Headers for all pages css **************/
+.row .col .card-panel form .center-align .pheaders {
+	font-family: 'PT Sans', sans-serif;
+	font-size: 40px;
+	color: #0D123E;
+	padding: 0;
+	margin: 0;
+}
+
+/************ CSS for approve table ***********/
+.row .col .card-panel table tbody .nalistTitle a {
+	font-family: 'PT Serif', serif;
+	font-weight: bold;
+	font-size: 20px;
+	color: #0D123E;
+	text-align: justify;
+}
+
+.row .col .card-panel table tbody .nalistTitle a:hover {
+	text-decoration: underline;
+}
+
+.row .col .card-panel table tbody .nalistUser {
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 14px;
+	color: #0D123E;
+	text-transform: uppercase;
+}
+
+.row .col .card-panel table tbody .nalistUser a {
+	
+	color: rgb(240,160,0);
+	
+}
+
+.row .col .card-panel table tbody .nalistUser a:hover {
+	text-decoration: underline;
+	color: rgb(26,35,126);
+}
+
+.row .col .card-panel table tbody .nalistText {
+	font-family: 'PT Sans', sans-serif;
+	font-size: 15px;
+	color: #515151;
+	text-align: justify;
+}
+
+.row .col .card-panel table tbody .nalistText a {
+	font-weight: bold;
+	color: #0D123E;
+}
+
+.row .col .card-panel table tbody .nalistText a:hover {
+	text-decoration: underline;
 }

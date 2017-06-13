@@ -3,6 +3,9 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand');
+/* @import url('https://fonts.googleapis.com/css?family=PT+Sans');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif'); */
 
 body {
 	background-color: #e6f7f7;
@@ -17,53 +20,53 @@ body {
 
 .row .col .card-panel .listTitle a {
 	
-	font-family: 'Pacifico', cursive;
-	font-size: 35px;
-	font-weight: regular;
-	text-transform: capitalize;
-	
-	/* color: #2714AB; */		/* on hover color */
-	/* color: #B11E12; */
-	color: #4ec5c1;
+	font-family: 'PT Serif', serif;
+	font-weight: bold;
+	font-size: 30px;
+	color: #0D123E;
+	padding: 0;
+	margin: 0;
 }
 
 .row .col .card-panel .listTitle a:hover {
 	
-	/* color: #34A853; */
-	color: #ec576b;
 	text-decoration-line: underline;
 }
 
 .row .col .card-panel .listData {
-	
-	color: black;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 15px;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 16px;
+	color: #515151;
+	text-align: justify;
 }
 
 .row .col .card-panel .listData a {
 	
-	color: #2714AB;
+	color: #0D123E;
 	font-weight: bold;
 }
 
 .row .col .card-panel .listData a:hover {
 	
-	color: #ec576b;
-	font-weight: bold;
 	text-decoration-line: underline;
 }
 
 /**********************/
 .row .col .card-panel .listUser {
-	
-	font-family: 'Patrick Hand', cursive;
-	color: black;
-	font-size: 17px;
+	font-family: 'PT Sans Narrow', sans-serif;
+	font-size: 16px;
+	color: #0D123E;
+	text-transform: uppercase;
 }
 
 .row .col .card-panel .listUser a {
+	font-size: 16px;
+	color: rgb(240,160,0);
 	
-	color: #e5e338;
+}
+
+.row .col .card-panel .listUser a:hover {
+	text-decoration: underline;
+	color: rgb(26,35,126);
 	
 }
