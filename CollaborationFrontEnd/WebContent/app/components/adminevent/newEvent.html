@@ -1,19 +1,19 @@
 	<div class="row">
-      <div class="col s12 m8 offset-m2">
+      <div class="col s12 m12">
         <div class="card-panel">
             	
-	          	
+	          	<div class="row">
                 <form id="newEvent" name="newEvent" ng-submit="evtCtrl.addEvt()" class="col s12" style="padding-bottom: 40px;">
-                	<div class="center-align ">
-		            	<h4>Create new event</h4>
-		          	</div>
+                	  <div class="center-align">
+			            <p class="center pheaders">Create new Event</p>
+			          </div>
                 
                  <input type="hidden" ng-model="evtCtrl.evt.evtid" />
 					
 					<div class="row">
 				        <div class="input-field">
 				          <input id="etitle" type="text" class="validate" ng-model="evtCtrl.evt.etitle" />
-				          <label for="etitle">Event topic</label>
+				          <label for="etitle">Event title</label>
 				        </div>
 					</div>
 					
@@ -31,7 +31,7 @@
 				     </div>
 
                 </form>
-                
+                </div>
                 
            </div>
           </div>

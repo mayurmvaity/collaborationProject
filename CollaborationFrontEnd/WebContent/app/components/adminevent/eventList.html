@@ -1,12 +1,14 @@
+<h3>Events</h3>
+
 <div ng-repeat="evt in evtCtrl.evtList">
 		
 	<div class="row">
-      <div class="col s12 m8 offset-m2">
+      <div class="col s12 m12">
         <div class="card-panel">
 	  
-		  <p><a href="#/adminevent/{{evt.evtid}}">{{evt.etitle}}</a></p>
-		  <p>Posted by <a href="">{{evt.user.fname}} {{evt.user.lname}}</a> on {{evt.edate | date : 'MMM d, y h:mm:ss a'}}</p>
-		  <p>{{evt.edata | limitTo: 340}}...  <a href="#/adminevent/{{evt.evtid}}"> read more</a></p>
+		  <p class="listTitle"><a href="#/adminevent/{{evt.evtid}}">{{evt.etitle}}</a></p>
+		  <p class="listUser">Posted by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{evt.user.fname}} {{evt.user.lname}}</a> on {{evt.edate | date : 'MMM d, y h:mm:ss a'}}</p>
+		  <p class="listData">{{evt.edata | limitTo: 340}}...  <a href="#/adminevent/{{evt.evtid}}"> read more</a></p>
 		 
 	  	</div>
 	  </div>

@@ -2,15 +2,15 @@
 	
       <div class="col s12 m12">
         <div class="card-panel">
-			<p class="singletitle">{{jobCtrl.singleJob.jtitle}}</p>
-			<p style="color: black; font-size: 13px;">Uploaded by <a href="">{{jobCtrl.singleJob.user.fname}} {{jobCtrl.singleJob.user.lname}}</a> on {{jobCtrl.singleJob.jdate | date : 'MMM d, y h:mm:ss a'}}</p>
+			<p class="singleTitle center">{{jobCtrl.singleJob.jtitle}}</p>
+			<p class="singleDetails center">Uploaded by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{jobCtrl.singleJob.user.fname}} {{jobCtrl.singleJob.user.lname}}</a> on {{jobCtrl.singleJob.jdate | date : 'MMM d, y h:mm:ss a'}}</p>
 		  	
 		  	<div ng-if=" (user.role != 'Admin') && !jobCtrl.hasApplied ">
 		  	
 		  		<a ng-click="jobCtrl.addJobapp(jobCtrl.singleJob);" class="btn">Apply here!</a>
 		  		
 		  	</div>
-			<p class="singletext">{{jobCtrl.singleJob.jdata}}</p>
+			<p class="singleText">{{jobCtrl.singleJob.jdata}}</p>
 			
 		</div>
 	</div>

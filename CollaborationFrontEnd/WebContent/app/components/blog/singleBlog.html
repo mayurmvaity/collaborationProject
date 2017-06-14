@@ -29,25 +29,32 @@
 				</div>
 
 			</form></div>
-		</div>
-	</div>
 			
-	
-</div>
-<hr>
+			
+			
   					  <div class="center-align ">
 			            <h4>Comments</h4>
 			          </div>
 	<div ng-repeat="blogcomm in blogCtrl.blogCommentlist">
 		
 	<div class="row">
-      <div class="col s12 m12">
-        <div class="card-panel">
-		  <p style="color: black; font-size: 13px;">Posted by {{blogcomm.user.fname}} {{blogcomm.user.lname}} on {{blogcomm.commdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
-		  <hr>
-		  <p class="blogtext">{{blogcomm.commdata}}</p>
-	  	</div>
+      <div class="col s12 m12 commentbox">
+        <!-- <div class="card-panel"> -->
+		
+		  <p class="commentUser">Posted by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blogcomm.user.fname}} {{blogcomm.user.lname}}</a>  on {{blogcomm.commdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
+		  
+		  <p class="commentText">{{blogcomm.commdata}}</p>
+	  	
+	  	
+	  	<!-- </div> -->
 	  </div>
 	</div>
+	
+</div>
+			
+			
+		</div>
+	</div>
+			
 	
 </div>

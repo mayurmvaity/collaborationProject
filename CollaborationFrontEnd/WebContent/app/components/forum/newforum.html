@@ -1,29 +1,29 @@
 <div class="row">
-      <div class="col s12 m8 offset-m2">
+      <div class="col s12 m12">
         <div class="card-panel">
         			<div class="row">
-				      <form id="newForum" name="newForum" ng-submit="forumCtrl.addForum()" class="col l8 offset-l2" style="padding-bottom: 40px;">
-						  <div class="center-align ">
-				            <h4>Create new forum</h4>
-				          </div>
+				      <form id="newForum" name="newForum" ng-submit="forumCtrl.addForum()">
+						   <div class="center-align">
+				             <p class="center pheaders">Create new forum</p>
+				           </div>
 						
 						<input type="hidden" ng-model="forumCtrl.forum.forumid" />
 				        <div class="row">
-				          <div class="input-field col s6">
+				          <div class="input-field">
 				            <input id="ftitle" type="text" data-length="100" ng-model="forumCtrl.forum.ftitle">
 				            <label for="ftitle">Forum title</label>
 				          </div>
 				        </div>
 				        <div class="row">
-				          <div class="input-field col s12">
+				          <div class="input-field">
 				            <textarea id="fdata" class="materialize-textarea" data-length="1000" ng-model="forumCtrl.forum.fdata"></textarea>
 				            <label for="fdata">Forum text</label>
 				          </div>
 				        </div>
 				         <div class="row">
                         <!-- Submit button will come here -->
-                        <div class="col m3">
-                            <div class="row" style="margin-top: 10px; left: 10px;" style="position: absolute; top: 290px; right: 520px;">
+                        <div class="center">
+                            <div class="row">
                                 <button type="submit" class="waves-effect waves-light btn-large" >Publish</button>
                             </div>
                         </div>

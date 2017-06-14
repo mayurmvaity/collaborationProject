@@ -168,3 +168,41 @@
 .row .col .card-panel table tbody .nalistText a:hover {
 	text-decoration: underline;
 }
+
+/********** Comment box ***********/
+.row .commentbox {
+	border-style: solid;
+	border-color: #c9c9c9;
+	border-width: 1px;
+}
+
+.row .col .commentUser {
+	font-family: 'PT Serif', serif;
+	color: #909090;
+	font-weight: regular;
+	font-size: 14px;
+}
+
+.row .col .commentUser a {
+	font-family: 'PT Sans Narrow', sans-serif;
+	color: rgb(240,160,0);
+	font-weight: regular;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.row .col .commentUser a:hover {
+	
+	color: rgb(26,35,126);
+	text-decoration: underline;
+}
+
+.row .col .commentText {
+	font-family: 'PT Serif', serif;
+	color: #444444;
+	font-weight: regular;
+	font-size: 16px;
+	text-align: justify;
+}
+
+/*********** Single Forum *************/
