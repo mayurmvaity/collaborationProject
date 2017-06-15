@@ -19,7 +19,8 @@ forum.factory('forumFactory',['$http','$q',
 		nafmemberlist : nafmemberlist,
 		fmemberAppr : fmemberAppr,
 		joinedforumlist : joinedforumlist,
-		createdforumlist : createdforumlist
+		createdforumlist : createdforumlist,
+		fmemberDisAppr : fmemberDisAppr
         
 	};
 	
@@ -155,6 +156,23 @@ forum.factory('forumFactory',['$http','$q',
             }
         );
         console.log('Approve fmember method end');
+        return deferred.promise;
+    }
+    
+ // function to disapprove user
+    function fmemberDisAppr(fmemberid) {
+        var deferred = $q.defer();
+        console.log('Disapprove fmember method start');
+        $http.post(forumUrl + '/fmember/disapprov/' + fmemberid).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+        );
+        console.log('Disapprove fmember method end');
         return deferred.promise;
     }
 	

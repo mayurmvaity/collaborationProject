@@ -250,6 +250,18 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
             );
     }
     
+    //Function to disapprove an fmember
+    self.fmemberDisAppr = function(fmemberid) {      
+    	forumFactory.fmemberDisAppr(fmemberid)
+            .then (
+                function(fmember) {
+                    $route.reload();
+                },
+                function(errResponse) {
+                }
+            );
+    }
+    
  // calling method 
     joinedforumlist();
     

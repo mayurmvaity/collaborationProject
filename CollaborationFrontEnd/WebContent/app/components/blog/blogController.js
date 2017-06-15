@@ -122,9 +122,21 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
     }
     
     
-  //Function to approve a blog
+    //Function to approve a blog
     self.blogAppr = function(id) {      
     	blogFactory.blogAppr(id)
+            .then (
+                function(blog) {
+                    $route.reload();
+                },
+                function(errResponse) {
+                }
+            );
+    }
+    
+    //Function to disapprove a blog
+    self.blogDisAppr = function(id) {      
+    	blogFactory.blogDisAppr(id)
             .then (
                 function(blog) {
                     $route.reload();

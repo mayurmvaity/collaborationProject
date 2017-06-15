@@ -113,6 +113,22 @@ public class BlogController {
 						
 			return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 		}
+	 	
+		 // Function to disapprove blog
+		 @RequestMapping(value="/blog/disapprov/{id}",method = RequestMethod.POST)
+		 public ResponseEntity<Blog> disapprovBlog(@PathVariable("id") int id) {
+		 	System.out.println("disapproving blog...");
+		 						
+		 		Blog blog =blogDAO.get(id);
+		 						
+		 		blog.setIsApproved('R');
+		 		blog.setActive('N');
+		 		boolean b = blogDAO.update(blog);
+		 		if(b) System.out.println("Blog disapproved Successfully");
+		 		else System.out.println("Blog NOT disapproved");
+		 						
+		 	return new ResponseEntity<Blog>(blog, HttpStatus.OK);
+		 }
 	 
 	 	 // to retrieve list of user's blogs
 		 @RequestMapping(value = {"/blog/userlist/{userid}"}, method = RequestMethod.GET)

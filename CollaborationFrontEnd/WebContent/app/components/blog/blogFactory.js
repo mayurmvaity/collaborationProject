@@ -17,7 +17,8 @@ blog.factory('blogFactory',['$http','$q',
         likeblog : likeblog,
         blognalist : blognalist,
         blogAppr : blogAppr,
-        userbloglist : userbloglist
+        userbloglist : userbloglist,
+        blogDisAppr : blogDisAppr
         
 	};
 	
@@ -119,6 +120,23 @@ blog.factory('blogFactory',['$http','$q',
             }
         );
         console.log('Approve blog method end');
+        return deferred.promise;
+    }
+    
+    // function to disapprove blog
+    function blogDisAppr(id) {
+        var deferred = $q.defer();
+        console.log('Disapprove blog method start...');
+        $http.post(blogUrl + '/blog/disapprov/' + id).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+        );
+        console.log('Disapprove blog method end');
         return deferred.promise;
     }
     

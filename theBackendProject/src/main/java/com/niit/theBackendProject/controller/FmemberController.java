@@ -83,6 +83,24 @@ public class FmemberController {
 				return new ResponseEntity<Fmember>(fmember, HttpStatus.OK);
 		}
 		
+		// Function to disapprove Fmember
+		@RequestMapping(value = "/fmember/disapprov/{fmemberid}", method = RequestMethod.POST)
+		public ResponseEntity<Fmember> disapproveFmember(@PathVariable("fmemberid") int fmemberid) {
+			System.out.println("disapproving fmember table");
+	
+			Fmember fmember = fmemberDAO.get(fmemberid);
+	
+			fmember.setIsApproved('R');
+			fmember.setActive('N');
+			boolean b = fmemberDAO.update(fmember);
+			if (b)
+				System.out.println("Fmember disapproved Successfully");
+			else
+				System.out.println("Fmember NOT disapproved");
+	
+			return new ResponseEntity<Fmember>(fmember, HttpStatus.OK);
+		}
+		
 		// list of joined forums
 		@RequestMapping(value = {"/fmember/mylist/{userid}"}, method = RequestMethod.GET)
 		public ResponseEntity<List<Fmember>> myForumlist(@PathVariable("userid") int userid) {
