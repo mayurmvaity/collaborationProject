@@ -25,4 +25,6 @@ public interface FriendDAO {
 	
 	// my friends req accepted
 	List<Usertable> myfrlist(int userid);
+	
+	
 }

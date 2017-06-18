@@ -1,0 +1,40 @@
+@CHARSET "ISO-8859-1";
+
+.row .col .boxOfTexts {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #d1d1d1;
+	padding: 10px 10px 0px 10px;
+	
+	
+}
+
+.row .col .boxOfTexts .msgbox {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #d1d1d1;
+	margin-bottom: 10px; 
+	padding: 0 10px 0 10px; 
+	background-color: #d1d1d1;
+	color: white;
+	font-weight: bold;
+}
+
+.row .col .boxOfTexts .msgbox .msgtimecss {
+	margin: -3px 0 0 0;
+}
+
+.row .col .boxOfTexts .msgbox .msgcss {
+	background-color: white;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 3px;
+	border-color: #d1d1d1;
+	margin: 0 -10px 0 -10px;
+	color: black;
+	padding-left: 9px;
+	padding-right: 9px;
+	/* width: 11em;  */
+	word-wrap: break-word;
+	font-size: 16px;
+}

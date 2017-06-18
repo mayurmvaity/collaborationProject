@@ -38,9 +38,12 @@ user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
 		viewUser : viewUser,
 		uploadFile : uploadFile,
 		changeRoleUser : changeRoleUser,
-		changeRoleAdmin : changeRoleAdmin
+		changeRoleAdmin : changeRoleAdmin,
+		onlineFriendsList : onlineFriendsList,
+		editUser : editUser
 	};
 	
+	// register method
 	function addUser(user) {
         var deferred = $q.defer();
         console.log('add user method in factory'+user);
@@ -56,6 +59,25 @@ user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
         );
         
         console.log('End of add user mehod in factory');
+        return deferred.promise;
+    };
+    
+    // edit user profile
+    function editUser(user) {
+        var deferred = $q.defer();
+        console.log('edit user profile method in factory'+user);
+        $http.post(userUrl + '/edit/profile', user).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+           
+        );
+        
+        console.log('End of edit user profile mehod in factory');
         return deferred.promise;
     };
 	
@@ -236,6 +258,24 @@ user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
             );
             return deferred.promise;
     }
+    
+    //Function to fetch list of online friends
+    function onlineFriendsList(userid) {
+         console.log('Inside online friend list method of factory now');
+        var deferred = $q.defer();
+
+        $http.get(userUrl + '/frnds/online/' + userid)
+            .then (
+                function(response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse) {
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
+    }
+    
     
     /*******************/
 }]);

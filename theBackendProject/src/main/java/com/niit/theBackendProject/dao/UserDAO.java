@@ -18,4 +18,6 @@ public interface UserDAO {
 	List<Usertable> approvlist();
 	
 	boolean updateUserProfile(String fileName, int id);
+	
+	List<Usertable> getOnlineFrnds(int userid);
 }

@@ -24,6 +24,7 @@ public class FriendController {
 	@Autowired
 	Friend friend;
 	
+	
 	@RequestMapping(value="/friend/new",method = RequestMethod.POST)
 	public ResponseEntity<Friend> addNewFriend(@RequestBody Friend friend) {
 		System.out.println("Adding new friend");
@@ -112,6 +113,9 @@ public class FriendController {
 	
 			return new ResponseEntity<Friend>(frnd, HttpStatus.OK);
 		}
+		
+		
+		
 		
 	 /*********************/
 	

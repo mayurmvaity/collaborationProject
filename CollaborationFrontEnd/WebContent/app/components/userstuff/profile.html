@@ -1,3 +1,4 @@
+
 <div ng-init="userCtrl.fetchUser()">
 	<div class="row">
 		<p>My profile</p>
@@ -28,7 +29,14 @@
 		   </div>
 			<!-- End of pic -->
 			<div class="col s12 m8">
-		        <div class="card-panel">
+			
+				<!-- <ul class="tabs">
+					<li class="tab col s3"><a href="#personalInfo" class="active">Personal info</a></li>
+					<li class="tab col s3"><a href="#onlineFrnds">Online Friends</a></li>
+				</ul> -->
+			
+			
+		        <div id="personalInfo" class="card-panel">
 					<p class="nameprofile">{{user.fname}} {{user.lname}}</p>
 					<hr>
 					<p class="profiletext"><span class="profiletag">Email</span> : {{user.email}}</p>
@@ -38,15 +46,27 @@
 					<hr>
 					
 					<p class="profiletext"><span class="profiletag">Role</span> : {{user.role}}</p>
+					
+					<a href="#/edit/profile">Edit profile</a>
 				</div>
+				<!-- End of details -->
+				<div id="onlineFrnds" class="card-panel">
+					<p>Online friends</p>
+					<ul>
+						
+						<li ng-repeat="singleUser in userCtrl.onlineFriendsList"><a href="#/chat/{{singleUser.userid}}/{{singleUser.fname}}/{{singleUser.lname}}">{{singleUser.fname}} {{singleUser.lname}}</a></li>
+						
+					</ul>
+				
+				</div>
+				
+				
 			  </div>
-			  <!-- End of details -->
+			  
 			  
 		
 	</div>
 	
 
-	<div class="row">
-      	
-	</div>
+	
 </div>

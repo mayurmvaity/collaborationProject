@@ -3,6 +3,7 @@ package com.niit.theBackendProject.daoimpl;
 import java.util.List;
 
 import javax.transaction.Transactional;
+import javax.xml.registry.infomodel.User;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -174,5 +175,17 @@ public class UserDAOImpl implements UserDAO {
 				System.out.println(ex.getMessage());
 			}	
 			return false;
+		}
+
+		@Override
+		@Transactional
+		public List<Usertable> getOnlineFrnds(int userid) {
+			String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_friend = 'Y' UNION SELECT userid2 FROM Friend WHERE userid1 = :userid and is_friend = 'Y') AND is_approved = 'Y' AND is_online = 'Y' AND is_active = 'Y'";
+
+			return sessionFactory
+					.getCurrentSession()
+						.createNativeQuery(selectQuery,Usertable.class)
+							.setParameter("userid", userid)
+								.getResultList();
 		}
 }

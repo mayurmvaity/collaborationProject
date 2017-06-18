@@ -6,7 +6,7 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
 	
 	var self = this;
 	
-	self.user1 = loginFactory.loadUserFromCookie();
+	
 	
 	self.user = {
 			
@@ -25,6 +25,8 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
 			role: 'User',
 			active : 'Y'
 	}
+	
+	self.user = loginFactory.loadUserFromCookie();
 	
 	self.friend = {
 			friendid : null,
@@ -76,7 +78,7 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
 	
 	
 	
-	//function for adding a new blog
+	//function for adding a new user
     self.addUser = function () {
 
         console.log('in user controller');
@@ -91,6 +93,24 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
                 }
             );
          console.log('end of user controller');
+    }
+    
+    //function for editing user profile
+    self.editUser = function () {
+
+        console.log('in user editUser method controller');
+        var userId = $rootScope.user.userid;
+        userFactory.editUser(self.user)
+            .then (
+                function(user1) {
+                    self.user =  user1;
+                    loginFactory.saveUser(user1);
+                    
+                    $location.path('/profile/' + userId);
+                }, function (errResponse) {
+                }
+            );
+         console.log('end of user controller editUser method');
     }
 	
 	//function to fetch user and user detail
@@ -112,7 +132,7 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
 	
     userlist();
     
-    //Function to view list of all jobs
+    //Function to view list of all users
     function userlist() {
     	userFactory.userlist()
             .then (
@@ -270,6 +290,27 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
             } 
         )
     };
+    
+    
+    // calling onlineFriendsList method
+    onlineFriendsList();
+    
+    //Function to get list of online friends
+    function onlineFriendsList() {
+    	var myuserid = $rootScope.user.userid;
+    	
+    	userFactory.onlineFriendsList(myuserid)
+            .then (
+                function(onlineFrnds) {   
+                    self.onlineFriendsList = onlineFrnds;
+                   
+                    console.log(self.onlineFriendsList);
+                },
+                function(errResponse) {
+                    console.log('Failure!');
+                }
+            );
+    }
     
     /**************************/
 }]);

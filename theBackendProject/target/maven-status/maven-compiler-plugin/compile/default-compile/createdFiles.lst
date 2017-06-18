@@ -1,7 +1,0 @@
-com\niit\theBackendProject\controller\TestController.class
-com\niit\theBackendProject\dao\BlogDAO.class
-com\niit\theBackendProject\config\MvcConfig.class
-com\niit\theBackendProject\config\HibernateConfig.class
-com\niit\theBackendProject\dto\Blog.class
-com\niit\theBackendProject\daoimpl\BlogDAOImpl.class
-com\niit\theBackendProject\initializer\MvcWebApplicationInitializer.class

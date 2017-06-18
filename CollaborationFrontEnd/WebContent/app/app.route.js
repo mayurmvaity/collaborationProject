@@ -23,7 +23,7 @@ window.routes = {
 	       
 	    },
 	    
-	  //Form for creating new user
+	   //Form for creating new user
 	    "/profile/:userId": {
 	        templateUrl : 'app/components/userstuff/profile.html',
 	        controller : 'userController',
@@ -32,6 +32,17 @@ window.routes = {
 	        roles: ['User', 'Admin']
 	       
 	    },
+	    
+	    // editing user profile
+	    "/edit/profile": {
+	        templateUrl : 'app/components/userstuff/editProfile.html',
+	        controller : 'userController',
+	        controllerAs : 'userCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	       
+	    },
+	    
 	    
 	    //Form for creating new user
 	    "/frprofile/:userId": {
@@ -305,7 +316,14 @@ window.routes = {
 	        
 	    },
 	    
-	    
+	  // for chat page
+	    "/chat/:id/:fname/:lname": {
+	        templateUrl : 'app/components/chat/chat.html',
+	        controller : 'chatController',
+	        controllerAs : 'chatCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	    },
 	    
 	    
 	  //For navigating to error page

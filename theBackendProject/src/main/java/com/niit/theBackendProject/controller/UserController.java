@@ -31,12 +31,28 @@ public class UserController {
 	EmailService emailService;
 	
 	@RequestMapping(value="/user/new",method = RequestMethod.POST)
-	public ResponseEntity<Usertable> addNewBlog(@RequestBody Usertable user) {
+	public ResponseEntity<Usertable> addNewUser(@RequestBody Usertable user) {
 		System.out.println("Adding new user");
 			
 			boolean b =userDAO.add(user);
 			if(b) System.out.println("User registered Successfully");
 			else System.out.println("User not registered");
+			
+		return new ResponseEntity<Usertable>(user, HttpStatus.OK);
+	}
+	
+	// edit user profile 
+	@RequestMapping(value="/edit/profile",method = RequestMethod.POST)
+	public ResponseEntity<Usertable> editUserProfile(@RequestBody Usertable user) {
+		System.out.println("edit user profile user");
+			// getting old data
+			Usertable user1 = userDAO.get(user.getUserid());
+			// added new data to old profile
+			user1 = user;
+			
+			boolean b =userDAO.update(user1);
+			if(b) System.out.println("User updated Successfully");
+			else System.out.println("User not updated");
 			
 		return new ResponseEntity<Usertable>(user, HttpStatus.OK);
 	}
@@ -107,7 +123,10 @@ public class UserController {
 						Usertable user1 = userDAO.getUserByEmail(user.getEmail());
 						user1.setErrCode("200");
 						user1.setErrMessage("Login Successful!");
-						
+						user1.setIsOnline('Y');
+						boolean b = userDAO.update(user1);
+						if(b) System.out.println("User set online");
+						else System.out.println("User couldnt set online");
 						return new ResponseEntity<Usertable>(user1 , HttpStatus.OK);
 					}
 					
@@ -122,8 +141,10 @@ public class UserController {
 		 @RequestMapping(value = {"/logout"}, method = RequestMethod.POST)
 			public ResponseEntity<Void> toLogout(@RequestBody Usertable user) {
 				
-				//user.setOnline(false);
-				//userDAO.updateUser(user);
+				user.setIsOnline('N');
+				boolean b = userDAO.update(user);
+				if(b) System.out.println("User set Offline");
+				else System.out.println("User couldn't set offline");
 				return new ResponseEntity<Void>(HttpStatus.OK);
 			}
 		 
@@ -207,5 +228,13 @@ public class UserController {
 			return new ResponseEntity<List<Usertable>>(user, HttpStatus.OK);
 		}
 		 
+			// to retrieve list of online friends
+			@RequestMapping(value = { "/frnds/online/{userid}" }, method = RequestMethod.GET)
+			public ResponseEntity<List<Usertable>> getOnlineFrnds(@PathVariable("userid") int userid) {
+				System.out.println("Getting list of my online friends");
+				List<Usertable> user = userDAO.getOnlineFrnds(userid);
+				return new ResponseEntity<List<Usertable>>(user, HttpStatus.OK);
+			}
+		
 		 /*************/
 }

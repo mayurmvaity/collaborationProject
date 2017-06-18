@@ -13,13 +13,15 @@ import com.niit.theBackendProject.config.EmailConfig;
 import com.niit.theBackendProject.config.HibernateConfig;
 import com.niit.theBackendProject.config.MvcConfig;
 import com.niit.theBackendProject.config.RootConfig;
+import com.niit.theBackendProject.config.WebSocketConfig;
+
 public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	private int maxUploadSizeInMb = 5 * 1024 * 1024; // 5 MB
 	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {HibernateConfig.class, RootConfig.class, EmailConfig.class};
+		return new Class[] {HibernateConfig.class, RootConfig.class, EmailConfig.class, WebSocketConfig.class};
 	}
 
 	@Override

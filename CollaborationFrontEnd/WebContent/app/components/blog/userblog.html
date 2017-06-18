@@ -1,4 +1,18 @@
-<div ng-repeat="blog in blogCtrl.userbloglist">
+				<!-- Search method -->
+				<div class="row">
+				    <form class="col s12">
+				    <p>Search here:</p>
+				      <div class="row">
+				        <div class="input-field col s6">
+				          <input id="first_name" type="text" class="validate" ng-model="searchBlog2.btitle">
+				          <label for="first_name">Enter Name of the Blog</label>
+				        </div>
+				        
+				      </div>
+				     </form>
+				 </div>
+
+<div ng-repeat="blog in blogCtrl.userbloglist filter : searchBlog2">
 		
 	<div class="row">
       <div class="col s12 m12">

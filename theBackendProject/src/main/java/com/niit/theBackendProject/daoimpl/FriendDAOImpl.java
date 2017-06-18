@@ -3,8 +3,6 @@ package com.niit.theBackendProject.daoimpl;
 import java.util.List;
 
 import javax.transaction.Transactional;
-import javax.xml.registry.infomodel.User;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,15 +123,14 @@ public class FriendDAOImpl implements FriendDAO {
 	// my friends
 	@Override
 	public List<Usertable> myfrlist(int userid) {
-		// String selectActiveFriend = "FROM Friend WHERE user1.userid = :userid
-		// or user2.userid = :userid and isFriend = :isFriend and active =
-		// :active";
-
+		
 		String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_friend = 'Y' UNION SELECT userid2 FROM Friend WHERE userid1 = :userid and is_friend = 'Y') AND is_approved = 'Y' AND is_active = 'Y'";
 
 		return sessionFactory.getCurrentSession().createNativeQuery(selectQuery, Usertable.class)
 				.setParameter("userid", userid).getResultList();
 	}
+	
+	
 
 	@Override
 	public Friend getByUsers(int userid1, int userid2) {
