@@ -44,6 +44,7 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
             .then (
                 function(evt) {
                     self.evt =  evt;
+                    Materialize.toast('Event created successfully', 4000);
                     var bId = self.evt.evtid
                     $location.path('/adminevent/' + bId);
                 }, function (errResponse) {

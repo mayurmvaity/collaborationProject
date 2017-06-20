@@ -24,6 +24,10 @@ increment by 1
 nocache
 nocycle;
 
+alter table usertable add gender varchar2(10);
+alter table usertable add status varchar2(10);
+
+
 /****** BLOG *******/
 
 create sequence forblogid

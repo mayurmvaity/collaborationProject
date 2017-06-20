@@ -82,6 +82,48 @@
 					        </div>	
 					  	</div>
 					  	
+					  	<!-- For gender -->
+					  	<div class="row">
+	                        <div class="input-field col s2">
+	                            <label for="gender"><b>Gender: </b></label>
+	                        </div>
+	                        <div class="input-field col s4">
+	                            
+	                            <input class="with-gap" name="gender" type="radio" id="male" value="MALE" ng-model="loginCtrl.user.gender" />
+	                            <label for="male">Male</label>
+	                        </div>
+	                        <div class="input-field col s4">
+	                            
+	                            <input class="with-gap" name="gender" type="radio" id="female" value="FEMALE" ng-model="loginCtrl.user.gender" />
+	                            <label for="female">Female</label>
+	                        </div>
+	                    </div>
+					  	
+					  	<!-- For status -->
+					  	<div class="row">
+	                        <div class="input-field col s2">
+	                            <label for="status"><b>Status: </b></label>
+	                        </div>
+	                        <div class="input-field col s3">
+	                            
+	                            <input class="with-gap" name="status" type="radio" id="student" value="Student" ng-model="loginCtrl.user.status" />
+	                            <label for="student">Student</label>
+	                        </div>
+	                        <div class="input-field col s3">
+	                            
+	                            <input class="with-gap" name="status" type="radio" id="alumni" value="alumni" ng-model="loginCtrl.user.status" />
+	                            <label for="alumni">Alumni</label>
+	                        </div>
+	                        <div class="input-field col s3">
+	                            
+	                            <input class="with-gap" name="status" type="radio" id="teacher" value="Teacher" ng-model="loginCtrl.user.status" />
+	                            <label for="teacher">Teacher</label>
+	                        </div>
+	                    </div>
+					  	
+					  	
+					  	
+					  	
 					  	<!-- For address line 1 and 2 -->
 					  	<div class="row">
 					  		 	<div class="input-field col s6 m6">

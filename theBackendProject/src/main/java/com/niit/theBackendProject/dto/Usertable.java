@@ -33,8 +33,30 @@ public class Usertable extends BaseDomain {
 	@Column
 	private String profile;
 	
+	@Column
+	private String gender;
+	
+	@Column
+	private String status;
 	
 	
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public String getProfile() {
 		return profile;
 	}
@@ -206,15 +228,12 @@ public class Usertable extends BaseDomain {
 
 	@Override
 	public String toString() {
-		return "Usertable [userid=" + userid + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", add1="
-				+ add1 + ", add2=" + add2 + ", add3=" + add3 + ", city=" + city + ", state=" + state + ", pincode="
-				+ pincode + ", pw=" + pw + ", role=" + role + ", pno=" + pno + ", active=" + active + ", isOnline="
-				+ isOnline + ", isApproved=" + isApproved + "]";
+		return "Usertable [userid=" + userid + ", fname=" + fname + ", lname=" + lname + ", email=" + email
+				+ ", profile=" + profile + ", gender=" + gender + ", status=" + status + ", add1=" + add1 + ", add2="
+				+ add2 + ", add3=" + add3 + ", city=" + city + ", state=" + state + ", pincode=" + pincode + ", pw="
+				+ pw + ", role=" + role + ", pno=" + pno + ", active=" + active + ", isOnline=" + isOnline
+				+ ", isApproved=" + isApproved + "]";
 	}
-
-	
-
-	
 
 	
 

@@ -43,6 +43,7 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
             .then (
                 function(blog) {
                     self.blog =  blog;
+                    Materialize.toast('Blog created successfully', 4000);
                     var bId = self.blog.blogid
                     $location.path('/blog/' + bId);
                 }, function (errResponse) {

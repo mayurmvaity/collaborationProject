@@ -36,6 +36,7 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
             .then (
                 function(job) {
                     self.job =  job;
+                    Materialize.toast('New job added successfully', 4000);
                     var bId = self.job.jobid;
                     $location.path('/job/' + bId);
                 }, function (errResponse) {

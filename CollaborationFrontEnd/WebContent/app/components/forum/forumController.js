@@ -39,6 +39,7 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
             .then (
                 function(forum) {
                     self.forum =  forum;
+                    Materialize.toast('New forum created successfully', 4000);
                     var bId = self.forum.forumid;
                     $location.path('/forum/' + bId);
                 }, function (errResponse) {
