@@ -202,6 +202,7 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
                    self.userbloglist = blogs;
                    
                    console.log(self.userbloglist);
+                   console.log('Success in user blog list');
                },
                function(errResponse) {
                    console.log('Failure!');

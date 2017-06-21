@@ -141,10 +141,10 @@ blog.factory('blogFactory',['$http','$q',
     }
     
     // user blog list
-    function userbloglist(id) {
-        console.log('Inside user blog list factory now');
+    function userbloglist(userId) {
+        console.log('Inside user blog list factory now NEW');
        var deferred = $q.defer();
-       $http.get(blogUrl + '/blog/userlist/' + id)
+       $http.get(blogUrl + '/blog/userlist/' + userId)
            .then (
                function(response) {
                    deferred.resolve(response.data);
@@ -153,7 +153,7 @@ blog.factory('blogFactory',['$http','$q',
                    deferred.reject(errResponse);
                }
            );
-       console.log('End of user blog list mehod in factory');
+       console.log('End of user blog list mehod in factory nEW');
            return deferred.promise;
    }
     
