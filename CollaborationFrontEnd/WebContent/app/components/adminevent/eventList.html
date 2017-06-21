@@ -7,7 +7,7 @@
         <div class="card-panel">
 	  
 		  <p class="listTitle"><a href="#/adminevent/{{evt.evtid}}">{{evt.etitle}}</a></p>
-		  <p class="listUser">Posted by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{evt.user.fname}} {{evt.user.lname}}</a> on {{evt.edate | date : 'MMM d, y h:mm:ss a'}}</p>
+		  <p class="listUser">Posted by <a href="#/frprofile/{{evt.user.userid}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{evt.user.fname}} {{evt.user.lname}}</a> on {{evt.edate | date : 'MMM d, y h:mm:ss a'}}</p>
 		  <p class="listData">{{evt.edata | limitTo: 340}}...  <a href="#/adminevent/{{evt.evtid}}"> read more</a></p>
 		 
 	  	</div>

@@ -23,8 +23,7 @@
 		  	  <table class="striped">
 			    <thead>
 			      <tr>
-			        <th>First name</th>
-			        <th>Last name</th>
+			        <th>Name</th>
 			        <th>Email</th>
 			        <th>Role</th>
 					<th>Action</th>
@@ -32,8 +31,7 @@
 			    </thead>
 			    <tbody>
 			      <tr ng-repeat="singleUser in userCtrl.userapprvlist | filter : search5 ">
-			        <td>{{singleUser.fname}}</td>
-			        <td>{{singleUser.lname}}</td>
+			        <td><a href="#/frprofile/{{singleUser.userid}}">{{singleUser.fname}} {{singleUser.lname}}</a></td>
 			        <td>{{singleUser.email}}</td>
 			        <td>{{singleUser.role}}</td>
 					<td><a ng-click="userCtrl.changeRoleUser(singleUser.userid);" class="btn">Make User</a> &nbsp; <a ng-click="userCtrl.changeRoleAdmin(singleUser.userid);" class="btn">Make Admin</a></td>

@@ -7,7 +7,7 @@
 			
 				<p><a ng-click="forumCtrl.joinforum(forumCtrl.singleForum)" class="btn">Join</a></p>
 			</div>
-			<p class="singleDetails center">Created by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{forumCtrl.singleForum.user.fname}} {{forumCtrl.singleForum.user.lname}}</a> on {{forumCtrl.singleForum.fdate | date : 'MMM d, y h:mm:ss a'}}</p>
+			<p class="singleDetails center">Created by <a href="#/frprofile/{{forumCtrl.singleForum.user.userid}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{forumCtrl.singleForum.user.fname}} {{forumCtrl.singleForum.user.lname}}</a> on {{forumCtrl.singleForum.fdate | date : 'MMM d, y h:mm:ss a'}}</p>
 			<p class="singleText">{{forumCtrl.singleForum.fdata}}</p>
 			
 			<!-- Changes made here -->
@@ -53,7 +53,7 @@
 	<div class="row">
       <div class="col s12 m12">
         <div class="card-panel">
-			  <p class="commentUser">Posted by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i>  {{fpost.user.fname}} {{fpost.user.lname}}</a> on {{fpost.fpdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
+			  <p class="commentUser">Posted by <a href="#/frprofile/{{fpost.user.userid}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>  {{fpost.user.fname}} {{fpost.user.lname}}</a> on {{fpost.fpdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
 			  
 			  <p class="commentText">{{fpost.fpdata}}</p>
 		  </div>

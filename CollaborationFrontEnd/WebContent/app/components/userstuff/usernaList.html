@@ -22,8 +22,7 @@
 		  	  <table class="striped">
 			    <thead>
 			      <tr>
-			        <th>First name</th>
-			        <th>Last name</th>
+			        <th>Name</th>
 			        <th>Email</th>
 			      	<th>approv</th>
 			      	<th>Action</th>
@@ -31,9 +30,8 @@
 			    </thead>
 			    <tbody>
 			      <tr ng-repeat="singleUser in userCtrl.usernalist | filter : search4 ">
-			        <td>{{singleUser.fname}}</td>
-			        <td>{{singleUser.lname}}</td>
-			        <td>{{singleUser.email}}</td>
+			        <td><a href="#/frprofile/{{singleUser.userid}}">{{singleUser.fname}} {{singleUser.lname}}</a></td>
+			        <td><a href="#/frprofile/{{singleUser.userid}}">{{singleUser.email}}</a></td>
 			         <td>{{singleUser.isApproved}}</td>
 			         <td><a ng-click="userCtrl.userAppr(singleUser.userid);" class="btn">approve</a> &nbsp; <a ng-click="userCtrl.userDisappr(singleUser.userid);" class="btn">Disapprove</a></td>
 			      </tr>

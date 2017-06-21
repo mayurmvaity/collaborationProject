@@ -23,8 +23,7 @@
 		  	  <table class="striped">
 			    <thead>
 			      <tr>
-			        <th>First name</th>
-			        <th>Last name</th>
+			        <th>Name</th>
 			        <th>forum name</th>
 			      	<th>approv</th>
 			      	<th>Action</th>
@@ -32,9 +31,8 @@
 			    </thead>
 			    <tbody>
 			      <tr ng-repeat="singlefmember in forumCtrl.nafmemberlist | filter : searchFm">
-			        <td>{{singlefmember.user.fname}}</td>
-			        <td>{{singlefmember.user.lname}}</td>
-			        <td>{{singlefmember.forum.ftitle}}</td>
+			        <td><a href="#/frprofile/{{singlefmember.user.userid}}">{{singlefmember.user.fname}} {{singlefmember.user.lname}}</a></td>
+			        <td><a href="#/forum/{{singlefmember.forum.forumid}}">{{singlefmember.forum.ftitle}}</a></td>
 			         <td>{{singlefmember.isApproved}}</td>
 			         <!-- <td>button</td> -->
 			         <td><a ng-click="forumCtrl.fmemberAppr(singlefmember.fmemberid);" class="approvebtn btn green"><i class="fa fa-check" aria-hidden="true"></i></a>&nbsp;

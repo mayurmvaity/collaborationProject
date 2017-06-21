@@ -25,7 +25,7 @@
 			      <tr ng-repeat="blog in blogCtrl.blognalist | filter : searchBlog1">
 			        <td class="col m9">
 						<p class="nalistTitle"><a href="#/blog/{{blog.blogid}}">{{blog.btitle}}</a></p>
-						<p class="nalistUser" >Published by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blog.user.fname}} {{blog.user.lname}}</a> on {{blog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blog.blikes}} Likes | {{blog.bcomments}} comments</p>
+						<p class="nalistUser" >Published by <a href="#/frprofile/{{blog.user.userid}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blog.user.fname}} {{blog.user.lname}}</a> on {{blog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blog.blikes}} Likes | {{blog.bcomments}} comments</p>
 						<p class="nalistText">{{blog.bdata | limitTo: 200}}...  <a href="#/blog/{{blog.blogid}}"> read complete blog</a></p>
 
 					</td>

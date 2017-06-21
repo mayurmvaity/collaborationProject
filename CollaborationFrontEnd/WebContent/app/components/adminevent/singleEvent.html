@@ -3,7 +3,7 @@
       <div class="col s12 m12">
         <div class="card-panel">
 			<p class="singleTitle center">{{evtCtrl.singleEvent.etitle}}</p>
-			<p class="singleDetails center">Posted by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{evtCtrl.singleEvent.user.fname}} {{evtCtrl.singleEvent.user.lname}}</a> on {{evtCtrl.singleEvent.edate | date : 'MMM d, y h:mm:ss a'}}</p>
+			<p class="singleDetails center">Posted by <a href="#/frprofile/{{evtCtrl.singleEvent.user.userid}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{evtCtrl.singleEvent.user.fname}} {{evtCtrl.singleEvent.user.lname}}</a> on {{evtCtrl.singleEvent.edate | date : 'MMM d, y h:mm:ss a'}}</p>
 			 <p class="singleText">{{evtCtrl.singleEvent.edata}}</p>
 			<div ng-if=" (user.role != 'Admin') && !evtCtrl.hasParticipated ">
 				<a ng-click="evtCtrl.addEvtPart(evtCtrl.singleEvent);" class="btn">Participate here</a>
@@ -17,8 +17,7 @@
 			<table class="striped">
 				<thead>
 					<tr>
-						<th>First name</th>
-						<th>Last name</th>
+						<th>Name</th>
 						<th>Email</th>
 						<th>Date and time</th>
 						
@@ -26,8 +25,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="singleEvtPart in evtCtrl.evtpartList">
-						<td>{{singleEvtPart.user.fname}}</td>
-						<td>{{singleEvtPart.user.lname}}</td>
+						<td><a href="#/frprofile/{{singleEvtPart.user.userid}}">{{singleEvtPart.user.fname}} {{singleEvtPart.user.lname}}</a></td>
 						<td>{{singleEvtPart.user.email}}</td>
 						<td>{{singleEvtPart.epdate | date : 'MMM d, y h:mm:ss a'}}</td>
 						

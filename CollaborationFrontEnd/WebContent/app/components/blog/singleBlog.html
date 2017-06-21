@@ -4,7 +4,10 @@
         <div class="card-panel">
         
 			<p class="singleTitle center">{{blogCtrl.singleBlog.btitle}}</p>
-			<p class="singleDetails center">Published by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blogCtrl.singleBlog.user.fname}} {{blogCtrl.singleBlog.user.lname}}</a> on {{blogCtrl.singleBlog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blogCtrl.singleBlog.blikes}} Likes | {{blogCtrl.singleBlog.bcomments}} comments </p>
+			<p class="singleDetails center">Published by <a href="#/frprofile/{{blogCtrl.singleBlog.user.userid}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blogCtrl.singleBlog.user.fname}} {{blogCtrl.singleBlog.user.lname}}</a> on {{blogCtrl.singleBlog.bdate | date : 'MMM d, y h:mm:ss a'}} | {{blogCtrl.singleBlog.blikes}} Likes | {{blogCtrl.singleBlog.bcomments}} comments </p>
+			<div ng-if=" (blogCtrl.singleBlog.isApproved == 'N') ">
+				<marquee bgcolor="pink" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">Your blog has not been approved yet.</marquee>
+			</div>
 			<p class="likebtn center"><a ng-click="blogCtrl.likeblog(blogCtrl.singleBlog.blogid);"><i class="fa fa-star" aria-hidden="true"></i> Like<span class="glyphicon glyphicon-thumbs-up"></span></a>
 			<p class="singleText">{{blogCtrl.singleBlog.bdata}}</p>
 			
@@ -41,7 +44,7 @@
       <div class="col s12 m12 commentbox">
         <!-- <div class="card-panel"> -->
 		
-		  <p class="commentUser">Posted by <a href=""><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blogcomm.user.fname}} {{blogcomm.user.lname}}</a>  on {{blogcomm.commdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
+		  <p class="commentUser">Posted by <a href="#/frprofile/{{blogcomm.user.userid}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{blogcomm.user.fname}} {{blogcomm.user.lname}}</a>  on {{blogcomm.commdate | date : 'MMM yyyy,dd | hh: mm: ss a'}}</p>
 		  
 		  <p class="commentText">{{blogcomm.commdata}}</p>
 	  	

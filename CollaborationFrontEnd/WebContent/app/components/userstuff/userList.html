@@ -23,8 +23,7 @@
 		  	  <table class="striped">
 			    <thead>
 			      <tr>
-			        <th>First name</th>
-			        <th>Last name</th>
+			        <th>Name</th>
 			        <th>Email</th>
 			        <th>Role</th>
 			        <th>Approve</th>
@@ -32,8 +31,7 @@
 			    </thead>
 			    <tbody>
 			      <tr ng-repeat="singleUser in userCtrl.userlist | filter : search1">
-			        <td>{{singleUser.fname}}</td>
-			        <td>{{singleUser.lname}}</td>
+			        <td><a href="#/frprofile/{{singleUser.userid}}">{{singleUser.fname}} {{singleUser.lname}}</a></td>
 			        <td>{{singleUser.email}}</td>
 			        <td>{{singleUser.role}}</td>
 			        <td>{{singleUser.isApproved}}</td>
