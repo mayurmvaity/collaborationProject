@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col s12 m5">
-		<div class="card-panel">
+		<div class="card-panel grey lighten-4">
 		<form id="login" name="loginForm" ng-submit="loginCtrl.login()">
-          <div class="center-align ">
-            <h4 style="color:#4db6ac">Log In</h4>
+          <div class="center-align">
+            <p class="loginHeader">Sign In</p>
           </div>
 
           
@@ -34,7 +34,7 @@
           
           <div class="row">
             <div class="input-field center-align">
-              <button class="btn teal lighten-2 " type="submit" ng-disabled="loginForm.$invalid">Log In</button>
+              <button class="btn orange darken-3" type="submit" ng-disabled="loginForm.$invalid">Sign In</button>
             </div>
           </div>
 
@@ -48,11 +48,11 @@
         </div>
 	</div>
 	
-	<div class="col s12 m6">
-        <div class="card-panel">
-<form id="newUser" name="userForm" ng-submit="loginCtrl.addUser()" style="padding-bottom: 40px;">
+	<div class="col s12 m7">
+        <div class="card-panel grey lighten-4">
+<form id="userForm" name="userForm" ng-submit="loginCtrl.addUser() && userForm.$valid" style="padding-bottom: 40px;">
 				<div class="center-align ">
-	            	<h4>Register here</h4>
+	            	<p class="loginHeader">Sign up</p>
 	          	</div>
 
 	<input type="hidden" ng-model="loginCtrl.user.userid" />
@@ -82,8 +82,9 @@
 			          <!-- for Email -->
 			          <div class="row">
 			          	<div class="input-field col s12" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
-				          <input id="email" name="email" type="email" class="validate" ng-model="loginCtrl.user.email" required/>
+				          <input id="email" name="email" ng-blur="loginCtrl.checkUsername()" type="email" class="validate" ng-model="loginCtrl.user.email" required/>
 				          <label for="email">Email</label>
+				          <span ng-show="loginCtrl.usernameExist" class="help-block">Email is already taken</span>
 				          <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
             			  <p ng-show="userForm.email.$pristine" class="help-block">Email is required.</p>
 				        </div>
@@ -225,7 +226,7 @@
 					  	
 					   <div class="row">
 				            <div class="input-field center-align">
-				              <button class="btn teal lighten-2 " type="submit" ng-disabled="userForm.$invalid">Register</button>
+				              <button class="btn orange darken-3" type="submit" ng-disabled="userForm.$invalid">Sign Up</button>
 				            </div>
 				          </div>
 					  	

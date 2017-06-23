@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+@import url('https://fonts.googleapis.com/css?family=Black+Ops+One');
+
+/* navbar logo */
+.navbar-fixed nav .nextlogo {
+	/* font-family: 'Archivo Black', sans-serif; */
+	font-family: 'Black Ops One', cursive;
+	padding-left: 144px;
+	
+}
+
+/* Card title */
+.row .col .card-panel  .center-align .loginHeader {
+	font-weight: bolder;
+	font-size: 30px;
+	color: #ef6c00;
+	text-align: center;
+}

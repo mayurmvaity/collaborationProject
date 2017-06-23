@@ -236,5 +236,17 @@ public class UserController {
 				return new ResponseEntity<List<Usertable>>(user, HttpStatus.OK);
 			}
 		
+			// checking existence of user method
+			@RequestMapping(value = {"/checkuser"}, method = RequestMethod.POST)
+			public ResponseEntity<Void> checkUsername(@RequestBody String email) {
+				
+				Usertable user = userDAO.getUserByEmail(email);
+				if(user == null) {
+					return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+				} else {
+					return new ResponseEntity<Void>(HttpStatus.FOUND);
+				}
+			}
+			
 		 /*************/
 }

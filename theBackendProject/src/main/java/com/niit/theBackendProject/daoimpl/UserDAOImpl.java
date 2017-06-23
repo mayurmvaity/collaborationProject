@@ -119,15 +119,31 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public Usertable getUserByEmail(String email) {
-		String hql="FROM Usertable WHERE email = :email";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter("email", email);
+		String username = email;
+		
+		String hql = "FROM Usertable where email = '" + username + "'";
+		
 		try {
-			System.out.println("Fetching user");
-			return (Usertable) query.getSingleResult();
+			
+			System.out.println("before q");
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			System.out.println("after q");
+			if(query == null)
+			{
+				System.out.println("Query is null");
+				return null;
+			}
+			else {
+				Usertable user3 = (Usertable) query.getSingleResult();
+				System.out.println("In the new data");
+				return user3;
+			}
+			
+			
 		}
 		catch(Exception ex) {
-			System.out.println(ex.getMessage());
+			System.out.println("EMIAL NOT FOUND"+ email);
+			System.out.println(ex);
 		}
 		return null;
 	}

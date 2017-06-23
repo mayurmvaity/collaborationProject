@@ -18,7 +18,8 @@ login.factory('loginFactory', ['$http', '$q', '$cookies', function($http, $q, $c
         getRole : getRole,
         setUserIsAuthenticated : setUserIsAuthenticated,
         getUserIsAuthenticated : getUserIsAuthenticated,
-        logout : logout
+        logout : logout,
+        checkUsername : checkUsername
         
     };
 	
@@ -94,4 +95,21 @@ login.factory('loginFactory', ['$http', '$q', '$cookies', function($http, $q, $c
         return deferred.promise;
     }
 
+    //Method for checking username
+    function checkUsername(username) {
+
+        var deferred = $q.defer();
+        $http.post(loginUrl + '/checkuser', username).then (
+            function(response) {    
+                console.log('In checkuser method factory');
+                deferred.resolve(response);
+            }, function(error) {
+                console.log('Failed');
+                deferred.resolve(error);
+            }
+        );
+        return deferred.promise;
+    };
+    
+    // end of everything
 }]);

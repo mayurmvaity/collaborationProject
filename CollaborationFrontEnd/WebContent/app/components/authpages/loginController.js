@@ -2,8 +2,8 @@
  * 
  */
 
-login.controller('loginController', ['loginFactory', 'userFactory', '$routeParams', '$location', '$route', '$rootScope',
-	function(loginFactory, userFactory, $routeParams, $location, $route, $rootScope) {
+login.controller('loginController', ['loginFactory', 'userFactory', '$routeParams', '$location', '$route', '$rootScope', '$scope',
+	function(loginFactory, userFactory, $routeParams, $location, $route, $rootScope, $scope) {
 	
 	var self = this;
     self.credentials = {};
@@ -100,6 +100,35 @@ login.controller('loginController', ['loginFactory', 'userFactory', '$routeParam
             );
          console.log('end of user controller');
     }
+    
+    //Method to check whether username already exist
+    self.checkUsername = function () {
+        // debugger;
+        var username = self.user.email;
+        //If username is undefined and has some characters
+        if( username !== undefined && username.length > 0) {
+
+        	loginFactory.checkUsername(username).then (
+            function (response ) {
+              // debugger;
+                if(response.status === 302) {
+                    self.usernameExist = true;
+                    //setting the validity as false if the username already exist
+                    $scope.userForm.email.$setValidity("email", false)
+                } else {
+                    self.usernameExist = false;
+                    //setting the validity as true if the username already exist
+                    $scope.userForm.email.$setValidity("email", true)
+                }
+            }, function (error) {
+                self.usernameExist = false;
+                $scope.userForm.email.$setValidity("email", true)
+            }
+        );
+        }
+       
+    };
+    
     
     // end of everything
 }]);
