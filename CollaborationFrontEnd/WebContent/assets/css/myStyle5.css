@@ -17,3 +17,10 @@
 	color: #ef6c00;
 	text-align: center;
 }
+
+.row .col .card-panel  .center-align .loginHeadergrey {
+	font-weight: bolder;
+	font-size: 30px;
+	color: #424242;
+	text-align: center;
+}

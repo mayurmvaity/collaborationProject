@@ -146,6 +146,16 @@ window.routes = {
 	       
 	    },
 	    
+	    //For viewing list of rejected users
+	     "/user/rejectedlist": {
+	    	 	templateUrl : 'app/components/userstuff/rejectedUsers.html',
+		        controller : 'userController',
+		        controllerAs : 'userCtrl',
+		        requireLogin: true,
+		        roles: ['Admin']
+	       
+	    },
+	    
 	  //For viewing list of na fmembers
 	     "/fmember/nalist": {
 	    	 	templateUrl : 'app/components/forum/naFmemberlist.html',

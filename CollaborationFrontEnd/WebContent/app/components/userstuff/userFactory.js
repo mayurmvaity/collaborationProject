@@ -40,7 +40,9 @@ user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
 		changeRoleUser : changeRoleUser,
 		changeRoleAdmin : changeRoleAdmin,
 		onlineFriendsList : onlineFriendsList,
-		editUser : editUser
+		editUser : editUser,
+		rejectedUsersList : rejectedUsersList,
+		userDelete : userDelete
 	};
 	
 	// register method
@@ -155,6 +157,23 @@ user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
             return deferred.promise;
     }
     
+    // get rejected users list
+    function rejectedUsersList() {
+         console.log('Inside rej users list factory now');
+        var deferred = $q.defer();
+
+        $http.get(userUrl + '/user/rejected/list')
+            .then (
+                function(response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse) {
+                    deferred.reject(errResponse);
+                }
+            );
+            return deferred.promise;
+    }
+    
     
     // function to approve user
     function userAppr(id) {
@@ -187,6 +206,23 @@ user.factory('userFactory',['$http','$q', '$rootScope', '$routeParams',
             }
         );
         console.log('Disapprove method end');
+        return deferred.promise;
+    }
+    
+    // function to permanently delete a user req
+    function userDelete(id) {
+        var deferred = $q.defer();
+        console.log('Delete user req method start');
+        $http.post(userUrl + '/user/deletePermanently/' + id).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+        );
+        console.log('Delete user req method end');
         return deferred.promise;
     }
     

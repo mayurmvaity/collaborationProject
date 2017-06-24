@@ -72,6 +72,14 @@ public class UserController {
 				List<Usertable> user = userDAO.nalist();
 				return new ResponseEntity<List<Usertable>>(user, HttpStatus.OK);
 			}
+		
+		// to retrieve list of rejected users
+		@RequestMapping(value = {"/user/rejected/list"}, method = RequestMethod.GET)
+		public ResponseEntity<List<Usertable>> rejectedUsersList() {
+				System.out.println("Getting list of rejected users");
+				List<Usertable> user = userDAO.rejectedUsersList();
+				return new ResponseEntity<List<Usertable>>(user, HttpStatus.OK);
+		}
 		 
 		// to get single user
 		 @RequestMapping(value = {"/user/{id}"}, method = RequestMethod.GET)
@@ -148,6 +156,7 @@ public class UserController {
 				return new ResponseEntity<Void>(HttpStatus.OK);
 			}
 		 
+		 /* Email service is NOT ACTIVE */
 		 // Function to approve user
 		 @RequestMapping(value="/user/approv/{id}",method = RequestMethod.POST)
 			public ResponseEntity<Usertable> updateUser(@PathVariable("id") int id) {
@@ -158,7 +167,9 @@ public class UserController {
 					
 					user.setIsApproved('Y');
 					boolean b = userDAO.update(user);
-					emailService.approvedUserMessage(user);
+					
+					// activate it when to send email
+					// emailService.approvedUserMessage(user);
 					if(b) System.out.println("User updated Successfully");
 					else System.out.println("User NOT updated");
 					
@@ -181,6 +192,23 @@ public class UserController {
 				else
 					System.out.println("User NOT disapproved");
 		
+				return new ResponseEntity<Usertable>(user, HttpStatus.OK);
+			}
+			
+			// Fn to delete user req permanently
+			@RequestMapping(value = "/user/deletePermanently/{id}", method = RequestMethod.POST)
+			public ResponseEntity<Usertable> deleteUserReq(@PathVariable("id") int id) {
+				System.out.println("deleting user req");
+					
+				Usertable user = userDAO.get(id);
+					
+				/*user.setIsApproved('R');
+				user.setActive('N');*/
+				boolean b = userDAO.deletePermanently(user);
+							
+				if (b) System.out.println("User req deleted Successfully");
+				else System.out.println("User req NOT deleted");
+					
 				return new ResponseEntity<Usertable>(user, HttpStatus.OK);
 			}
 			

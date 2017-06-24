@@ -3,7 +3,6 @@ package com.niit.theBackendProject.daoimpl;
 import java.util.List;
 
 import javax.transaction.Transactional;
-import javax.xml.registry.infomodel.User;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -78,6 +77,19 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
+	@Override
+	public boolean deletePermanently(Usertable user) {
+		try {
+			
+			sessionFactory.getCurrentSession().delete(user);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	
 	@Override
 	public Usertable validateUser(Usertable user) {
 		
@@ -175,6 +187,22 @@ public class UserDAOImpl implements UserDAO {
 			
 			return query.getResultList();
 		}
+		
+		// list of approved users for users
+		@Override
+		public List<Usertable> rejectedUsersList() {
+			String selectActiveUser = "FROM Usertable WHERE active = :active and isApproved = :approv";
+					
+			Query query = sessionFactory.getCurrentSession().createQuery(selectActiveUser);
+					
+			query.setParameter("active", 'Y');
+			query.setParameter("approv", 'R');
+					
+					
+			return query.getResultList();
+		}
+		
+		
 
 		@Override
 		@Transactional
@@ -204,4 +232,8 @@ public class UserDAOImpl implements UserDAO {
 							.setParameter("userid", userid)
 								.getResultList();
 		}
+
+		
+
+		
 }

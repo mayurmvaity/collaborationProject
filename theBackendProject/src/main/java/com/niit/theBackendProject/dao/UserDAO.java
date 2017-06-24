@@ -12,6 +12,8 @@ public interface UserDAO {
 	boolean update(Usertable user);
 	boolean delete(Usertable user);
 	
+	boolean deletePermanently(Usertable user);
+	
 	public Usertable validateUser(Usertable user);
 	public Usertable getUserByEmail(String email);
 	public List<Usertable> nalist();
@@ -20,4 +22,5 @@ public interface UserDAO {
 	boolean updateUserProfile(String fileName, int id);
 	
 	List<Usertable> getOnlineFrnds(int userid);
+	List<Usertable> rejectedUsersList();
 }

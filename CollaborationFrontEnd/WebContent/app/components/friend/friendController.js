@@ -104,6 +104,19 @@ friend.controller('friendController', ['friendFactory', '$routeParams', '$locati
             );
     }
     
+  //Function to cancel a request
+    self.cancelReq = function(userid2) {   
+    	var userid1 = $rootScope.user.userid;
+    	friendFactory.cancelReq(userid1, userid2)
+            .then (
+                function(frnd) {
+                    $route.reload();
+                },
+                function(errResponse) {
+                }
+            );
+    }
+    
     /*********************/
 
 }]);

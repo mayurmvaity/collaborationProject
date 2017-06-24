@@ -18,7 +18,8 @@ friend.factory('friendFactory',['$http','$q',
 		frreqRcvdlist : frreqRcvdlist,
 		myAccFriendlist : myAccFriendlist,
 		acceptReq : acceptReq,
-		rejectReq : rejectReq
+		rejectReq : rejectReq,
+		cancelReq : cancelReq
         
 	};
 	
@@ -125,7 +126,7 @@ friend.factory('friendFactory',['$http','$q',
         return deferred.promise;
     }
     
- // function to reject req
+    // function to reject req
     function rejectReq(userid1, userid2) {
         var deferred = $q.defer();
         console.log('Reject req method start');
@@ -139,6 +140,24 @@ friend.factory('friendFactory',['$http','$q',
             }
         );
         console.log('Reject req method end');
+        return deferred.promise;
+    }
+    
+    
+    // function to cancel req
+    function cancelReq(userid1, userid2) {
+        var deferred = $q.defer();
+        console.log('Cancel req method start');
+        $http.post(friendUrl + '/frnd/req/cancel/' + userid1 + '/' + userid2).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+        );
+        console.log('Cancel req method end');
         return deferred.promise;
     }
 	/*************************/

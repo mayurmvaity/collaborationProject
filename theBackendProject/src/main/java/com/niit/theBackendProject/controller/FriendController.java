@@ -114,7 +114,22 @@ public class FriendController {
 			return new ResponseEntity<Friend>(frnd, HttpStatus.OK);
 		}
 		
-		
+		// Function to cancel frnd req
+		@RequestMapping(value = "/frnd/req/cancel/{userid1}/{userid2}", method = RequestMethod.POST)
+		public ResponseEntity<Friend> cancelreq(@PathVariable("userid1") int userid1, @PathVariable("userid2") int userid2) {
+			System.out.println("cancelling req");
+	
+			Friend frnd = friendDAO.getByUsers(userid1, userid2);
+	
+			frnd.setIsFriend('C');
+			frnd.setActive('N');
+			boolean b = friendDAO.update(frnd);
+	
+			if (b) System.out.println("req cancelled Successfully");
+			else System.out.println("req NOT cancelled");
+	
+			return new ResponseEntity<Friend>(frnd, HttpStatus.OK);
+		}
 		
 		
 	 /*********************/

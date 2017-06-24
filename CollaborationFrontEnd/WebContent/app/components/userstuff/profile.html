@@ -1,9 +1,9 @@
 
 <div ng-init="userCtrl.fetchUser()">
 	<div class="row">
-		<p>My profile</p>
+		<!-- <p>My profile</p> -->
 		<div class="col s12 m4">
-			<div class="card darken-3">
+			<div class="card grey darken-3">
 				<div class="card-content">
 				    <span class="card-title logo chngephoto center">Change Profile Picture</span>
 				    <hr>
@@ -13,7 +13,7 @@
 				    <div class="row center-align">
 				
 				        <div class="file-field input-field">
-				            <div class="btn grey">
+				            <div class="btn orange darken-3">
 				                <span>File</span>
 				                <!-- Here we are going to use our custom directive -->
 				                <input type="file" file-model="userCtrl.picture">
@@ -22,7 +22,7 @@
 				                <input class="file-path validate" type="text">
 				            </div>
 				        </div>
-				        <button class="btn grey waves-effect waves-light" ng-click="userCtrl.uploadFile()">Change Picture</button>
+				        <button class="btn orange darken-3 waves-effect waves-light" ng-click="userCtrl.uploadFile()">Change Picture</button>
 				    </div>
 				</div>
 		    </div>
@@ -36,7 +36,7 @@
 				</ul> -->
 			
 			
-		        <div id="personalInfo" class="card-panel">
+		        <div id="personalInfo" class="card-panel grey lighten-4">
 					<p class="nameprofile">{{user.fname}} {{user.lname}}</p>
 					<p class="profiletext"><span class="profiletag">Status</span> : {{user.status}}</p>
 					<p class="profiletext"><span class="profiletag">Gender</span> : {{user.gender}}</p>
@@ -50,14 +50,24 @@
 					
 					<p class="profiletext"><span class="profiletag">Role</span> : {{user.role}}</p>
 					
-					<a href="#/edit/profile">Edit profile</a>
+					<a href="#/edit/profile" class="btn orange darken-3">Edit profile</a>
 				</div>
 				<!-- End of details -->
-				<div id="onlineFrnds" class="card-panel">
-					<p>Online friends</p>
+				<div id="onlineFrnds" class="card-panel grey lighten-4">
+					<p class="onlinefrndsHeader">Online friends</p>
 					<ul>
 						
-						<li ng-repeat="singleUser in userCtrl.onlineFriendsList"><a href="#/chat/{{singleUser.userid}}/{{singleUser.fname}}/{{singleUser.lname}}">{{singleUser.fname}} {{singleUser.lname}}</a></li>
+						<li ng-repeat="singleUser in userCtrl.onlineFriendsList">
+							<a href="#/chat/{{singleUser.userid}}/{{singleUser.fname}}/{{singleUser.lname}}">
+								<!-- <img ng-src="assets/images/{{singleUser.profile}}" alt="no pic here!" height="25px">&nbsp; {{singleUser.fname}} {{singleUser.lname}}
+								 -->
+								  <div class="chip">
+								    <img ng-src="assets/images/{{singleUser.profile}}" alt="Contact Person">
+								    {{singleUser.fname}} {{singleUser.lname}}
+								  </div>
+							
+							</a>
+						</li>
 						
 					</ul>
 				

@@ -1,6 +1,10 @@
 package com.niit.theBackendProject.controller;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +30,10 @@ public class UploadController {
 	@Autowired 
 	private UserDAO userDAO;
 	
+	/* new things added */
+	@Autowired
+	ServletContext req;
+	
 	// this is an absolute path since we are using two different servers based on project requirement 
 	// we are able to upload the image at the desired location important thing to note is we are 
 	// able to sent the multipart file from the front end that is written purely in angular js
@@ -49,10 +57,39 @@ public class UploadController {
 		// for other kind of upload such as event which may have id auto-generated
 		String fileName = "USER_PROFILE_" + id + ".png";			
 		
+		/** Newly added things **/
+		String p1 = req.getRealPath("/");
+		String p2 = req.getContextPath();
+		
+		String npath = "";
+		
+		/** Newly added things **/
+		try {
+			byte[] bytes = file.getBytes();
+			npath=p1+"\\assets\\images\\"+fileName;
+			
+			// writing file to new path
+			BufferedOutputStream stream =new BufferedOutputStream(new FileOutputStream(new File(npath)));  
+			stream.write(bytes);  
+			stream.close();
+			
+			
+		}
+		catch(Exception e) {
+			System.out.println("Picture error = "+ e);
+		}
+		
 		if(uploadFile(imageBasePath, fileName, file)){
 
+			
+			// String abpath = "D:\\\\workspace\\\\.metadata\\\\.plugins\\\\org.eclipse.wst.server.core\\\\tmp0\\\\wtpwebapps\\\\theBackendProject\\\\assets\\\\images\\\\";
+			/*String dbfileName = abpath+fileName;
+			System.out.println("dbfilename = "+ dbfileName);*/
+			
 			// update the picture id in the database table by using userDAO
 			userDAO.updateUserProfile(fileName, id);
+			 /** changes made here **/
+			//userDAO.updateUserProfile(dbfileName, id);
 			
 			//in the response the filename of the new image will be send			
 			return new ResponseEntity<Response>(new Response(1,fileName),HttpStatus.OK);			

@@ -189,6 +189,18 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
             );
     }
     
+    // Function to delete a user req permanently
+    self.userDelete = function(id) {      
+    	userFactory.userDelete(id)
+            .then (
+                function(user) {
+                    $route.reload();
+                },
+                function(errResponse) {
+                }
+            );
+    }
+    
     //Function to change role to USER
     self.changeRoleUser = function(id) {      
     	userFactory.changeRoleUser(id)
@@ -230,6 +242,25 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
                 }
             );
     }
+    
+    // calling rejectedUsersList function
+    rejectedUsersList();
+    
+    // fn to display rejectedUsersList
+    function rejectedUsersList() {
+    	userFactory.rejectedUsersList()
+            .then (
+                function(users) {   
+                    self.rejectedUsersList = users;
+                   
+                    console.log(self.rejectedUsersList);
+                },
+                function(errResponse) {
+                    console.log('Failure!');
+                }
+            );
+    }
+    
     
   //function for viewing single user
     self.viewUser = function() {

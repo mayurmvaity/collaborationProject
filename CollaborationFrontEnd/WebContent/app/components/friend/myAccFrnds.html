@@ -1,40 +1,58 @@
-
+<div class="row" style="margin-top: 10px;">
+	<div class="col s12 m12 grey lighten-4">
+	
+	
 				<h3>My Friends</h3>		
 				<!-- Search method -->
 				<div class="row">
 				    <form class="col s12">
-				    <p>Search here:</p>
+				    
 				      <div class="row">
 				        <div class="input-field col s6">
 				          <input id="first_name" type="text" class="validate" ng-model="search2.fname">
-				          <label for="first_name">Enter First Name</label>
+				          <label for="first_name">Search First Name</label>
 				        </div>
 				        <div class="input-field col s6">
 				          <input id="last_name" type="text" class="validate" ng-model="search2.lname">
-				          <label for="last_name">Enter Last Name</label>
+				          <label for="last_name">Search Last Name</label>
 				        </div>
 				      </div>
 				     </form>
 				 </div>
 				
-				  <div class="row">
- 				<div class="col s12 m12">
-			        <div class="card-panel">
-			         <div ng-repeat="singleUser in friendCtrl.myAccFriendlist | filter : search2">
-			        <div class="row frlistOne">
-			        		<div class="col s12 m3">
-					  		<img ng-src="assets/images/{{singleUser.profile}}" height="150px" />
+				 <!--  <div class="row">
+		 				<div class="col s12 m12">
+					        <div class="card-panel">
+					         <div ng-repeat="singleUser in friendCtrl.myAccFriendlist | filter : search2">
+					        <div class="row frlistOne">
+					        		<div class="col s12 m3">
+							  		<img ng-src="assets/images/{{singleUser.profile}}" height="150px" />
+							  		</div>
+					  				<div class="col s12 m9">
+							  		<p class="frlistname"><a href="#/frprofile/{{singleUser.userid}}">{{singleUser.fname}} {{singleUser.lname}}</a></p>
+							  		<p class="frliststatus"><span class="frlisthead">Status :</span> {{singleUser.status}}</p>
+							  		
+							  	</div>
+							  	</div>
 					  		</div>
-			  				<div class="col s12 m9">
-					  		<p class="frlistname"><a href="#/frprofile/{{singleUser.userid}}">{{singleUser.fname}} {{singleUser.lname}}</a></p>
-					  		<p class="frliststatus"><span class="frlisthead">Status :</span> {{singleUser.status}}</p>
-					  		
 					  	</div>
-					  	</div>
-			  		</div>
-			  	</div>
-			  </div>
-		  </div>
+					  </div>
+				  </div> -->
+		  	
+		  	   <table class="bordered highlight grey lighten-3">
+		        <tbody>
+		          <tr ng-repeat="singleUser in friendCtrl.myAccFriendlist | filter : search2">
+		            <td class="col s6 m3"><img ng-src="assets/images/{{singleUser.profile}}" height="150px" /></td>
+		            <td class="col s6 m9">
+						<p class="frlistname"><a href="#/frprofile/{{singleUser.userid}}">{{singleUser.fname}} {{singleUser.lname}}</a></p>
+					  	<p class="frliststatus"><span class="frlisthead">Status :</span> {{singleUser.status}}</p>
+					</td>
+		            
+		          </tr>
+		          
+		        </tbody>
+		      </table>
 		  	
 		  
-	
+	</div>
+</div>
