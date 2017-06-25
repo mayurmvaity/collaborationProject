@@ -52,6 +52,25 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
          console.log('end of controller');
     }
 	
+    //function for editing blog
+    self.editBlog = function () {
+
+        console.log('in editBlog method controller');
+        var blogId = self.blog.blogid;
+        self.blog.bdate = new Date();
+        blogFactory.editBlog(self.blog)
+            .then (
+                function(blog1) {
+                    self.blog =  blog1;
+                    
+                    $location.path('/blog/' + blogId);
+                }, function (errResponse) {
+                }
+            );
+         console.log('end of controller editBlog method');
+    }
+    
+    
     bloglist();
     
     function bloglist() {
@@ -91,6 +110,7 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
             .then (
                 function(blog) {
                     self.singleBlog = blog;
+                    self.blog = self.singleBlog;
                     $scope.bid = blog.blogid;
                     blogCommentlist();
                 },

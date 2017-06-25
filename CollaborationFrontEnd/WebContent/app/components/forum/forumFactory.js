@@ -20,7 +20,8 @@ forum.factory('forumFactory',['$http','$q',
 		fmemberAppr : fmemberAppr,
 		joinedforumlist : joinedforumlist,
 		createdforumlist : createdforumlist,
-		fmemberDisAppr : fmemberDisAppr
+		fmemberDisAppr : fmemberDisAppr,
+		editForum : editForum
         
 	};
 	
@@ -41,6 +42,26 @@ forum.factory('forumFactory',['$http','$q',
         console.log('End of add forum mehod in factory');
         return deferred.promise;
     }
+	
+	// fn to edit forum
+	function editForum(forum) {
+        var deferred = $q.defer();
+        console.log('editForum method in factory'+forum);
+        $http.post(forumUrl + '/edit/forum', forum).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+           
+        );
+        
+        console.log('End of editForum mehod in factory');
+        return deferred.promise;
+    }
+	
 	
 	// list of forums
 	function forumlist() {

@@ -1,0 +1,50 @@
+	<div class="row" ng-init="blogCtrl.viewBlog()">
+      <div class="col s12 m12">
+        <div class="card-panel grey lighten-4">
+            	
+                <form id="newBlog" name="blogForm" ng-submit="blogCtrl.editBlog()" style="padding-bottom: 40px;" novalidate>
+                 	   <div class="center-align">
+				            <p class="loginHeadergrey">Edit blog</p>
+				        </div>
+                 
+                 <input type="hidden" ng-model="blogCtrl.blog.blogid" />
+                 <input type="hidden" ng-model="blogCtrl.blog.blikes" />
+                 <input type="hidden" ng-model="blogCtrl.blog.bcomments" />
+				 <input type="hidden" ng-model="blogCtrl.blog.userid" />
+					
+					<div class="row">
+						<div class="input-field" ng-class="{ 'has-error' : blogForm.btitle.$invalid && !blogForm.btitle.$pristine }">
+				          <input id="btitle" name="btitle" type="text" class="validate" ng-model="blogCtrl.blog.btitle" ng-minlength="2" ng-maxlength="250" required />
+				          <label for="btitle" class="active">Blog topic</label>
+				          <p ng-show="blogForm.btitle.$error.minlength" class="help-block">Blog topic is too short.</p>
+              			  <p ng-show="blogForm.btitle.$error.maxlength" class="help-block">Blog topic is too long.</p>
+				          <p ng-show="blogForm.btitle.$pristine" class="help-block">Blog topic is required.</p>
+				          <p ng-show="blogForm.btitle.$invalid && !blogForm.btitle.$pristine && !blogForm.btitle.$error.minlength && !blogForm.btitle.$error.maxlength" class="help-block">Blog topic is required.</p>
+				          
+				        </div>
+					</div>
+					
+					<div class="row">
+				        <div class="input-field" ng-class="{ 'has-error' : blogForm.blogInfo.$invalid && !blogForm.blogInfo.$pristine }">
+				          <textarea id="textarea1" name="blogInfo" class="materialize-textarea" ng-model="blogCtrl.blog.bdata" ng-minlength="2" required></textarea>
+				          <label for="textarea1" class="active">Blog information</label>
+				          <p ng-show="blogForm.blogInfo.$error.minlength" class="help-block">Blog information is too short.</p>
+				          <p ng-show="blogForm.blogInfo.$pristine" class="help-block">Blog information is required.</p>
+				          <p ng-show="blogForm.blogInfo.$invalid && !blogForm.blogInfo.$pristine && !blogForm.blogInfo.$error.minlength" class="help-block">Blog information is required.</p>
+				          
+				        </div>
+				      </div>
+				      
+                 	  <div class="row">
+			            <div class="input-field center-align">
+			              <button class="btn orange darken-3" type="submit" ng-disabled="blogForm.$invalid">Publish</button>
+			            </div>
+			          </div>
+                    
+                    
+
+                </form>
+                
+            </div>
+           </div>
+          </div>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.niit.theBackendProject.dao.EventDAO;
 import com.niit.theBackendProject.dto.Adminevent;
 import com.niit.theBackendProject.dto.Blog;
+import com.niit.theBackendProject.dto.Usertable;
 
 @RestController
 public class AdminEventController {
@@ -39,6 +40,22 @@ public class AdminEventController {
 			
 		return new ResponseEntity<Adminevent>(evt, HttpStatus.OK);
 	}
+	
+		// edit event
+		@RequestMapping(value="/edit/event",method = RequestMethod.POST)
+		public ResponseEntity<Adminevent> editAdminEvt(@RequestBody Adminevent evt) {
+			System.out.println("edit event");
+				// getting old data
+			Adminevent evt1 = eventDAO.get(evt.getEvtid());
+				// added new data to old event
+				evt1 = evt;
+				
+				boolean b =eventDAO.update(evt1);
+				if(b) System.out.println("Event updated Successfully");
+				else System.out.println("Event not updated");
+				
+			return new ResponseEntity<Adminevent>(evt1, HttpStatus.OK);
+		}
 	
 	 // to retrieve list of events
 	 @RequestMapping(value = {"/adminevent/list"}, method = RequestMethod.GET)

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.theBackendProject.dao.BlogDAO;
 import com.niit.theBackendProject.dto.Blog;
+import com.niit.theBackendProject.dto.Job;
 import com.niit.theBackendProject.dto.Usertable;
 
 
@@ -45,6 +46,22 @@ public class BlogController {
 		return new ResponseEntity<Blog>(blog, HttpStatus.OK);
 	}
 	
+	 	// edit blog
+		@RequestMapping(value="/edit/blog",method = RequestMethod.POST)
+		public ResponseEntity<Blog> editJob(@RequestBody Blog blog) {
+			System.out.println("edit blog");
+				// getting old data
+			Blog blog1 = blogDAO.get(blog.getBlogid());
+				// added new data to old blog
+				blog1 = blog;
+				blog1.setIsApproved('N');
+				boolean b =blogDAO.update(blog1);
+				if(b) System.out.println("Blog updated Successfully");
+				else System.out.println("Blog not updated");
+		
+			return new ResponseEntity<Blog>(blog1, HttpStatus.OK);
+		}
+	 
 	 // to retrieve list of all blogs
 	 @RequestMapping(value = {"/blog/list"}, method = RequestMethod.GET)
 		public ResponseEntity<List<Blog>> fetchBlogs() {

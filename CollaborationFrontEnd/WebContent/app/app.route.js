@@ -196,9 +196,29 @@ window.routes = {
 	       
 	    },
 	    
+	    //Form for editing blog
+	    "/blog/edit/:id": {
+	        templateUrl : 'app/components/blog/editBlog.html',
+	        controller : 'blogController',
+	        controllerAs : 'blogCtrl',
+	        requireLogin: true,
+	        roles: ['User', 'Admin']
+	       
+	    },
+	    
 	    // add new forum page
 	    "/forum/new": {
 	        templateUrl : 'app/components/forum/newforum.html',
+	        controller : 'forumController',
+	        controllerAs : 'forumCtrl',
+	        requireLogin: true,
+	        roles: ['Admin']
+	       
+	    },
+	    
+	    // edit forum page
+	    "/forum/edit/:id": {
+	        templateUrl : 'app/components/forum/editForum.html',
 	        controller : 'forumController',
 	        controllerAs : 'forumCtrl',
 	        requireLogin: true,
@@ -226,9 +246,19 @@ window.routes = {
 	       
 	    },
 	    
-	 // add new forum page
+	 // add new job page
 	    "/job/new": {
 	        templateUrl : 'app/components/job/newJob.html',
+	        controller : 'jobController',
+	        controllerAs : 'jobCtrl',
+	        requireLogin: true,
+	        roles: ['Admin']
+	       
+	    },
+	    
+	    // edit job
+	    "/job/edit/:id": {
+	        templateUrl : 'app/components/job/editJob.html',
 	        controller : 'jobController',
 	        controllerAs : 'jobCtrl',
 	        requireLogin: true,
@@ -299,6 +329,16 @@ window.routes = {
 	  //Form for creating new evt
 	    "/adminevent/new": {
 	        templateUrl : 'app/components/adminevent/newEvent.html',
+	        controller : 'admineventController',
+	        controllerAs : 'evtCtrl',
+	        requireLogin: true,
+	        roles: ['Admin']
+	       
+	    },
+	    
+	    //Form for editing event
+	    "/evt/editEvent/:id": {
+	        templateUrl : 'app/components/adminevent/editEvent.html',
 	        controller : 'admineventController',
 	        controllerAs : 'evtCtrl',
 	        requireLogin: true,

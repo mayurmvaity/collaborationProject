@@ -15,7 +15,8 @@ evt.factory('admineventFactory',['$http','$q',
         evtList : evtList,
         viewEvent : viewEvent,
         addEvtPart : addEvtPart,
-        evtpartList : evtpartList
+        evtpartList : evtpartList,
+        editEvt : editEvt
         
 	};
 	
@@ -36,6 +37,26 @@ evt.factory('admineventFactory',['$http','$q',
         console.log('End of add evt mehod in factory');
         return deferred.promise;
     }
+	
+	// edit event
+	function editEvt(evt) {
+        var deferred = $q.defer();
+        console.log('editEvt method in factory'+evt);
+        $http.post(evtUrl + '/edit/event', evt).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+           
+        );
+        
+        console.log('End of add evt mehod in factory');
+        return deferred.promise;
+    }
+	
 	
 	//event list method
 	function evtList() {

@@ -1,0 +1,58 @@
+<div class="row" ng-init="jobCtrl.viewJob()">
+	<div class="col s12 m12">
+		<div class="card-panel grey lighten-4">
+
+			<div class="row">
+				<form id="newJob" name="jobForm" ng-submit="jobCtrl.editJob()" class="col s12" style="padding-bottom: 40px;" novalidate>
+					  <div class="center-align">
+			            <p class="center pheaders">Edit job information</p>
+			          </div>
+					<input type="hidden" ng-model="jobCtrl.job.jobid" />
+					<input type="hidden" ng-model="jobCtrl.job.userid" />
+					
+
+
+					<div class="row">
+						<div class="input-field" ng-class="{ 'has-error' : jobForm.jobTitle.$invalid && !jobForm.jobTitle.$pristine }">
+							<input id="jtitle" name="jobTitle" type="text" ng-model="jobCtrl.job.jtitle" ng-minlength="2" ng-maxlength="250" required /> 
+							<label for="jtitle" class="active">Job title</label>
+							<p ng-show="jobForm.jobTitle.$error.minlength" class="help-block">Job title is too short.</p>
+            				<p ng-show="jobForm.jobTitle.$error.maxlength" class="help-block">Job title is too long.</p>
+            				<p ng-show="jobForm.jobTitle.$pristine" class="help-block">Job title is required.</p>
+            				<p ng-show="jobForm.jobTitle.$invalid && !jobForm.jobTitle.$pristine && !jobForm.jobTitle.$error.minlength && !jobForm.jobTitle.$error.maxlength" class="help-block">Job title is required.</p>
+            				
+						</div>
+					</div>
+
+					
+
+					<div class="row">
+						<div class="input-field" ng-class="{ 'has-error' : jobForm.jobInfo.$invalid && !jobForm.jobInfo.$pristine }">
+							<textarea id="jdata" name="jobInfo" class="materialize-textarea" ng-model="jobCtrl.job.jdata" ng-minlength="2" required></textarea>
+							<label for="jdata" class="active">Job information</label>
+							<p ng-show="jobForm.jobInfo.$error.minlength" class="help-block">Job information is too short.</p>
+            				<p ng-show="jobForm.jobInfo.$pristine" class="help-block">Job information is required.</p>
+            				<p ng-show="jobForm.jobInfo.$invalid && !jobForm.jobInfo.$pristine && !jobForm.jobInfo.$error.minlength" class="help-block">Job information is required.</p>
+            				
+						</div>
+					</div>
+
+					
+
+					
+					 <div class="row">
+			            <div class="input-field center-align">
+			              <button class="btn orange darken-3" type="submit" ng-disabled="jobForm.$invalid">Update</button>
+			            </div>
+			          </div>
+
+
+					
+
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>

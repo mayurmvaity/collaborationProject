@@ -18,7 +18,8 @@ blog.factory('blogFactory',['$http','$q',
         blognalist : blognalist,
         blogAppr : blogAppr,
         userbloglist : userbloglist,
-        blogDisAppr : blogDisAppr
+        blogDisAppr : blogDisAppr,
+        editBlog : editBlog
         
 	};
 	
@@ -37,6 +38,25 @@ blog.factory('blogFactory',['$http','$q',
         );
         
         console.log('End of add blog mehod in factory');
+        return deferred.promise;
+    }
+	
+	// fn to edit blog
+	function editBlog(blog) {
+        var deferred = $q.defer();
+        console.log('editBlog method in factory'+blog);
+        $http.post(blogUrl + '/edit/blog', blog).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+           
+        );
+        
+        console.log('End of editBlog mehod in factory');
         return deferred.promise;
     }
 	

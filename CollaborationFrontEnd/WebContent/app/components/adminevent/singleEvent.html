@@ -8,6 +8,9 @@
 			<div ng-if=" (user.role != 'Admin') && !evtCtrl.hasParticipated ">
 				<a ng-click="evtCtrl.addEvtPart(evtCtrl.singleEvent);" class="btn orange darken-3">Participate here</a>
 			</div>
+			<div ng-if=" (user.role == 'Admin') && (evtCtrl.singleEvent.user.userid == user.userid)">
+				<a href="#/evt/editEvent/{{evtCtrl.singleEvent.evtid}}" class="btn orange darken-3">Edit</a>
+			</div>
 		</div>
 	   </div>
 	

@@ -1,0 +1,50 @@
+	<div class="row" ng-init="evtCtrl.viewEvent()">
+      <div class="col s12 m12">
+        <div class="card-panel grey lighten-4">
+            	
+	          	<div class="row">
+                <form id="newEvent" name="eventForm" ng-submit="evtCtrl.editEvt()" class="col s12" style="padding-bottom: 40px;" novalidate>
+                	  <div class="center-align">
+			            <p class="center pheaders">Edit Event Information</p>
+			          </div>
+                
+                 <input type="hidden" ng-model="evtCtrl.evt.evtid" />
+                 
+                 <input type="hidden" ng-model="evtCtrl.evt.userid" />
+					
+					<div class="row">
+				        <div class="input-field" ng-class="{ 'has-error' : eventForm.eventTitle.$invalid && !eventForm.eventTitle.$pristine }">
+				          <input id="etitle" name="eventTitle" type="text" class="validate" ng-model="evtCtrl.evt.etitle" ng-minlength="2" ng-maxlength="250" required />
+				          <label for="etitle" class="active">Event title</label>
+				          <p ng-show="eventForm.eventTitle.$error.minlength" class="help-block">Event title is too short.</p>
+            			  <p ng-show="eventForm.eventTitle.$error.maxlength" class="help-block">Event title is too long.</p>
+            			  <p ng-show="eventForm.eventTitle.$pristine" class="help-block">Event title is required.</p>
+            			  <p ng-show="eventForm.eventTitle.$invalid && !eventForm.eventTitle.$pristine && !eventForm.eventTitle.$error.minlength && !eventForm.eventTitle.$error.maxlength" class="help-block">Event title is required.</p>
+            				
+				        </div>
+					</div>
+					
+					 <div class="row">
+				        <div class="input-field" ng-class="{ 'has-error' : eventForm.eventInfo.$invalid && !eventForm.eventInfo.$pristine }">
+				          <textarea id="edata" name="eventInfo" class="materialize-textarea" ng-model="evtCtrl.evt.edata" ng-minlength="2" required></textarea>
+				          <label for="edata" class="active">Event information</label>
+				          <p ng-show="eventForm.eventInfo.$error.minlength" class="help-block">Event information is too short.</p>
+            			  <p ng-show="eventForm.eventInfo.$pristine" class="help-block">Event information is required.</p>
+            			  <p ng-show="eventForm.eventInfo.$invalid && !eventForm.eventInfo.$pristine && !eventForm.eventInfo.$error.minlength" class="help-block">Event information is required.</p>
+            				
+				        </div>
+				      </div>
+					
+                     <div class="row">
+				         <div class="input-field center-align">
+				            <button class="btn orange darken-3 lighten-2 " type="submit" ng-disabled="eventForm.$invalid">Post</button>
+				         </div>
+				     </div>
+
+                </form>
+                </div>
+                
+           </div>
+          </div>
+         </div>
+            

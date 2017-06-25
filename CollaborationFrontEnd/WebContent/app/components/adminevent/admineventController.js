@@ -17,6 +17,8 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
 			active : 'Y'
 	}
 	
+	
+	
 	self.eventpart = {
 			
 			eventpartid : null,
@@ -54,6 +56,43 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
          console.log('end of evt controller');
     }
 	
+    // got to edit page
+    /*self.gotoEdit = function(evtId) {
+    	console.log('gotoEdit method');
+    	admineventFactory.viewEvent(evtId)
+    	.then(
+    			function(evt1){
+    				self.evt = evt1;
+    				$location.path('/evt/editEvent');
+    			},
+    			function(evtError){
+    				console.log('Error in gotoevtpage');
+    			}
+    	);
+    	
+    }*/
+    
+    
+    //edit event
+  //function for editing event
+    self.editEvt = function () {
+
+        console.log('in editEvt method controller');
+        var evtId = self.evt.evtid;
+        self.evt.edate = new Date();
+        admineventFactory.editEvt(self.evt)
+            .then (
+                function(evt1) {
+                    self.evt =  evt1;
+                    
+                    $location.path('/adminevent/' + evtId);
+                }, function (errResponse) {
+                }
+            );
+         console.log('end of controller editEvt method');
+    }
+    
+    
     // calling event list method
     evtList();
     
@@ -98,6 +137,7 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
                             function(evt) {
                                 self.singleEvent = evt;
                                 // calling event participants list method
+                                self.evt = self.singleEvent;
                                 evtpartList();
                             },
                             function(errResponse) {

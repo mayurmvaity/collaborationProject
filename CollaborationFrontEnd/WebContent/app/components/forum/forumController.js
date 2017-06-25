@@ -48,6 +48,25 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
          console.log('end of user controller');
     }
 	
+	//function for editing forum
+    self.editForum = function () {
+
+        console.log('in editForum method controller');
+        var forumId = self.forum.forumid;
+        self.forum.fdate = new Date();
+        forumFactory.editForum(self.forum)
+            .then (
+                function(forum1) {
+                    self.forum =  forum1;
+                    
+                    $location.path('/forum/' + forumId);
+                }, function (errResponse) {
+                }
+            );
+         console.log('end of controller editForum method');
+    }
+	
+	
 	// calling method 
 	forumlist();
     
@@ -106,6 +125,7 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
                      .then (
                          function(forum) {
                              self.singleForum = forum;
+                             self.forum = self.singleForum;
                              $scope.vforum = forum;
                              // calling fpost list method 
                              fpostsByForumid();

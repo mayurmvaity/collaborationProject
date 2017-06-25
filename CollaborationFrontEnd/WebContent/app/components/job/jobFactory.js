@@ -14,7 +14,8 @@ job.factory('jobFactory',['$http','$q',
 		joblist : joblist,
 		viewJob : viewJob,
 		addJobapp : addJobapp,
-		jobapplist : jobapplist
+		jobapplist : jobapplist,
+		editJob : editJob
         
 	};
 	
@@ -33,6 +34,25 @@ job.factory('jobFactory',['$http','$q',
         );
         
         console.log('End of add job mehod in factory');
+        return deferred.promise;
+    }
+	
+	// fn to edit job
+	function editJob(job) {
+        var deferred = $q.defer();
+        console.log('editJob method in factory'+job);
+        $http.post(jobUrl + '/edit/job', job).then (
+
+            function(response) {
+                deferred.resolve(response.data);
+            }, 
+            function (errResponse) {
+                deferred.reject(errResponse);
+            }
+           
+        );
+        
+        console.log('End of editJob mehod in factory');
         return deferred.promise;
     }
 	

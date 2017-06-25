@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.theBackendProject.dao.JobDAO;
+import com.niit.theBackendProject.dto.Adminevent;
 import com.niit.theBackendProject.dto.Forum;
 import com.niit.theBackendProject.dto.Job;
 import com.niit.theBackendProject.dto.Usertable;
@@ -40,6 +41,22 @@ public class JobController {
 			
 		return new ResponseEntity<Job>(job, HttpStatus.OK);
 	}
+	
+			// edit job
+			@RequestMapping(value="/edit/job",method = RequestMethod.POST)
+			public ResponseEntity<Job> editJob(@RequestBody Job job) {
+				System.out.println("edit job");
+					// getting old data
+				Job job1 = jobDAO.get(job.getJobid());
+					// added new data to old job
+					job1 = job;
+					
+					boolean b =jobDAO.update(job1);
+					if(b) System.out.println("Job updated Successfully");
+					else System.out.println("Job not updated");
+					
+				return new ResponseEntity<Job>(job1, HttpStatus.OK);
+			}
 	
 			// to retrieve list of jobs
 			 @RequestMapping(value = {"/job/list"}, method = RequestMethod.GET)

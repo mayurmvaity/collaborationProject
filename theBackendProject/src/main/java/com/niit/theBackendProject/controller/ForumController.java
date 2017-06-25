@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.niit.theBackendProject.dao.ForumDAO;
 import com.niit.theBackendProject.dto.Forum;
+import com.niit.theBackendProject.dto.Job;
 
 @RestController
 public class ForumController {
@@ -34,6 +35,22 @@ public class ForumController {
 				
 			return new ResponseEntity<Forum>(forum, HttpStatus.OK);
 		}
+	 
+	// edit forum
+	@RequestMapping(value="/edit/forum",method = RequestMethod.POST)
+	public ResponseEntity<Forum> editForum(@RequestBody Forum forum) {
+		System.out.println("edit forum");
+		// getting old data
+		Forum forum1 = forumDAO.get(forum.getForumid());
+			// added new data to old forum
+			forum1 = forum;
+						
+			boolean b =forumDAO.update(forum1);
+			if(b) System.out.println("Forum updated Successfully");
+			else System.out.println("Forum not updated");
+						
+		return new ResponseEntity<Forum>(forum1, HttpStatus.OK);
+	}
 	 
 	// to retrieve list of forums
 	 @RequestMapping(value = {"/forum/list"}, method = RequestMethod.GET)

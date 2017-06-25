@@ -45,6 +45,25 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
          console.log('end of job controller');
     }
 	
+    //function for editing job
+    self.editJob = function () {
+
+        console.log('in editJob method controller');
+        var jobId = self.job.jobid;
+        self.job.jdate = new Date();
+        jobFactory.editJob(self.job)
+            .then (
+                function(job1) {
+                    self.job =  job1;
+                    
+                    $location.path('/job/' + jobId);
+                }, function (errResponse) {
+                }
+            );
+         console.log('end of controller editJob method');
+    }
+    
+    
     joblist();
     
     function joblist() {
@@ -85,6 +104,7 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
             .then (
                 function(job) {
                     self.singleJob = job;
+                    self.job = self.singleJob;
                     // calling job applicants list method
                     jobapplist();
                 },
