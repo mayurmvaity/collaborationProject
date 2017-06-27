@@ -158,6 +158,25 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
         console.log('End of job app list method');
    }
     
+    // fn to delete a job
+    self.deleteAJob = function() {
+    	
+    	var jobid1 = $routeParams.id;
+    	console.log('inside job delete method');
+    	jobFactory.deleteAJob(jobid1)
+           .then (
+               function(job) {   
+            	 
+            	   $location.path('/job/list');
+               },
+               function(errResponse) {
+                   console.log('job delete Failure!');
+               }
+           );
+    	
+        console.log('End of job delete method');
+   }
+    
     
     /**************************/
 }]);

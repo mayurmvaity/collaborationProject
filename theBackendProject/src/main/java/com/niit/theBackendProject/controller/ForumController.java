@@ -89,5 +89,18 @@ public class ForumController {
 			return new ResponseEntity<List<Forum>>(forum, HttpStatus.OK);
 		}
 	 
+		// fn to delete a forum
+		 @RequestMapping(value="/forum/delete/{forumid}",method = RequestMethod.POST)
+			public ResponseEntity<Forum> deleteAForum(@PathVariable("forumid") int forumid) {
+				System.out.println("Deleting a forum");
+					Forum forum = forumDAO.get(forumid);
+					
+					boolean b =forumDAO.delete(forum);
+					if(b) System.out.println("Forum deleted Successfully");
+					else System.out.println("Forum NOT deleted");
+					
+				return new ResponseEntity<Forum>(forum, HttpStatus.OK);
+			}
+		
 	 /*******************/
 }

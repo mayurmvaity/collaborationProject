@@ -327,5 +327,24 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
         console.log('End of createdforumlist method');
    }
     
+    // fn to delete a forum
+    self.deleteAForum = function() {
+    	
+    	var frmid = $routeParams.id;
+    	console.log('inside forum delete method');
+    	forumFactory.deleteAForum(frmid)
+           .then (
+               function(forum1) {   
+            	 
+            	   $location.path('/forum/list');
+               },
+               function(errResponse) {
+                   console.log('forum delete Failure!');
+               }
+           );
+    	
+        console.log('End of forum delete method');
+   }
+    
     /***********************/
 }]);

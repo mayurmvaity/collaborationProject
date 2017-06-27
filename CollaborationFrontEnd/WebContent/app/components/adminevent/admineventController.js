@@ -192,5 +192,23 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
         console.log('End of evt participants list method');
    }
     
+    // fn to delete an event
+    self.deleteAnEvent = function() {
+    	
+    	var eventid = $routeParams.id;
+    	console.log('inside event delete method');
+    	admineventFactory.deleteAnEvent(eventid)
+           .then (
+               function(event) {   
+            	 
+            	   $location.path('/adminevent/list');
+               },
+               function(errResponse) {
+                   console.log('event delete Failure!');
+               }
+           );
+    	
+        console.log('End of event delete method');
+   }
     /************************/
 }]);

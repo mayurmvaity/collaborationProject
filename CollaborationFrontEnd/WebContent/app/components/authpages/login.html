@@ -106,14 +106,23 @@
 					  	<!-- For password -->
 					  	<div class="row">
 					  		<div class="input-field col s6" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
-					          <input id="password" name="password" type="password" class="validate" ng-model="loginCtrl.user.pw" ng-minlength="8" ng-maxlength="20" required>
+					          <input id="password" name="password" type="password" class="validate" ng-model="loginCtrl.user.pw" ng-minlength="8" ng-maxlength="20" ng-required="true">
 					          <label for="password">Password</label>
 					          <p ng-show="userForm.password.$error.minlength" class="help-block">password is too short.</p>
             			  	  <p ng-show="userForm.password.$error.maxlength" class="help-block">password is too long.</p>
-					          <p ng-show="userForm.password.$pristine" class="help-block">Password is required.</p>
-					          <p ng-show="userForm.password.$invalid && !userForm.password.$pristine && !userForm.password.$error.minlength && !userForm.password.$error.maxlength" class="help-block">Password is required.</p>
+					          <p ng-show="userForm.password.$error.required" class="help-block">Password is required.</p>
 					          
 					        </div>	
+					        
+					        <div class="input-field col s6" >
+					          <input id="repassword" name="repassword" type="password" class="validate" ng-class="{ 'repassword' : (loginCtrl.user.pw != loginCtrl.user.repw)}" ng-model="loginCtrl.user.repw" ng-minlength="8" ng-maxlength="20" ng-required="true">
+					          <label for="repassword">Re-enter Password</label>
+					          <p ng-show="userForm.repassword.$error.minlength" class="help-block">password is too short.</p>
+            			  	  <p ng-show="userForm.repassword.$error.maxlength" class="help-block">password is too long.</p>
+					          <p ng-show="userForm.repassword.$error.required" class="help-block">Password is required.</p>
+					          <p ng-show="(!userForm.repassword.$error.required) && (loginCtrl.user.pw != loginCtrl.user.repw)" class="help-block">Password do not match</p>
+
+					        </div>
 					  	</div>
 					  	
 					  	<!-- For gender -->
@@ -226,7 +235,7 @@
 					  	
 					   <div class="row">
 				            <div class="input-field center-align">
-				              <button class="btn orange darken-3" type="submit" ng-disabled="userForm.$invalid">Sign Up</button>
+				              <button class="btn orange darken-3" type="submit" ng-disabled="userForm.$invalid || (loginCtrl.user.pw != loginCtrl.user.repw)">Sign Up</button>
 				            </div>
 				          </div>
 					  	

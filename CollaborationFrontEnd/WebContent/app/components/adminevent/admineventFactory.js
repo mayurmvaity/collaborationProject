@@ -16,7 +16,8 @@ evt.factory('admineventFactory',['$http','$q',
         viewEvent : viewEvent,
         addEvtPart : addEvtPart,
         evtpartList : evtpartList,
-        editEvt : editEvt
+        editEvt : editEvt,
+        deleteAnEvent : deleteAnEvent
         
 	};
 	
@@ -130,6 +131,22 @@ evt.factory('admineventFactory',['$http','$q',
            return deferred.promise;
    }
 	
+	// fn to delete an event
+    function deleteAnEvent(evtid1) {
+        console.log('Inside event delete method factory now');
+       var deferred = $q.defer();
+       $http.post(evtUrl + '/adminevent/delete/' + evtid1)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of event delete mehod in factory');
+           return deferred.promise;
+   }
 	
 	
 	

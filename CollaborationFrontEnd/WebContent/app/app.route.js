@@ -217,12 +217,12 @@ window.routes = {
 	    },
 	    
 	    // edit forum page
-	    "/forum/edit/:id": {
+	    "/forum/editForum/:id": {
 	        templateUrl : 'app/components/forum/editForum.html',
 	        controller : 'forumController',
 	        controllerAs : 'forumCtrl',
 	        requireLogin: true,
-	        roles: ['Admin']
+	        roles: ['Admin', 'User']
 	       
 	    },
 	    
@@ -262,7 +262,7 @@ window.routes = {
 	        controller : 'jobController',
 	        controllerAs : 'jobCtrl',
 	        requireLogin: true,
-	        roles: ['Admin']
+	        roles: ['Admin', 'User']
 	       
 	    },
 
@@ -342,7 +342,7 @@ window.routes = {
 	        controller : 'admineventController',
 	        controllerAs : 'evtCtrl',
 	        requireLogin: true,
-	        roles: ['Admin']
+	        roles: ['Admin', 'User']
 	       
 	    },
 	    

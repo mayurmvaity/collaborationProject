@@ -10,6 +10,7 @@
 			</div>
 			<div ng-if=" (user.role == 'Admin') && (evtCtrl.singleEvent.user.userid == user.userid)">
 				<a href="#/evt/editEvent/{{evtCtrl.singleEvent.evtid}}" class="btn orange darken-3">Edit</a>
+				<a ng-click="evtCtrl.deleteAnEvent();" class="btn red darken-3">Delete</a>
 			</div>
 		</div>
 	   </div>

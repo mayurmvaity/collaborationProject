@@ -21,8 +21,9 @@ forum.factory('forumFactory',['$http','$q',
 		joinedforumlist : joinedforumlist,
 		createdforumlist : createdforumlist,
 		fmemberDisAppr : fmemberDisAppr,
+		deleteAForum : deleteAForum,
 		editForum : editForum
-        
+
 	};
 	
 	function addForum(forum) {
@@ -230,6 +231,24 @@ forum.factory('forumFactory',['$http','$q',
        console.log('End of list of created forums mehod in factory');
            return deferred.promise;
    }
+	
+	 // fn to delete a forum
+    function deleteAForum(forumid) {
+        console.log('Inside forum delete method factory now');
+       var deferred = $q.defer();
+       $http.post(forumUrl + '/forum/delete/' + forumid)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of forum delete mehod in factory');
+           return deferred.promise;
+   }
+	
 	
     /*********************/
 	}]);

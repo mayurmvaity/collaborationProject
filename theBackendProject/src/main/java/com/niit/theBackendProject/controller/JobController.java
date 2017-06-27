@@ -88,4 +88,19 @@ public class JobController {
 					return new ResponseEntity<Job>(job, HttpStatus.OK);
 					
 				}
+			 
+			 	@RequestMapping(value="/job/delete/{jobid}",method = RequestMethod.POST)
+				public ResponseEntity<Job> deleteAJob(@PathVariable("jobid") int jobid) {
+					System.out.println("Deleting new job");
+						
+						Job job = jobDAO.get(jobid);
+					
+						boolean b =jobDAO.delete(job);
+						if(b) System.out.println("job deleted Successfully");
+						else System.out.println("job NOT deleted");
+						
+					return new ResponseEntity<Job>(job, HttpStatus.OK);
+				}
+			 
+			 /************************/
 }

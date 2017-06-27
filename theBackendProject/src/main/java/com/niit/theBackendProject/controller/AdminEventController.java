@@ -88,4 +88,21 @@ public class AdminEventController {
 			
 		}
 	 
+	 // delete an event
+	 @RequestMapping(value="/adminevent/delete/{eventid}",method = RequestMethod.POST)
+		public ResponseEntity<Adminevent> deleteAnEvent(@PathVariable("eventid") int eventid) {
+			System.out.println("Deleting an event");
+				
+				Adminevent evt = eventDAO.get(eventid);
+			
+				boolean b =eventDAO.delete(evt);
+				if(b) System.out.println("Event deleted Successfully");
+				else System.out.println("Event NOT deleted");
+				
+			return new ResponseEntity<Adminevent>(evt, HttpStatus.OK);
+		}
+	 
+	 
+	 
+	 /********************************/
 }

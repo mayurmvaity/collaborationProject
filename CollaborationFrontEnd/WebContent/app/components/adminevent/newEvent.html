@@ -12,23 +12,23 @@
 					
 					<div class="row">
 				        <div class="input-field" ng-class="{ 'has-error' : eventForm.eventTitle.$invalid && !eventForm.eventTitle.$pristine }">
-				          <input id="etitle" name="eventTitle" type="text" class="validate" ng-model="evtCtrl.evt.etitle" ng-minlength="2" ng-maxlength="250" required />
+				          <input id="etitle" name="eventTitle" type="text" class="validate" ng-model="evtCtrl.evt.etitle" ng-minlength="2" ng-maxlength="250" ng-required="true" />
 				          <label for="etitle">Event title</label>
 				          <p ng-show="eventForm.eventTitle.$error.minlength" class="help-block">Event title is too short.</p>
             			  <p ng-show="eventForm.eventTitle.$error.maxlength" class="help-block">Event title is too long.</p>
-            			  <p ng-show="eventForm.eventTitle.$pristine" class="help-block">Event title is required.</p>
-            			  <p ng-show="eventForm.eventTitle.$invalid && !eventForm.eventTitle.$pristine && !eventForm.eventTitle.$error.minlength && !eventForm.eventTitle.$error.maxlength" class="help-block">Event title is required.</p>
+            			  
+            			  <p ng-show="eventForm.eventTitle.$error.required" class="help-block">Event title is required.</p>
             				
 				        </div>
 					</div>
 					
 					 <div class="row">
 				        <div class="input-field" ng-class="{ 'has-error' : eventForm.eventInfo.$invalid && !eventForm.eventInfo.$pristine }">
-				          <textarea id="edata" name="eventInfo" class="materialize-textarea" ng-model="evtCtrl.evt.edata" ng-minlength="2" required></textarea>
+				          <textarea id="edata" name="eventInfo" class="materialize-textarea" ng-model="evtCtrl.evt.edata" ng-minlength="2" ng-required="true"></textarea>
 				          <label for="edata">Event information</label>
 				          <p ng-show="eventForm.eventInfo.$error.minlength" class="help-block">Event information is too short.</p>
-            			  <p ng-show="eventForm.eventInfo.$pristine" class="help-block">Event information is required.</p>
-            			  <p ng-show="eventForm.eventInfo.$invalid && !eventForm.eventInfo.$pristine && !eventForm.eventInfo.$error.minlength" class="help-block">Event information is required.</p>
+            			  
+            			  <p ng-show="eventForm.eventInfo.$error.required" class="help-block">Event information is required.</p>
             				
 				        </div>
 				      </div>

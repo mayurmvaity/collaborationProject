@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -139,6 +140,9 @@ public class Usertable extends BaseDomain {
 	@Column
 	private String pw;
 	
+	@Transient
+	private String repw;
+	
 	@Column
 	private String role = "User";
 
@@ -153,6 +157,17 @@ public class Usertable extends BaseDomain {
 	
 	@Column(name="is_approved")
 	private char isApproved = 'N';
+
+	
+	
+	
+	public String getRepw() {
+		return repw;
+	}
+
+	public void setRepw(String repw) {
+		this.repw = repw;
+	}
 
 	public char getIsApproved() {
 		return isApproved;

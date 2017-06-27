@@ -10,10 +10,10 @@
 		  		<a ng-click="jobCtrl.addJobapp(jobCtrl.singleJob);" class="btn orange darken-3">Apply here!</a>
 		  		
 		  	</div>
-		  	<div ng-if=" (user.role == 'Admin') && jobCtrl.singleJob.user.userid == user.userid ">
+		  	<div ng-if=" (user.role == 'Admin') && (jobCtrl.singleJob.user.userid == user.userid) ">
 		  	
 		  		<a href="#/job/edit/{{jobCtrl.singleJob.jobid}}" class="btn orange darken-3">Edit</a>
-		  		
+		  		<a ng-click="jobCtrl.deleteAJob();" class="btn red darken-3">Delete</a>
 		  	</div>
 			<p class="singleText">{{jobCtrl.singleJob.jdata}}</p>
 			
