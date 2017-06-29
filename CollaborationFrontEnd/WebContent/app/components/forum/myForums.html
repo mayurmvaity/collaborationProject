@@ -18,7 +18,11 @@
 				      </div>
 				     </form>
 				 </div>
-        
+        		
+        		<div ng-if="forumCtrl.myForumsCount < 1">
+	        		<p>You haven't joined any forums.</p>
+	        		<a href="#/forum/list" class="btn blue darken-4">See all forums</a>
+	        	</div>
 
 <div ng-repeat="myforum in forumCtrl.joinedforumlist | filter : searchFrmn">
 		

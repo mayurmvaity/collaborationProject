@@ -27,7 +27,7 @@ public class ForumDAOImpl implements ForumDAO {
 
 	@Override
 	public List<Forum> list() {
-		String selectActiveForum = "FROM Forum WHERE active = :active";
+		String selectActiveForum = "FROM Forum WHERE active = :active order by fdate desc";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveForum);
 		
@@ -80,7 +80,7 @@ public class ForumDAOImpl implements ForumDAO {
 
 	@Override
 	public List<Forum> listByUserid(int userid) {
-		String selectActiveForum = "FROM Forum WHERE active = :active and user.userid =:userid ";
+		String selectActiveForum = "FROM Forum WHERE active = :active and user.userid =:userid order by fdate desc";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveForum);
 		

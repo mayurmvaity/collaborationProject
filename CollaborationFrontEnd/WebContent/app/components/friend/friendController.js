@@ -13,6 +13,15 @@ friend.controller('friendController', ['friendFactory', '$routeParams', '$locati
 			active : 'Y'
 	}
 	
+	self.myFriendsCount = [];
+	
+	self.myRequestRecievedCount = [];
+	
+	self.myRequestSentCount = [];
+	
+	self.otherPeopleCount = [];
+	
+	
 	// list of my friends
 	//self.myFriendlist = [];
 	
@@ -29,6 +38,7 @@ friend.controller('friendController', ['friendFactory', '$routeParams', '$locati
            .then (
                function(friends) {   
                    self.myFriendlist = friends;
+                   self.myRequestSentCount = self.myFriendlist.length;
                    console.log(self.myFriendlist);
                },
                function(errResponse) {
@@ -49,6 +59,7 @@ friend.controller('friendController', ['friendFactory', '$routeParams', '$locati
            .then (
                function(friends) {   
                    self.frreqRcvdlist = friends;
+                   self.myRequestRecievedCount = self.frreqRcvdlist.length;
                    console.log(self.frreqRcvdlist);
                },
                function(errResponse) {
@@ -69,6 +80,7 @@ friend.controller('friendController', ['friendFactory', '$routeParams', '$locati
            .then (
                function(friends) {   
                    self.myAccFriendlist = friends;
+                   self.myFriendsCount = self.myAccFriendlist.length;
                    console.log(self.myAccFriendlist);
                },
                function(errResponse) {

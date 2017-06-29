@@ -82,7 +82,7 @@ public class FriendDAOImpl implements FriendDAO {
 	public List<Usertable> frlist(int userid) {
 		// String selectActiveFriend = "FROM Friend WHERE user1.userid = :userid or user2.userid = :userid and isFriend = :isFriend and active = :active";
 		
-		String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid2 FROM Friend WHERE userid1 = :userid and is_friend = 'N') AND is_approved = 'Y' AND is_active = 'Y'";
+		String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid2 FROM Friend WHERE userid1 = :userid and is_friend = 'N') AND is_approved = 'Y' AND is_active = 'Y' order by fname";
 		
 		return sessionFactory
 				.getCurrentSession()
@@ -96,7 +96,7 @@ public class FriendDAOImpl implements FriendDAO {
 		public List<Usertable> frReqrcvlist(int userid) {
 			// String selectActiveFriend = "FROM Friend WHERE user1.userid = :userid or user2.userid = :userid and isFriend = :isFriend and active = :active";
 			
-			String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_friend = 'N') AND is_approved = 'Y' AND is_active = 'Y'";
+			String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_friend = 'N') AND is_approved = 'Y' AND is_active = 'Y' order by fname";
 			
 			return sessionFactory
 					.getCurrentSession()
@@ -111,7 +111,7 @@ public class FriendDAOImpl implements FriendDAO {
 	public List<Usertable> notfrlist(int userid) {
 		// String selectActiveFriend = "FROM Friend WHERE user1.userid = :userid or user2.userid = :userid and isFriend = :isFriend and active = :active";
 		
-		String selectQuery = "SELECT * FROM Usertable WHERE userid NOT IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_active = 'Y' UNION SELECT userid2 FROM Friend WHERE userid1 = :userid and is_active = 'Y') and userid != :userid AND is_approved = 'Y' AND is_active = 'Y'";
+		String selectQuery = "SELECT * FROM Usertable WHERE userid NOT IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_active = 'Y' UNION SELECT userid2 FROM Friend WHERE userid1 = :userid and is_active = 'Y') and userid != :userid AND is_approved = 'Y' AND is_active = 'Y' order by fname";
 		
 		return sessionFactory
 				.getCurrentSession()
@@ -124,7 +124,7 @@ public class FriendDAOImpl implements FriendDAO {
 	@Override
 	public List<Usertable> myfrlist(int userid) {
 		
-		String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_friend = 'Y' UNION SELECT userid2 FROM Friend WHERE userid1 = :userid and is_friend = 'Y') AND is_approved = 'Y' AND is_active = 'Y'";
+		String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_friend = 'Y' UNION SELECT userid2 FROM Friend WHERE userid1 = :userid and is_friend = 'Y') AND is_approved = 'Y' AND is_active = 'Y' order by fname";
 
 		return sessionFactory.getCurrentSession().createNativeQuery(selectQuery, Usertable.class)
 				.setParameter("userid", userid).getResultList();

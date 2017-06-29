@@ -26,7 +26,7 @@ public class EventDAOImpl implements EventDAO {
 
 	@Override
 	public List<Adminevent> list() {
-		String selectActiveEvent = "FROM Adminevent WHERE active = :active";
+		String selectActiveEvent = "FROM Adminevent WHERE active = :active order by edate desc";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveEvent);
 		

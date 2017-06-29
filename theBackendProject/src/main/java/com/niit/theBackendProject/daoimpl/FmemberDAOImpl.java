@@ -79,7 +79,7 @@ public class FmemberDAOImpl implements FmemberDAO {
 
 	@Override
 	public List<Fmember> nafmemberlist() {
-		String selectActiveNAFmember = "FROM Fmember WHERE active = :active and isApproved = :isApproved and forum.active = :active";
+		String selectActiveNAFmember = "FROM Fmember WHERE active = :active and isApproved = :isApproved and forum.active = :active order by user.lname desc";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveNAFmember);
 		

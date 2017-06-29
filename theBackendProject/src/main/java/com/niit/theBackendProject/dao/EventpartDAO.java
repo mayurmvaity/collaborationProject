@@ -13,4 +13,5 @@ public interface EventpartDAO {
 	boolean delete(Eventpart eventpart);
 	
 	List<Eventpart> listByEpNumber(int evtid);
+	List<Eventpart> participatedEvents(int userid);
 }

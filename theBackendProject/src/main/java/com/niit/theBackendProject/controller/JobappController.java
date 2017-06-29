@@ -51,4 +51,11 @@ public class JobappController {
 		return new ResponseEntity<List<Jobapp>>(jobapp, HttpStatus.OK);
 	}
 	
+	// fn to get list of applied jobs
+	@RequestMapping(value = { "/job/applied/list/{userid}" }, method = RequestMethod.GET)
+	public ResponseEntity<List<Jobapp>> appliedJobList(@PathVariable("userid") int userid) {
+		System.out.println("fetching list of applied jobs by userid");
+		List<Jobapp> jobapp = jobappDAO.appliedJobs(userid);
+		return new ResponseEntity<List<Jobapp>>(jobapp, HttpStatus.OK);
+	}
 }

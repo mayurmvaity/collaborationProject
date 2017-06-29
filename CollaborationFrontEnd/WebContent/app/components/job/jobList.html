@@ -17,7 +17,11 @@
 				      </div>
 				     </form>
 				 </div>
-
+				
+					<div ng-if="jobCtrl.jobCount < 1">
+						<p>There are no jobs to display.</p>
+					</div>
+				
 <div ng-repeat="job in jobCtrl.joblist | filter : searchJob">
 		
 	<div class="row">

@@ -32,6 +32,8 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
 	// for viewing single blog
 	self.singleBlog = {};
 	
+	self.myblogCount = [];
+	
 	//function for adding a new blog
     self.addBlog = function () {
     	
@@ -220,7 +222,7 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
            .then (
                function(blogs) {   
                    self.userbloglist = blogs;
-                   
+                   self.myblogCount = self.userbloglist.length;
                    console.log(self.userbloglist);
                    console.log('Success in user blog list');
                },
@@ -229,6 +231,44 @@ blog.controller('blogController',['blogFactory', 'blogCommentFactory', '$routePa
                }
            );
         console.log('End of user blog list method');
+   }
+    
+    // fn to delete a blog
+    self.deleteABlog = function() {
+    	
+    	var blogid1 = $routeParams.id;
+    	console.log('inside blog delete method');
+    	blogFactory.deleteABlog(blogid1)
+           .then (
+               function(blog) {   
+            	 
+            	   $location.path('/blog/list');
+               },
+               function(errResponse) {
+                   console.log('blog delete Failure!');
+               }
+           );
+    	
+        console.log('End of blog delete method');
+   }
+    
+    // fn to block a blog
+    self.blockABlog = function() {
+    	
+    	var blogid1 = $routeParams.id;
+    	console.log('inside blog block method');
+    	blogFactory.blockABlog(blogid1)
+           .then (
+               function(blog) {   
+            	 
+            	   $location.path('/blog/list');
+               },
+               function(errResponse) {
+                   console.log('blog block Failure!');
+               }
+           );
+    	
+        console.log('End of blog block method');
    }
     
     /*************************/

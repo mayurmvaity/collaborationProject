@@ -28,6 +28,7 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
 			
 	}
 	
+	self.eventsCount = [];
 	
 	// variable to hold the list 
 	self.evtList = [];
@@ -104,7 +105,7 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
            .then (
                function(evts) {   
                    self.evtList = evts;
-                   
+                   self.eventsCount = self.evtList.length;
                    console.log(self.evtList);
                },
                function(errResponse) {
@@ -210,5 +211,27 @@ evt.controller('admineventController',['admineventFactory','$routeParams', '$loc
     	
         console.log('End of event delete method');
    }
+    
+    // call to eventsParticipated method
+    eventsParticipated();
+    
+    // fn to get list of events participated
+    function eventsParticipated() {
+    	var userid1 = $rootScope.user.userid;
+    	console.log('inside eventsParticipated list method');
+    	admineventFactory.eventsParticipated(userid1)
+           .then (
+               function(eplist) {   
+                   self.eventsParticipatedList = eplist;
+                   self.eventsParticipatedCount = self.eventsParticipatedList.length;
+                   console.log(self.eventsParticipatedList);
+               },
+               function(errResponse) {
+                   console.log('eventsParticipated Failure!');
+               }
+           );
+        console.log('End of eventsParticipated list method');
+   }
+    
     /************************/
 }]);

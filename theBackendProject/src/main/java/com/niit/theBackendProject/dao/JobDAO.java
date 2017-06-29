@@ -12,4 +12,6 @@ public interface JobDAO {
 	boolean update(Job job);
 	boolean delete(Job job);
 	
+	
+	
 }

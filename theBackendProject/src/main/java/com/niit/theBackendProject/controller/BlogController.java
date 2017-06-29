@@ -155,5 +155,33 @@ public class BlogController {
 				return new ResponseEntity<List<Blog>>(blogs, HttpStatus.OK);
 			}
 	 	
+		 	// fn to delete a blog
+		 	@RequestMapping(value="/blog/delete/{blogid}",method = RequestMethod.POST)
+			public ResponseEntity<Blog> deleteABlog(@PathVariable("blogid") int blogid) {
+				System.out.println("Deleting a blog");
+					
+					Blog blog = blogDAO.get(blogid);
+					
+					boolean b =blogDAO.delete(blog);
+					if(b) System.out.println("Blog deleted Successfully");
+					else System.out.println("Blog NOT deleted");
+					
+				return new ResponseEntity<Blog>(blog, HttpStatus.OK);
+			}
+		 	
+		 	// fn to block a blog
+		 	@RequestMapping(value="/blog/block/{blogid}",method = RequestMethod.POST)
+			public ResponseEntity<Blog> blockABlog(@PathVariable("blogid") int blogid) {
+				System.out.println("Blocking a blog");
+					
+					Blog blog1 = blogDAO.get(blogid);
+					blog1.setIsApproved('B');
+					boolean b =blogDAO.update(blog1);
+					if(b) System.out.println("Blog blocked Successfully");
+					else System.out.println("Blog NOT blocked");
+					
+				return new ResponseEntity<Blog>(blog1, HttpStatus.OK);
+			}
+		 
 	 	/************************/
 }

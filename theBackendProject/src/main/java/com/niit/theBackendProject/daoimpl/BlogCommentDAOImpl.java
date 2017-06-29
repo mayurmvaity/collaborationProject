@@ -79,7 +79,7 @@ public class BlogCommentDAOImpl implements BlogCommentDAO {
 	
 	@Override
 	public List<BlogComment> listByBlogid(int blogid) {
-		String selectActiveBlogComm = "FROM BlogComment WHERE active = :active and blogid = :blogid";
+		String selectActiveBlogComm = "FROM BlogComment WHERE active = :active and blogid = :blogid order by commdate desc";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveBlogComm);
 		

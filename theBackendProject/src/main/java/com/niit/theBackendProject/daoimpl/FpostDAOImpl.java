@@ -79,7 +79,7 @@ public class FpostDAOImpl implements FpostDAO {
 
 	@Override
 	public List<Fpost> fplistByforumid(int forumid) {
-		String selectActiveFpost = "FROM Fpost WHERE active = :active and forum.forumid = :forumid";
+		String selectActiveFpost = "FROM Fpost WHERE active = :active and forum.forumid = :forumid order by fpdate desc";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveFpost);
 		

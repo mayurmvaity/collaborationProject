@@ -19,7 +19,9 @@ blog.factory('blogFactory',['$http','$q',
         blogAppr : blogAppr,
         userbloglist : userbloglist,
         blogDisAppr : blogDisAppr,
-        editBlog : editBlog
+        editBlog : editBlog,
+        deleteABlog : deleteABlog,
+        blockABlog : blockABlog
         
 	};
 	
@@ -177,6 +179,39 @@ blog.factory('blogFactory',['$http','$q',
            return deferred.promise;
    }
     
+    // fn to delete a blog
+    function deleteABlog(blogid) {
+        console.log('Inside blog delete method factory now');
+       var deferred = $q.defer();
+       $http.post(blogUrl + '/blog/delete/' + blogid)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of blog delete mehod in factory');
+           return deferred.promise;
+   }
+    
+    // fn to block a blog
+    function blockABlog(blogid) {
+        console.log('Inside blog block method factory now');
+       var deferred = $q.defer();
+       $http.post(blogUrl + '/blog/block/' + blogid)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of blog block mehod in factory');
+           return deferred.promise;
+   }
     
     /**********************/
 	}]);

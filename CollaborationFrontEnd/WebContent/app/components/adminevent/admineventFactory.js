@@ -17,7 +17,8 @@ evt.factory('admineventFactory',['$http','$q',
         addEvtPart : addEvtPart,
         evtpartList : evtpartList,
         editEvt : editEvt,
-        deleteAnEvent : deleteAnEvent
+        deleteAnEvent : deleteAnEvent,
+        eventsParticipated : eventsParticipated
         
 	};
 	
@@ -148,6 +149,22 @@ evt.factory('admineventFactory',['$http','$q',
            return deferred.promise;
    }
 	
+    // fn to get list of participated events by userid
+    function eventsParticipated(userid) {
+        console.log('Inside participated EVents list factory now');
+       var deferred = $q.defer();
+       $http.get(evtUrl + '/event/participatedEvents/list/' + userid)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of participated EVents list mehod in factory');
+           return deferred.promise;
+   }
 	
 	
     /*******************************/

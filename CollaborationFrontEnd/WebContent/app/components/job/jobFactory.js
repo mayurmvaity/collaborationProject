@@ -16,7 +16,8 @@ job.factory('jobFactory',['$http','$q',
 		addJobapp : addJobapp,
 		jobapplist : jobapplist,
 		editJob : editJob,
-		deleteAJob : deleteAJob
+		deleteAJob : deleteAJob,
+		appliedJobs : appliedJobs
         
 	};
 	
@@ -139,6 +140,23 @@ job.factory('jobFactory',['$http','$q',
                }
            );
        console.log('End of job delete mehod in factory');
+           return deferred.promise;
+   }
+    
+    // fn to get list of applied jobs
+    function appliedJobs(userid) {
+        console.log('Inside applied jobs list factory now');
+       var deferred = $q.defer();
+       $http.get(jobUrl + '/job/applied/list/' + userid)
+           .then (
+               function(response) {
+                   deferred.resolve(response.data);
+               },
+               function(errResponse) {
+                   deferred.reject(errResponse);
+               }
+           );
+       console.log('End of applied jobs list mehod in factory');
            return deferred.promise;
    }
     

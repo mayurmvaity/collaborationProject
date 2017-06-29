@@ -8,11 +8,19 @@
 			<div ng-if=" (blogCtrl.singleBlog.isApproved == 'N') ">
 				<marquee bgcolor="pink" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">Your blog has not been approved yet.</marquee>
 			</div>
-			
+			<div ng-if=" (blogCtrl.singleBlog.isApproved == 'B') ">
+				<marquee bgcolor="#ffd600" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">Your blog has been blocked by admin.</marquee>
+			</div>
 			<div ng-if=" blogCtrl.singleBlog.user.userid == user.userid ">
 		  	
 		  		<a href="#/blog/edit/{{blogCtrl.singleBlog.blogid}}" class="btn orange darken-3">Edit</a>
+		  		<a ng-click="blogCtrl.deleteABlog();" class="btn red darken-3">Delete</a>
+		  	</div>
+		  	
+		  	<div ng-if=" (blogCtrl.singleBlog.user.userid != user.userid) && (user.role == 'Admin') ">
+		  	
 		  		
+		  		<a ng-click="blogCtrl.blockABlog();" class="btn yellow darken-3">Block</a>
 		  	</div>
 			
 			<p class="likebtn center"><a ng-click="blogCtrl.likeblog(blogCtrl.singleBlog.blogid);"><i class="fa fa-star" aria-hidden="true"></i> Like<span class="glyphicon glyphicon-thumbs-up"></span></a>

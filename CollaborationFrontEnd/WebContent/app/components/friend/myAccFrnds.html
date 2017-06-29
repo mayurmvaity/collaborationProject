@@ -2,7 +2,7 @@
 <div class="col m12">
 	<div class="card-panel grey lighten-4">
 		<div class="center-align">
-            <p class="loginHeadergrey">My Friends</p>
+            <p class="loginHeadergrey">My Friends ({{friendCtrl.myFriendsCount}})</p>
         </div>
 
 				<!-- Search method -->
@@ -40,6 +40,11 @@
 					  	</div>
 					  </div>
 				  </div> -->
+		  	
+		  			<div ng-if="friendCtrl.myFriendsCount < 1">
+		  	 			<p>You don't have any friends.</p>
+		  	 			<a href="#/friend/notFrndlist" class="btn grey darken-4">Find new friends here</a>
+		  	 		</div>
 		  	
 		  	   <table class="bordered highlight grey lighten-3">
 		        <tbody>

@@ -13,4 +13,5 @@ public interface JobappDAO {
 	boolean delete(Jobapp jobapp);
 	
 	List<Jobapp> listByJobid(int jobid);
+	List<Jobapp> appliedJobs(int userid);
 }

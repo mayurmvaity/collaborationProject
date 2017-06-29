@@ -31,7 +31,7 @@ public class BlogDAOImpl implements BlogDAO {
 
 	@Override
 	public List<Blog> list() {
-		String selectActiveBlog = "FROM Blog WHERE active = :active and isApproved = :approv";
+		String selectActiveBlog = "FROM Blog WHERE active = :active and isApproved = :approv order by bdate desc";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveBlog);
 
@@ -83,7 +83,7 @@ public class BlogDAOImpl implements BlogDAO {
 	// list of not approved blogs for admin
 	@Override
 	public List<Blog> nabloglist() {
-		String selectActiveUser = "FROM Blog WHERE active = :active and isApproved = :approv";
+		String selectActiveUser = "FROM Blog WHERE active = :active and isApproved = :approv order by bdate desc";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveUser);
 
@@ -96,7 +96,7 @@ public class BlogDAOImpl implements BlogDAO {
 	// list of not approved blogs for admin
 	@Override
 	public List<Blog> userbloglist(int userid) {
-		String selectActiveUser = "FROM Blog WHERE active = :active and user = :user";
+		String selectActiveUser = "FROM Blog WHERE active = :active and user = :user order by bdate desc";
 
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveUser);
 

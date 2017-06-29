@@ -19,6 +19,9 @@
 				     </form>
 				 </div>
         
+        			<div ng-if="evtCtrl.eventsCount < 1">
+        				<p>There are no events to show.</p>
+        			</div>
 
 <div ng-repeat="evt in evtCtrl.evtList | filter : searchEvt">
 		

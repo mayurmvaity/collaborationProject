@@ -86,6 +86,7 @@ login.controller('loginController', ['loginFactory', 'userFactory', '$routeParam
     self.addUser = function () {
 
         console.log('in user controller');
+        self.user.profile = "dimage.png";
          //calling the addBlog method in the factory
         userFactory.addUser(self.user)
             .then (

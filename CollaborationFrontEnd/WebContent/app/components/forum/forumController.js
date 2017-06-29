@@ -27,6 +27,9 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
 			active : 'Y'
 	}
 	
+	self.myForumsCount = [];
+	
+	
 	//function for adding a new blog
     self.addForum = function () {
 
@@ -184,6 +187,7 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
            .then (
                function(forums) {   
                    self.myforumlist = forums;
+                   self.myForumsCount = self.myforumlist.length;
                    console.log(self.forumlist);
                },
                function(errResponse) {

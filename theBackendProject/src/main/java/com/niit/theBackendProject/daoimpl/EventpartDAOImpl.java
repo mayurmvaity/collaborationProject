@@ -79,12 +79,25 @@ public class EventpartDAOImpl implements EventpartDAO {
 
 	@Override
 	public List<Eventpart> listByEpNumber(int evtid) {
-		String selectActiveEpbynum = "FROM Eventpart WHERE evt.evtid = :evtid and active = :active";
+		String selectActiveEpbynum = "FROM Eventpart WHERE evt.evtid = :evtid and active = :active order by epdate desc";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveEpbynum);
 		
 		query.setParameter("active", 'Y');
 		query.setParameter("evtid", evtid);
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Eventpart> participatedEvents(int userid) {
+		String selectActiveEp = "FROM Eventpart WHERE active = :active and user.userid = :userid order by epdate desc";
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveEp);
+		
+		query.setParameter("active", 'Y');
+		query.setParameter("userid", userid);
+		
 		
 		return query.getResultList();
 	}

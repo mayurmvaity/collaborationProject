@@ -22,6 +22,10 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
 			active : 'Y'
 	}
 	
+	self.jobCount = [];
+	
+	self.appliedJobsCount = [];
+	
 	// variable to hold the list 
 	self.joblist = [];
 	
@@ -73,6 +77,7 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
            .then (
                function(jobs) {   
                    self.joblist = jobs;
+                   self.jobCount = self.joblist.length;
                    console.log(self.joblist);
                },
                function(errResponse) {
@@ -177,6 +182,26 @@ job.controller('jobController',['jobFactory','$routeParams', '$location', '$rout
         console.log('End of job delete method');
    }
     
+    // call to appliedJobs method
+    appliedJobs();
+    
+    // fn to get list of applied jobs
+    function appliedJobs() {
+    	var userid1 = $rootScope.user.userid;
+    	console.log('inside appliedJobs list method');
+    	jobFactory.appliedJobs(userid1)
+           .then (
+               function(appliedjobs) {   
+                   self.appliedJobsList = appliedjobs;
+                   self.appliedJobsCount = self.appliedJobsList.length;
+                   console.log(self.appliedJobsList);
+               },
+               function(errResponse) {
+                   console.log('appliedJobs Failure!');
+               }
+           );
+        console.log('End of appliedJobs list method');
+   }
     
     /**************************/
 }]);

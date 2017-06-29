@@ -51,4 +51,11 @@ public class EventpartController {
 		return new ResponseEntity<List<Eventpart>>(eventpart, HttpStatus.OK);
 	}
 	
+	// fn to get participated events list by userid
+	@RequestMapping(value = { "/event/participatedEvents/list/{userid}" }, method = RequestMethod.GET)
+	public ResponseEntity<List<Eventpart>> participatedEvents(@PathVariable("userid") int userid) {
+		System.out.println("fetching list of participated events by userid");
+		List<Eventpart> eventpart = eventpartDAO.participatedEvents(userid);
+		return new ResponseEntity<List<Eventpart>>(eventpart, HttpStatus.OK);
+	}
 }

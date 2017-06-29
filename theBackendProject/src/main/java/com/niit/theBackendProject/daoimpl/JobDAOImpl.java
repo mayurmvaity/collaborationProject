@@ -27,7 +27,7 @@ public class JobDAOImpl implements JobDAO {
 
 	@Override
 	public List<Job> list() {
-		String selectActiveJob = "FROM Job WHERE active = :active";
+		String selectActiveJob = "FROM Job WHERE active = :active order by jdate desc";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveJob);
 		
@@ -77,5 +77,7 @@ public class JobDAOImpl implements JobDAO {
 			return false;
 		}
 	}
+
+	
 
 }

@@ -163,7 +163,7 @@ public class UserDAOImpl implements UserDAO {
 	// list of not approved users for admin
 	@Override
 	public List<Usertable> nalist() {
-		String selectActiveUser = "FROM Usertable WHERE active = :active and isApproved = :approv and role =:role";
+		String selectActiveUser = "FROM Usertable WHERE active = :active and isApproved = :approv and role =:role order by fname";
 		
 		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveUser);
 		
@@ -177,7 +177,7 @@ public class UserDAOImpl implements UserDAO {
 	// list of approved users for users
 		@Override
 		public List<Usertable> approvlist() {
-			String selectActiveUser = "FROM Usertable WHERE active = :active and isApproved = :approv";
+			String selectActiveUser = "FROM Usertable WHERE active = :active and isApproved = :approv order by fname";
 			
 			Query query = sessionFactory.getCurrentSession().createQuery(selectActiveUser);
 			
@@ -191,7 +191,7 @@ public class UserDAOImpl implements UserDAO {
 		// list of approved users for users
 		@Override
 		public List<Usertable> rejectedUsersList() {
-			String selectActiveUser = "FROM Usertable WHERE active = :active and isApproved = :approv";
+			String selectActiveUser = "FROM Usertable WHERE active = :active and isApproved = :approv order by fname";
 					
 			Query query = sessionFactory.getCurrentSession().createQuery(selectActiveUser);
 					
@@ -224,7 +224,7 @@ public class UserDAOImpl implements UserDAO {
 		@Override
 		@Transactional
 		public List<Usertable> getOnlineFrnds(int userid) {
-			String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_friend = 'Y' UNION SELECT userid2 FROM Friend WHERE userid1 = :userid and is_friend = 'Y') AND is_approved = 'Y' AND is_online = 'Y' AND is_active = 'Y'";
+			String selectQuery = "SELECT * FROM Usertable WHERE userid IN (SELECT userid1 FROM Friend WHERE userid2 = :userid and is_friend = 'Y' UNION SELECT userid2 FROM Friend WHERE userid1 = :userid and is_friend = 'Y') AND is_approved = 'Y' AND is_online = 'Y' AND is_active = 'Y' order by fname";
 
 			return sessionFactory
 					.getCurrentSession()

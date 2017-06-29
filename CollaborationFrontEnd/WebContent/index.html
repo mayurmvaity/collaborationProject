@@ -176,6 +176,20 @@
 				  <li><a href="#/blog/userbloglist">My blogs</a></li>
 				</ul>
 				
+				<!-- Dropdown Structure User Job -->
+				<ul id="dropdownUserJob" class="dropdown-content">
+				  <li><a href="#/job/list">All Jobs</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#/job/appliedlist">Applied Jobs</a></li>
+				</ul>
+				
+				<!-- Dropdown Structure User Event -->
+				<ul id="dropdownUserEvent" class="dropdown-content">
+				  <li><a href="#/adminevent/list">All Events</a></li>
+				  <li class="divider"></li>
+				  <li><a href="#/event/participatedList">Participated Events</a></li>
+				</ul>
+				
 				<!-- Dropdown Structure user Friend -->
 				<ul id="dropdownUserFriend" class="dropdown-content">
 			     <li><a href="#/friend/myfrlist">My friends</a></li>
@@ -210,14 +224,19 @@
       <li><a class="dropdown-UserBlog" href="" data-activates="dropdownUserBlog">Blog<i class="material-icons right">arrow_drop_down</i></a></li>
     
 				 			
-				 			
+				 			<!-- Dropdown Trigger user Job -->
+      <li><a class="dropdown-UserJob" href="" data-activates="dropdownUserJob">Jobs<i class="material-icons right">arrow_drop_down</i></a></li>
+    
+    						<!-- Dropdown Trigger user Events -->
+      <li><a class="dropdown-UserEvent" href="" data-activates="dropdownUserEvent">Events<i class="material-icons right">arrow_drop_down</i></a></li>
+    
 				 			
 				 			
 							
 							<!-- <li><a href="#/user/new">Register</a></li> -->
 							
-							<li><a href="#/adminevent/list">Events list</a></li>
-							<li><a href="#/job/list">Jobs list</a></li>
+							<!-- <li><a href="#/adminevent/list">Events list</a></li>
+							<li><a href="#/job/list">Jobs list</a></li> -->
 							<li><a href="#!"ng-click="logout()">Log Out</a></li>
 							
 				 		</ul>

@@ -276,6 +276,16 @@ window.routes = {
 	       
 	    },
 	    
+	    //For viewing list of jobs applied
+	     "/job/appliedlist": {
+	        templateUrl : 'app/components/job/appliedJobs.html',
+	        controller : 'jobController',
+	        controllerAs : 'jobCtrl',
+	        requireLogin: true,
+	        roles: ['User']
+	       
+	    },
+	    
 	    //For viewing single blog
 	    "/job/:id": {
 	        templateUrl : 'app/components/job/singleJob.html',
@@ -353,6 +363,16 @@ window.routes = {
 	        controllerAs : 'evtCtrl',
 	        requireLogin: true,
 	        roles: ['User', 'Admin']
+	       
+	    },
+	    
+	    // for displaying list of participated events
+	     "/event/participatedList": {
+	        templateUrl : 'app/components/adminevent/participatedEvents.html',
+	        controller : 'admineventController',
+	        controllerAs : 'evtCtrl',
+	        requireLogin: true,
+	        roles: ['User']
 	       
 	    },
 	    
