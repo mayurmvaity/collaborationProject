@@ -169,7 +169,7 @@ public class UserController {
 					boolean b = userDAO.update(user);
 					
 					// activate it when to send email
-					// emailService.approvedUserMessage(user);
+					emailService.approvedUserMessage(user);
 					if(b) System.out.println("User updated Successfully");
 					else System.out.println("User NOT updated");
 					

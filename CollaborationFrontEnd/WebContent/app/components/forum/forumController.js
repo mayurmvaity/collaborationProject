@@ -27,8 +27,10 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
 			active : 'Y'
 	}
 	
+	
 	self.myForumsCount = [];
 	
+	self.createdForumListCount = [];
 	
 	//function for adding a new blog
     self.addForum = function () {
@@ -187,7 +189,7 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
            .then (
                function(forums) {   
                    self.myforumlist = forums;
-                   self.myForumsCount = self.myforumlist.length;
+                   
                    console.log(self.forumlist);
                },
                function(errResponse) {
@@ -300,6 +302,7 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
            .then (
                function(myforums) {   
                    self.joinedforumlist = myforums;
+                   self.myForumsCount = self.joinedforumlist.length;
                    console.log(self.joinedforumlist);
                },
                function(errResponse) {
@@ -322,6 +325,7 @@ forum.controller('forumController',['forumFactory', 'fpostFactory', '$routeParam
            .then (
                function(cforums) {   
                    self.createdforumlist = cforums;
+                   self.createdForumListCount = self.createdforumlist.length;
                    console.log(self.createdforumlist);
                },
                function(errResponse) {

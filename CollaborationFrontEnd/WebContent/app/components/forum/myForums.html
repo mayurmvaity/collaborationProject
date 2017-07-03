@@ -2,7 +2,7 @@
       <div class="col s12 m12">
         <div class="card-panel grey lighten-4">
         	<div class="center-align">
-	            <p class="loginHeadergrey">Joined Forums</p>
+	            <p class="loginHeadergrey">Joined Forums ({{forumCtrl.myForumsCount}})</p>
 	        </div>
 	        
         <!-- Search method -->
@@ -21,7 +21,7 @@
         		
         		<div ng-if="forumCtrl.myForumsCount < 1">
 	        		<p>You haven't joined any forums.</p>
-	        		<a href="#/forum/list" class="btn blue darken-4">See all forums</a>
+	        		<a href="#/forum/list" class="btn orange darken-4">See all forums</a>
 	        	</div>
 
 <div ng-repeat="myforum in forumCtrl.joinedforumlist | filter : searchFrmn">

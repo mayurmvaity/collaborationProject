@@ -24,3 +24,18 @@
 	color: #424242;
 	text-align: center;
 }
+
+/******** Friend list CSS *****NEW**** *******/
+table tbody tr td .frlistname a {
+	font-family: 'PT Sans', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	color: #e65100;
+	
+}
+
+table tbody tr td .frlistname a:hover {
+	text-decoration: underline;
+	color: #212121;
+	
+}

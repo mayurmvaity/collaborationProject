@@ -2,7 +2,7 @@
       <div class="col s12 m12">
         <div class="card-panel grey lighten-4">
 			<div class="center-align">
-	            <p class="loginHeadergrey">Created Forums</p>
+	            <p class="loginHeadergrey">Created Forums ({{forumCtrl.createdForumListCount}})</p>
 	        </div>
 	        
 <!-- Search method -->
@@ -18,6 +18,12 @@
 				      </div>
 				     </form>
 				 </div>
+
+			<div ng-if="forumCtrl.createdForumListCount < 1">
+				<p>You haven't created any forums.</p>
+				<a href="#/forum/new" class="btn orange darken-4">Create New Forum</a>
+				
+			</div>
 
 <div ng-repeat="forum in forumCtrl.createdforumlist | filter : searchFrm1">
 		

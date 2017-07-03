@@ -19,7 +19,7 @@ friend.controller('friendController', ['friendFactory', '$routeParams', '$locati
 	
 	self.myRequestSentCount = [];
 	
-	self.otherPeopleCount = [];
+	
 	
 	
 	// list of my friends

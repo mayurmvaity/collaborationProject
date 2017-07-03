@@ -37,6 +37,7 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
 	
 	self.onlineFriendsCount = [];
 	
+	self.otherPeopleCount = [];
 	
 	//function to add a new friend
     self.addFriend = function(userid2) {
@@ -69,6 +70,7 @@ user.controller('userController',['userFactory', 'loginFactory', 'friendFactory'
            .then (
                function(notfriends) {   
                    self.notMyFriendlist = notfriends;
+                   self.otherPeopleCount = self.notMyFriendlist.length;
                    console.log(self.notMyFriendlist);
                },
                function(errResponse) {

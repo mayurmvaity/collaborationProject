@@ -39,7 +39,7 @@ nocycle;
 
 create table blog (
 	blogid number(6) primary key,
-	btitle varchar2(25) not null,
+	btitle varchar2(500) not null,
 	bdata clob not null,
 	blikes number(6),
 	userid number(10),
@@ -58,12 +58,15 @@ nocycle;
 
 create table forum (
 	forumid number(6) primary key,
-	ftitle varchar2(25) not null,
-	fdata varchar2(500) not null,
+	ftitle varchar2(120) not null,
+	fdata clob not null,
 	fdate date,
 	userid number(10),
 	is_active char(1) not null
 );
+
+ALTER TABLE forum
+ALTER COLUMN ftitle varchar2(500); 
 
 /********** JOB ***********/
 create sequence forjobid
@@ -74,7 +77,7 @@ nocycle;
 
 create table job (
 	jobid number(6) primary key,
-	jtitle varchar2(120) not null,
+	jtitle varchar2(500) not null,
 	jdata clob not null,
 	jdate date,
 	userid number(10),
@@ -90,7 +93,7 @@ nocycle;
 
 create table adminevent (
 	evtid number(6) primary key,
-	etitle varchar2(50) not null,
+	etitle varchar2(500) not null,
 	edata clob not null,
 	edate date,
 	userid number(10),

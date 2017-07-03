@@ -20,7 +20,7 @@ public class EmailService {
 			private JavaMailSender mailSender;
 			
 			// email name which is not similar to the username
-			private static String from = "ApokolipsPost";
+			private static String from = "NextHub";
 			
 			/**
 			 * approvedUserMessage method will be called using emailService that can be Autowired 
@@ -54,7 +54,7 @@ public class EmailService {
 					    
 					    // set the subject and recipient of the email
 					    helper.setTo(user.getEmail());
-					    helper.setSubject("WELCOME TO ApokolipsPost");
+					    helper.setSubject("WELCOME TO NextHub");
 					    helper.setFrom(from);
 					    
 					    // send the message
