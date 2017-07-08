@@ -10,21 +10,23 @@
 						<input type="hidden" ng-model="forumCtrl.forum.forumid" />
 				        <div class="row">
 				          <div class="input-field" ng-class="{ 'has-error' : forumForm.ftitle.$invalid && !forumForm.ftitle.$pristine }">
-				            <input id="ftitle" name="ftitle" type="text" data-length="100" ng-model="forumCtrl.forum.ftitle" ng-minlength="2" ng-maxlength="250" required />
+				            <input id="ftitle" name="ftitle" type="text" data-length="100" ng-model="forumCtrl.forum.ftitle" ng-minlength="2" ng-maxlength="250" ng-required="true" />
 				            <label for="ftitle">Forum title</label>
-				            <p ng-show="forumForm.ftitle.$error.minlength" class="help-block">Forum title is too short.</p>
-            				<p ng-show="forumForm.ftitle.$error.maxlength" class="help-block">Forum title is too long.</p>
-            				<p ng-show="forumForm.ftitle.$pristine" class="help-block">Forum title is required.</p>
-            				<p ng-show="forumForm.ftitle.$invalid && !forumForm.ftitle.$pristine && !forumForm.ftitle.$error.minlength && !forumForm.ftitle.$error.maxlength" class="help-block">Forum title is required.</p>
+				            <div class="invalid-data" ng-show="forumForm.ftitle.$dirty">
+					            <p ng-show="forumForm.ftitle.$error.minlength" class="help-block">Forum title is too short.</p>
+	            				<p ng-show="forumForm.ftitle.$error.maxlength" class="help-block">Forum title is too long.</p>
+	            				<p ng-show="forumForm.ftitle.$error.required" class="help-block">Forum title is required.</p>
+            				</div>
 				          </div>
 				        </div>
 				        <div class="row">
 				          <div class="input-field" ng-class="{ 'has-error' : forumForm.forumInfo.$invalid && !forumForm.forumInfo.$pristine }">
-				            <textarea id="fdata" name="forumInfo" class="materialize-textarea" ng-model="forumCtrl.forum.fdata" ng-minlength="2" required></textarea>
+				            <textarea id="fdata" name="forumInfo" class="materialize-textarea" ng-model="forumCtrl.forum.fdata" ng-minlength="2" ng-required="true"></textarea>
 				            <label for="fdata">Forum text</label>
-				            <p ng-show="forumForm.forumInfo.$error.minlength" class="help-block">Forum text is too short.</p>
-            				<p ng-show="forumForm.forumInfo.$pristine" class="help-block">Forum text is required.</p>
-            				<p ng-show="forumForm.forumInfo.$invalid && !forumForm.forumInfo.$pristine && !forumForm.forumInfo.$error.minlength" class="help-block">Forum text is required.</p>
+				            <div class="invalid-data" ng-show="forumForm.forumInfo.$dirty">
+					            <p ng-show="forumForm.forumInfo.$error.minlength" class="help-block">Forum text is too short.</p>
+	            				<p ng-show="forumForm.forumInfo.$error.required" class="help-block">Forum text is required.</p>
+            				</div>
 				          </div>
 				        </div>
 				         <div class="row">

@@ -9,25 +9,26 @@
           
           <div class="row">
             <div class="input-field" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
-              <input id="username" name="username" type="email" ng-model="loginCtrl.credentials.email" required />
+              <input id="username" name="username" type="email" ng-model="loginCtrl.credentials.email" ng-required="true" />
               <label for="username">Email</label>
-              <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="help-block">Enter a valid email.</p>
-	          <p ng-show="loginForm.username.$pristine" class="help-block">email is required.</p>
-	          <p ng-show="loginForm.username.$invalid && !loginForm.username.$pristine" class="help-block">Enter valid email.</p>
-	          
+              <div class="invalid-data" ng-show="loginForm.username.$dirty">
+              
+	          <p ng-show="loginForm.username.$error.required" class="help-block">email is required.</p>
+	          <p ng-show="loginForm.username.$invalid && !loginForm.username.$pristine && !loginForm.username.$error.required" class="help-block">Enter a valid email.</p>
+	          </div>
             </div>
           </div>
 
           
           <div class="row">
             <div class="input-field" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
-              <input id="password" name="password" type="password" ng-model="loginCtrl.credentials.pw" ng-minlength="8" ng-maxlength="20" required>
+              <input id="password" name="password" type="password" ng-model="loginCtrl.credentials.pw" ng-minlength="8" ng-maxlength="20" ng-required="true">
               <label for="password">Password</label>
+              <div class="invalid-data" ng-show="loginForm.password.$dirty">
               <p ng-show="loginForm.password.$error.minlength" class="help-block">Password is too short.</p>
               <p ng-show="loginForm.password.$error.maxlength" class="help-block">Password is too long.</p>
-              <p ng-show="loginForm.password.$pristine" class="help-block">Password is required.</p>
-              <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine && !loginForm.password.$error.minlength && !loginForm.password.$error.maxlength" class="help-block">Password is required.</p>
-              
+              <p ng-show="loginForm.password.$error.required" class="help-block">Password is required.</p>
+              </div>
             </div>
           </div>
 
@@ -59,47 +60,47 @@
 					
 					  <div class="row">
 			            <div class="input-field col s6 m6" ng-class="{ 'has-error' : userForm.fname.$invalid && !userForm.fname.$pristine }">
-			              <input id="fname" name="fname" type="text" ng-model="loginCtrl.user.fname" class="validate" ng-minlength="2" ng-maxlength="50" required />
+			              <input id="fname" name="fname" type="text" ng-model="loginCtrl.user.fname" class="validate" ng-minlength="2" ng-maxlength="50" ng-required="true" />
 			              <label for="fname">First name</label>
-			              
-			              <p ng-show="userForm.fname.$error.minlength" class="help-block">First name is too short.</p>
-            			  <p ng-show="userForm.fname.$error.maxlength" class="help-block">First name is too long.</p>
-            			  <p ng-show="userForm.fname.$pristine" class="help-block">First name is required.</p>
-            			  <p ng-show="userForm.fname.$invalid && !userForm.fname.$pristine && !userForm.fname.$error.minlength && !userForm.fname.$error.maxlength" class="help-block">First name is required.</p>
-            			  
+			               <div class="invalid-data" ng-show="userForm.fname.$dirty">
+				              <p ng-show="userForm.fname.$error.minlength" class="help-block">First name is too short.</p>
+	            			  <p ng-show="userForm.fname.$error.maxlength" class="help-block">First name is too long.</p>
+	            			  <p ng-show="userForm.fname.$error.required" class="help-block">First name is required.</p>
+            			   </div>
 			            </div>
 			             <div class="input-field col s6 m6" ng-class="{ 'has-error' : userForm.lname.$invalid && !userForm.lname.$pristine }">
-			              <input id="lname" name="lname" type="text" ng-model="loginCtrl.user.lname" class="validate" ng-minlength="2" ng-maxlength="50" required />
+			              <input id="lname" name="lname" type="text" ng-model="loginCtrl.user.lname" class="validate" ng-minlength="2" ng-maxlength="50" ng-required="true" />
 			              <label for="lname">Last name</label>
-			              
-			              <p ng-show="userForm.lname.$error.minlength" class="help-block">Last name is too short.</p>
-            			  <p ng-show="userForm.lname.$error.maxlength" class="help-block">Last name is too long.</p>
-            			  <p ng-show="userForm.lname.$pristine" class="help-block">Last name is required.</p>
-            			  <p ng-show="userForm.lname.$invalid && !userForm.lname.$pristine && !userForm.lname.$error.minlength && !userForm.lname.$error.maxlength" class="help-block">Last name is required.</p>
-            			  
+			              <div class="invalid-data" ng-show="userForm.lname.$dirty">
+				              <p ng-show="userForm.lname.$error.minlength" class="help-block">Last name is too short.</p>
+	            			  <p ng-show="userForm.lname.$error.maxlength" class="help-block">Last name is too long.</p>
+	            			  <p ng-show="userForm.lname.$error.required" class="help-block">Last name is required.</p>
+            			   </div>
 			            </div>
 			          </div>
 			          <!-- for Email -->
 			          <div class="row">
 			          	<div class="input-field col s12" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
-				          <input id="email" name="email" ng-blur="loginCtrl.checkUsername()" type="email" class="validate" ng-model="loginCtrl.user.email" required/>
+				          <input id="email" name="email" ng-blur="loginCtrl.checkUsername()" type="email" class="validate" ng-model="loginCtrl.user.email" ng-required="true"/>
 				          <label for="email">Email</label>
 				          <span ng-show="loginCtrl.usernameExist" class="help-block">Email is already taken</span>
-				          <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
-            			  <p ng-show="userForm.email.$pristine" class="help-block">Email is required.</p>
+				          <div class="invalid-data" ng-show="userForm.email.$dirty">
+					          <p ng-show="userForm.email.$invalid && !userForm.email.$pristine && !userForm.email.$error.required" class="help-block">Enter a valid email.</p>
+	            			  <p ng-show="userForm.email.$error.required" class="help-block">Email is required.</p>
+	            		  </div>
 				        </div>
 			          </div>
 					
 						<!-- For pno -->
 					  	<div class="row">
 					  		<div class="input-field col s12" ng-class="{ 'has-error' : userForm.pno.$invalid && !userForm.pno.$pristine }">
-				              <input id="pno" name="pno" type="text" ng-model="loginCtrl.user.pno" class="validate" ng-minlength="10" ng-maxlength="10" required />
+				              <input id="pno" name="pno" type="text" ng-model="loginCtrl.user.pno" class="validate" ng-minlength="10" ng-maxlength="10" ng-required="true" />
 				              <label for="pno">Phone number</label>
-				              <p ng-show="userForm.pno.$error.minlength" class="help-block">Phone number is too short.</p>
-            			  	  <p ng-show="userForm.pno.$error.maxlength" class="help-block">Phone number is too long.</p>
-				              <p ng-show="userForm.pno.$pristine" class="help-block">Phone number is required.</p>
-				              <p ng-show="userForm.pno.$invalid && !userForm.pno.$pristine && !userForm.pno.$error.minlength && !userForm.pno.$error.maxlength" class="help-block">Phone number is required.</p>
-				              
+				              <div class="invalid-data" ng-show="userForm.pno.$dirty">
+					              <p ng-show="userForm.pno.$error.minlength" class="help-block">Phone number is too short.</p>
+	            			  	  <p ng-show="userForm.pno.$error.maxlength" class="help-block">Phone number is too long.</p>
+					              <p ng-show="userForm.pno.$error.required" class="help-block">Phone number is required.</p>
+				              </div>
 				            </div>
 					  	</div>
 					  	
@@ -108,20 +109,22 @@
 					  		<div class="input-field col s6" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine }">
 					          <input id="password" name="password" type="password" class="validate" ng-model="loginCtrl.user.pw" ng-minlength="8" ng-maxlength="20" ng-required="true">
 					          <label for="password">Password</label>
-					          <p ng-show="userForm.password.$error.minlength" class="help-block">password is too short.</p>
-            			  	  <p ng-show="userForm.password.$error.maxlength" class="help-block">password is too long.</p>
-					          <p ng-show="userForm.password.$error.required" class="help-block">Password is required.</p>
-					          
+					          <div class="invalid-data" ng-show="userForm.password.$dirty">
+						          <p ng-show="userForm.password.$error.minlength" class="help-block">password is too short.</p>
+	            			  	  <p ng-show="userForm.password.$error.maxlength" class="help-block">password is too long.</p>
+						          <p ng-show="userForm.password.$error.required" class="help-block">Password is required.</p>
+					          </div>
 					        </div>	
 					        
 					        <div class="input-field col s6" >
 					          <input id="repassword" name="repassword" type="password" class="validate" ng-class="{ 'repassword' : (loginCtrl.user.pw != loginCtrl.user.repw)}" ng-model="loginCtrl.user.repw" ng-minlength="8" ng-maxlength="20" ng-required="true">
 					          <label for="repassword">Re-enter Password</label>
-					          <p ng-show="userForm.repassword.$error.minlength" class="help-block">password is too short.</p>
-            			  	  <p ng-show="userForm.repassword.$error.maxlength" class="help-block">password is too long.</p>
-					          <p ng-show="userForm.repassword.$error.required" class="help-block">Password is required.</p>
-					          <p ng-show="(!userForm.repassword.$error.required) && (loginCtrl.user.pw != loginCtrl.user.repw)" class="help-block">Password do not match</p>
-
+					          <div class="invalid-data" ng-show="userForm.repassword.$dirty">
+						          <p ng-show="userForm.repassword.$error.minlength" class="help-block">password is too short.</p>
+	            			  	  <p ng-show="userForm.repassword.$error.maxlength" class="help-block">password is too long.</p>
+						          <p ng-show="userForm.repassword.$error.required" class="help-block">Password is required.</p>
+						          <p ng-show="(!userForm.repassword.$error.required) && (loginCtrl.user.pw != loginCtrl.user.repw)" class="help-block">Password do not match</p>
+								</div>
 					        </div>
 					  	</div>
 					  	
@@ -170,66 +173,67 @@
 					  	<!-- For address line 1 and 2 -->
 					  	<div class="row">
 					  		 	<div class="input-field col s6 m6" ng-class="{ 'has-error' : userForm.add1.$invalid && !userForm.add1.$pristine }">
-					              <input id="add1" name="add1" type="text" ng-model="loginCtrl.user.add1" class="validate" ng-minlength="2" ng-maxlength="50" required />
+					              <input id="add1" name="add1" type="text" ng-model="loginCtrl.user.add1" class="validate" ng-minlength="2" ng-maxlength="50" ng-required="true" />
 					              <label for="add1">Address line 1</label>
-					              <p ng-show="userForm.add1.$error.minlength" class="help-block">Address line 1 is too short.</p>
-            			  		  <p ng-show="userForm.add1.$error.maxlength" class="help-block">Address line 1 is too long.</p>
-					              <p ng-show="userForm.add1.$pristine" class="help-block">Address line 1 is required.</p>
-					              <p ng-show="userForm.add1.$invalid && !userForm.add1.$pristine && !userForm.add1.$error.minlength && !userForm.add1.$error.maxlength" class="help-block">Address line 1 is required.</p>
-					              
+					              <div class="invalid-data" ng-show="userForm.add1.$dirty">
+						              <p ng-show="userForm.add1.$error.minlength" class="help-block">Address line 1 is too short.</p>
+	            			  		  <p ng-show="userForm.add1.$error.maxlength" class="help-block">Address line 1 is too long.</p>
+						              <p ng-show="userForm.add1.$error.required" class="help-block">Address line 1 is required.</p>
+						          </div>  
 					            </div>
 					             <div class="input-field col s6 m6" ng-class="{ 'has-error' : userForm.add2.$invalid && !userForm.add2.$pristine }">
-					              <input id="add2" name="add2" type="text" ng-model="loginCtrl.user.add2" class="validate" ng-minlength="2" ng-maxlength="50" required />
+					              <input id="add2" name="add2" type="text" ng-model="loginCtrl.user.add2" class="validate" ng-minlength="2" ng-maxlength="50" ng-required="true" />
 					              <label for="add2">Address line 2</label>
-					              <p ng-show="userForm.add2.$error.minlength" class="help-block">Address line 2 is too short.</p>
-            			  		  <p ng-show="userForm.add2.$error.maxlength" class="help-block">Address line 2 is too long.</p>
-					              <p ng-show="userForm.add2.$pristine" class="help-block">Address line 2 is required.</p>
-					              <p ng-show="userForm.add2.$invalid && !userForm.add2.$pristine && !userForm.add2.$error.minlength && !userForm.add2.$error.maxlength" class="help-block">Address line 2 is required.</p>
-					              
+					              <div class="invalid-data" ng-show="userForm.add2.$dirty">
+						              <p ng-show="userForm.add2.$error.minlength" class="help-block">Address line 2 is too short.</p>
+	            			  		  <p ng-show="userForm.add2.$error.maxlength" class="help-block">Address line 2 is too long.</p>
+						              <p ng-show="userForm.add2.$error.required" class="help-block">Address line 2 is required.</p>
+						          </div>
 					            </div>
 					  	</div>
 					  	
 					  	<!-- For address line 3 and city -->
 					  	<div class="row">
 					  		 	<div class="input-field col s6 m6" ng-class="{ 'has-error' : userForm.add3.$invalid && !userForm.add3.$pristine }">
-					              <input id="add3" name="add3" type="text" ng-model="loginCtrl.user.add3" class="validate" ng-minlength="2" ng-maxlength="50" required />
+					              <input id="add3" name="add3" type="text" ng-model="loginCtrl.user.add3" class="validate" ng-minlength="2" ng-maxlength="50" ng-required="true" />
 					              <label for="add3">Address line 3</label>
-					              <p ng-show="userForm.add3.$error.minlength" class="help-block">Address line 3 is too short.</p>
-            			  		  <p ng-show="userForm.add3.$error.maxlength" class="help-block">Address line 3 is too long.</p>
-					              <p ng-show="userForm.add3.$pristine" class="help-block">Address line 3 is required.</p>
-					              <p ng-show="userForm.add3.$invalid && !userForm.add3.$pristine && !userForm.add3.$error.minlength && !userForm.add3.$error.maxlength" class="help-block">Address line 3 is required.</p>
-					              
+					              <div class="invalid-data" ng-show="userForm.add3.$dirty">
+						              <p ng-show="userForm.add3.$error.minlength" class="help-block">Address line 3 is too short.</p>
+	            			  		  <p ng-show="userForm.add3.$error.maxlength" class="help-block">Address line 3 is too long.</p>
+						              <p ng-show="userForm.add3.$error.required" class="help-block">Address line 3 is required.</p>
+						          </div>   
 					            </div>
 					             <div class="input-field col s6 m6" ng-class="{ 'has-error' : userForm.city.$invalid && !userForm.city.$pristine }">
-					              <input id="city" name="city" type="text" ng-model="loginCtrl.user.city" class="validate" ng-minlength="2" ng-maxlength="50" required />
+					              <input id="city" name="city" type="text" ng-model="loginCtrl.user.city" class="validate" ng-minlength="2" ng-maxlength="50" ng-required="true" />
 					              <label for="city">City</label>
-					              <p ng-show="userForm.city.$error.minlength" class="help-block">city name is too short.</p>
-            			  		  <p ng-show="userForm.city.$error.maxlength" class="help-block">city name is too long.</p>
-					              <p ng-show="userForm.city.$pristine" class="help-block">city name is required.</p>
-					              <p ng-show="userForm.city.$invalid && !userForm.city.$pristine && !userForm.city.$error.minlength && !userForm.city.$error.maxlength" class="help-block">city name is required.</p>
-					              
+					              <div class="invalid-data" ng-show="userForm.city.$dirty">
+						              <p ng-show="userForm.city.$error.minlength" class="help-block">city name is too short.</p>
+	            			  		  <p ng-show="userForm.city.$error.maxlength" class="help-block">city name is too long.</p>
+						              <p ng-show="userForm.city.$error.required" class="help-block">city name is required.</p>
+						          </div>
 					            </div>
 					  	</div>
 					  	
 					  	<!-- For address state and pincode -->
 					  	<div class="row">
 					  		 	<div class="input-field col s6 m6" ng-class="{ 'has-error' : userForm.state.$invalid && !userForm.state.$pristine }">
-					              <input id="state" name="state" type="text" ng-model="loginCtrl.user.state" class="validate" ng-minlength="2" ng-maxlength="50" required />
+					              <input id="state" name="state" type="text" ng-model="loginCtrl.user.state" class="validate" ng-minlength="2" ng-maxlength="50" ng-required="true" />
 					              <label for="state">State</label>
-					              <p ng-show="userForm.state.$error.minlength" class="help-block">State name is too short.</p>
-            			  		  <p ng-show="userForm.state.$error.maxlength" class="help-block">State name is too long.</p>
-					              <p ng-show="userForm.state.$pristine" class="help-block">State name is required.</p>
-					              <p ng-show="userForm.state.$invalid && !userForm.state.$pristine && !userForm.state.$error.minlength && !userForm.state.$error.maxlength" class="help-block">State name is required.</p>
-					              
+					              <div class="invalid-data" ng-show="userForm.state.$dirty">
+						              <p ng-show="userForm.state.$error.minlength" class="help-block">State name is too short.</p>
+	            			  		  <p ng-show="userForm.state.$error.maxlength" class="help-block">State name is too long.</p>
+						              <p ng-show="userForm.state.$error.required" class="help-block">State name is required.</p>
+						              
+						          </div>  
 					            </div>
 					             <div class="input-field col s6 m6" ng-class="{ 'has-error' : userForm.pincode.$invalid && !userForm.pincode.$pristine }">
-					              <input id="pincode" name="pincode" type="text" ng-model="loginCtrl.user.pincode" class="validate" ng-minlength="6" ng-maxlength="6" required />
+					              <input id="pincode" name="pincode" type="text" ng-model="loginCtrl.user.pincode" class="validate" ng-minlength="6" ng-maxlength="6" ng-required="true" />
 					              <label for="pincode">Pin code</label>
-					              <p ng-show="userForm.pincode.$error.minlength" class="help-block">Pin code is too short.</p>
-            			  		  <p ng-show="userForm.pincode.$error.maxlength" class="help-block">Pin code is too long.</p>
-					              <p ng-show="userForm.pincode.$pristine" class="help-block">Pin code is required.</p>
-					              <p ng-show="userForm.pincode.$invalid && !userForm.pincode.$pristine && !userForm.pincode.$error.minlength && !userForm.pincode.$error.maxlength" class="help-block">Pin code is required.</p>
-					              
+					              <div class="invalid-data" ng-show="userForm.state.$dirty">
+						              <p ng-show="userForm.pincode.$error.minlength" class="help-block">Pin code is too short.</p>
+	            			  		  <p ng-show="userForm.pincode.$error.maxlength" class="help-block">Pin code is too long.</p>
+						              <p ng-show="userForm.pincode.$error.required" class="help-block">Pin code is required.</p>
+					              </div>
 					            </div>
 					  	</div>
 					  	

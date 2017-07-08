@@ -18,7 +18,7 @@ public class EmailConfig {
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setPort(587);
 		mailSender.setUsername("nexthubinc@gmail.com");
-		mailSender.setPassword("next2017");
+		mailSender.setPassword("");
 		mailSender.setJavaMailProperties(getMailProperties());				
 		return mailSender;
 	}
